@@ -4,7 +4,7 @@ import { roboto } from 'styles/fonts'
 
 import '../../styles/globals.css'
 
-export default function Header() {
+const WideHeader = () => {
   return (
     <header
       className={`sticky h-48 p-3 ${roboto.className} font-light transition-all duration-350 text-primary hidden sm:block`}
@@ -30,3 +30,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default WideHeader

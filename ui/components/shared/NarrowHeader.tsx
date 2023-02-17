@@ -5,7 +5,7 @@ import Hamburger from 'hamburger-react'
 
 import '../../styles/globals.css'
 
-export default function NarrowHeader() {
+const NarrowHeader = () => {
   const [isOpen, setIsOpen] = React.useState(false)
   return (
     <header
@@ -30,3 +30,5 @@ export default function NarrowHeader() {
     </header>
   )
 }
+
+export default NarrowHeader
