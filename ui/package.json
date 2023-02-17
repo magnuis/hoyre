@@ -9,31 +9,37 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tailwindcss/line-clamp": "^0.4.2",
     "@next/font": "13.1.6",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.5"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^2.0.1",
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
-    "tailwindcss": "^3.2.7",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
     "autoprefixer": "^10.4.12",
-    "eslint": "^8.6.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
     "postcss": "^8.4.18",
-    "prettier": "^2.8.3",
-    "typescript": "4.9.4"
+    "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.5"
   },
-    "prettier": {
+  "prettier": {
     "semi": false,
     "printWidth": 100,
     "bracketSpacing": true,
