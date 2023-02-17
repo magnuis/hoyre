@@ -1,11 +1,8 @@
-import Header from "components/shared/Header";
-import "../../styles/globals.css";
+import NarrowHeader from 'components/shared/NarrowHeader'
+import WideHeader from 'components/shared/WideHeader'
+import '../../styles/globals.css'
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       {/*
@@ -14,9 +11,10 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <Header />
+        <WideHeader />
+        <NarrowHeader />
         {children}
       </body>
     </html>
-  );
+  )
 }
