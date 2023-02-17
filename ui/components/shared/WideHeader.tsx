@@ -4,7 +4,7 @@ import { roboto } from 'styles/fonts'
 
 import '../../styles/globals.css'
 
-const WideHeader = () => {
+const WideHeader = (): JSX.Element => {
   return (
     <header
       className={`sticky h-48 p-3 ${roboto.className} font-light transition-all duration-350 text-primary hidden sm:block`}

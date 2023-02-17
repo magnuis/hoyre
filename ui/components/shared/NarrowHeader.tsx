@@ -5,7 +5,7 @@ import Hamburger from 'hamburger-react'
 
 import '../../styles/globals.css'
 
-const NarrowHeader = () => {
+const NarrowHeader = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false)
   return (
     <header
