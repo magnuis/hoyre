@@ -3,7 +3,7 @@
 import { NextStudio } from 'next-sanity/studio'
 import React from 'react'
 
-import config from '../../../sanity.config'
+import config from '../../../components/sanity.config'
 
 export default function StudioPage() {
   //  Supports the same props as `import {Studio} from 'sanity'`, `config` is required
