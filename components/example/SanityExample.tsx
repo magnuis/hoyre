@@ -1,16 +1,11 @@
-import groq from 'groq'
-import imageUrlBuilder from '@sanity/image-url'
-import { PortableText } from '@portabletext/react'
-import { client } from '../../sanity-conf/sanity.client'
-
-function urlFor(source: string) {
-  return imageUrlBuilder(client).image(source)
-}
+import Image from 'next/image'
+import { urlFor } from 'sanity-conf/urlFor'
 
 export default function SanityExample() {
   return (
     <main>
       <div>
+        <Image alt="" src={urlFor('').url()} />
         <p>Main</p>
       </div>
     </main>
