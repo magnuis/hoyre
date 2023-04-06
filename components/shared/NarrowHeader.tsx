@@ -9,7 +9,7 @@ const NarrowHeader = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false)
   return (
     <header
-      className={`sticky h-48 p-3 ${roboto.className} font-light transition-all duration-350 text-primary sm:hidden`}
+      className={`sticky h-20 p-3 ${roboto.className} font-light transition-all duration-350 text-primary sm:hidden`}
     >
       <div className="flex justify-between items-center">
         <a className="flex flex-row mr-5">

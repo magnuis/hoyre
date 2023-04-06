@@ -7,7 +7,7 @@ import '../../styles/globals.css'
 const WideHeader = (): JSX.Element => {
   return (
     <header
-      className={`sticky h-48 p-3 ${roboto.className} font-light transition-all duration-350 text-primary hidden sm:block`}
+      className={`sticky h-20 p-3 ${roboto.className} font-light transition-all duration-350 text-primary hidden sm:block`}
     >
       <div className="flex justify-between items-center">
         <a className="flex flex-row mr-5">
