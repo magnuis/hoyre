@@ -4,7 +4,6 @@ import { groq } from 'next-sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 import { client } from 'sanity-conf/sanity.client'
-import { navCard } from 'type'
 
 const builder = imageUrlBuilder(client)
 
