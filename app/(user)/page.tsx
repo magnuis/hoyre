@@ -61,8 +61,8 @@ export default async function Home() {
               </div>
             </Link>
           ))}
+          {/* <ImageGallery images={images} /> */}
         </div>
-        {/* <ImageGallery images={images} /> */}
       </div>
     </main>
   )
