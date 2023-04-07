@@ -1,5 +1,5 @@
 'use client'
-import imageUrlBuilder from '@sanity/image-url'
+// import imageUrlBuilder from '@sanity/image-url'
 // import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 import { Slide } from 'react-slideshow-image'
@@ -7,7 +7,7 @@ import 'react-slideshow-image/dist/styles.css'
 
 // import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { client } from 'sanity-conf/sanity.client'
+// import { client } from 'sanity-conf/sanity.client'
 import { CustomImage } from 'type'
 // import { LandingImageCard } from './LandingImageCard'
 
@@ -28,7 +28,9 @@ export const ImageGallery = ({ images }: GalleryProps) => {
     }
   }
   useEffect(() => {
-    setInterval(() => increment(), 3000)
+    setInterval(() => {
+      increment(), 3000
+    })
   }, [current])
 
   //   const imageCards = images.map((image: CustomImage) => {
