@@ -28,9 +28,7 @@ export const ImageGallery = ({ images }: GalleryProps) => {
     }
   }
   useEffect(() => {
-    setInterval(() => {
-      increment(), 3000
-    })
+    setInterval(() => increment(), 3000)
   }, [current])
 
   //   const imageCards = images.map((image: CustomImage) => {
