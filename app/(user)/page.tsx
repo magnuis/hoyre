@@ -35,7 +35,7 @@ export default async function Home() {
             fill
           />
         </div>
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 `}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
           {navCards.map((navCard: any) => (
             <Link key={navCard._id} href={`/${navCard.slug.current}`}>
               <div className="flex flex-col group cursor-pointer">
@@ -47,7 +47,7 @@ export default async function Home() {
                     fill
                   />
                   <div className="absolute bottom-0 w-full text-white">
-                    <p className="text-xl m-2 font-bold">Dag nummer {navCard.dayNo}</p>
+                    <p className="text-xl m-2 font-bold">{navCard.dayNo}</p>
                   </div>
                 </div>
                 <div className="mt-5 flex-1">
