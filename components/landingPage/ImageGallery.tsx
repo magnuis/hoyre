@@ -1,17 +1,17 @@
 'use client'
 import imageUrlBuilder from '@sanity/image-url'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+// import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 
-import Image from 'next/image'
-import { Key, useEffect, useState } from 'react'
+// import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { client } from 'sanity-conf/sanity.client'
 import { CustomImage } from 'type'
-import { LandingImageCard } from './LandingImageCard'
+// import { LandingImageCard } from './LandingImageCard'
 
-const builder = imageUrlBuilder(client)
+// const builder = imageUrlBuilder(client)
 
 interface GalleryProps {
   images: CustomImage[]
@@ -35,11 +35,11 @@ export const ImageGallery = ({ images }: GalleryProps) => {
   //     return <LandingImageCard image={image} />
   //   })
 
-  const spanStyle = {
-    padding: '20px',
-    background: '#efefef',
-    color: '#000000',
-  }
+  // const spanStyle = {
+  //   padding: '20px',
+  //   background: '#efefef',
+  //   color: '#000000',
+  // }
 
   const divStyle = {
     display: 'flex',
