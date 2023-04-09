@@ -18,7 +18,7 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset
       setShowHeader(
-        prevScrollPos >= currentScrollPos || currentScrollPos <= 0 || prevScrollPos == 0
+        prevScrollPos >= currentScrollPos || currentScrollPos <= 0 || prevScrollPos === 0
       )
       setPrevScrollPos(currentScrollPos)
     }
