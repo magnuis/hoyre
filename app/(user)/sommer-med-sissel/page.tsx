@@ -21,7 +21,7 @@ export default function SummerWSissel() {
           <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
             <div className="hidden md:block w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
               <img
-                src="https://images.unsplash.com/photo-1670272502246-768d249768ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80"
+                src="https://www.fjordnorway.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjew0njor%2Fimage%2Fupload%2Far_1.5%2Cc_fill%2Cq_95%2Cw_1280%2Fv1%2FVisit%2520Region%2520Stavanger%2FGo%2520Fjords%2FPreikestolen-plateau-Go-Fjords-Bob-Engelsen-P1026771_kljg5o%3F_a%3DATAABAA0&w=1920&q=75"
                 alt=""
                 className="aspect-[9/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
               />
@@ -30,21 +30,21 @@ export default function SummerWSissel() {
             <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
               <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                 <img
-                  src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&h=842&q=80"
+                  src="https://gladmat.no/wp-content/uploads/Gladmat-hoteller-scaled.jpg"
                   alt=""
                   className="aspect-[7/5] w-[24rem] lg:w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                 />
               </div>
               <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                 <img
-                  src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80"
+                  src="https://premium.vgc.no/v2/images/801d2632-9bf1-484c-9d05-fedaf58308a4?fit=crop&format=auto&h=1425&w=1900&s=7ff2f3f92785213a8b3c761d7ccdc528d6bffdae"
                   alt=""
                   className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                 />
               </div>
               <div className="order-first flex w-64 flex-none lg:justify-end justify-center self-end md:self-center lg:w-auto">
                 <img
-                  src="https://images.unsplash.com/photo-1605656816944-971cd5c1407f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80"
+                  src="https://premium.vgc.no/v2/images/5cd96f31-9262-4ae7-abd6-ba30e9bfa769?fit=crop&format=auto&h=1383&w=1900&s=43ceb61880aa7936e3207216f53c8949df82a1bd"
                   alt=""
                   className="aspect-[4/3] lg:w-[24rem] w-[16rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                 />
