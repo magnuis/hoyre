@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="overscroll-y-none">
         <Header />
-        <div className="mt-20">{children}</div>
+        {children}
       </body>
     </html>
   )
