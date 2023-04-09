@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
@@ -14,8 +14,26 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const [showHeader, setShowHeader] = useState(true)
+  const [prevScrollPos, setPrevScrollPos] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset
+      setShowHeader(prevScrollPos > currentScrollPos || currentScrollPos <= 0)
+      setPrevScrollPos(currentScrollPos)
+      console.log(showHeader)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [prevScrollPos])
+
   return (
-    <header className="bg-white">
+    <header
+      className={`z-50 w-full fixed bg-white transition-all duration-500 ease-in-out ${
+        showHeader ? 'top-0 ' : 'top-[-100%]'
+      } ease-out`}
+    >
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-0"
         aria-label="Global"
