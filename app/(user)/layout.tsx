@@ -1,3 +1,4 @@
+import Header from 'components/shared/Header'
 import NarrowHeader from 'components/shared/NarrowHeader'
 import WideHeader from 'components/shared/WideHeader'
 import '../../styles/globals.css'
@@ -11,8 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <head />
       <body className="max-w-7xl mx-auto">
-        <WideHeader />
-        <NarrowHeader />
+        <Header />
         {children}
       </body>
     </html>
