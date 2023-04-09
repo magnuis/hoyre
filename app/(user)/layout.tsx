@@ -12,10 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <head />
       <body className="max-w-7xl mx-auto">
-        {/* <WideHeader />
-        <NarrowHeader /> */}
         <Header />
-        <div className="mt-20">{children}</div>
+        {children}
       </body>
     </html>
   )
