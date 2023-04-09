@@ -28,12 +28,12 @@ export default function Header() {
 
   return (
     <header
-      className={`z-50 w-full fixed bg-white transition-all duration-500 ease-in-out ${
+      className={`z-50 max-w-7xl w-full fixed bg-white transition-all duration-500 ease-in-out ${
         showHeader ? 'top-0 ' : 'top-[-100%]'
       } ease-in-out `}
     >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-0"
+        className="flex mx-auto max-w-7xl items-center justify-between p-6 lg:px-0"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
