@@ -59,3 +59,17 @@ interface BlogPost extends Base {
   ]
   body: Block[]
 }
+
+interface Category extends base {
+  title: string
+  description: string
+}
+
+interface ExternalArticle extends base {
+  title: string
+  categories: Category[]
+  publisher: string
+  description: string
+  externalLink: string
+  date: string
+}
