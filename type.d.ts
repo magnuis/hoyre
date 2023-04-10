@@ -73,3 +73,16 @@ interface ExternalArticle extends base {
   externalLink: string
   date: string
 }
+
+interface CustomImage extends Base {
+  url: string
+  alt: string
+  _id: string
+}
+
+type navCard = {
+  title: string
+  slug: string
+  image: CustomImage
+  description: string
+}
