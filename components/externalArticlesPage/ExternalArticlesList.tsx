@@ -86,7 +86,6 @@ export default function ExternalArticlesList() {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
     }
-
     fetchArticles()
   }, [sort, selectedSubjects])
 
@@ -133,7 +132,7 @@ export default function ExternalArticlesList() {
           subjects={alteredSubjects}
           selectedSubjects={selectedSubjects}
           onAddSubject={onAddSubject}
-        />
+        /> */}
         <div className="w-fit h-16 items-center">
           {/* TODO: Finn ut hvorfor denne får oransje farge on focus */}
           <button
