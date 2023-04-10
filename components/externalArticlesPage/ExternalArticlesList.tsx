@@ -133,7 +133,6 @@ export default function ExternalArticlesList() {
           onAddSubject={onAddSubject}
         />
         <div className="w-fit h-16 items-center">
-          {/* TODO: Finn ut hvorfor denne får oransje farge on focus */}
           <button
             onClick={() => onRemoveAll()}
             className="px-3 py-2 block w-fulltext-base border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md focus-visible:border-primary "
