@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'externalArticles',
+  name: 'externalArticle',
   title: 'Eksterne artikler',
   type: 'document',
   fields: [
@@ -30,6 +30,11 @@ export default defineType({
       name: 'externalLink',
       title: 'Ekstern lenke',
       type: 'url',
+    }),
+    defineField({
+      name: 'date',
+      title: 'Dato',
+      type: 'date',
     }),
   ],
 })
