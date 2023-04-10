@@ -78,9 +78,9 @@ export default function ExternalArticlesList() {
     setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
   }
 
-  const onAddSubject = (subject: string) => {
-    if (!selectedSubjects.includes(subject)) {
-      setSelectedSubjects([...selectedSubjects, subject])
+  const onAddSubject = (value: string) => {
+    if (!selectedSubjects.includes(value)) {
+      setSelectedSubjects([...selectedSubjects, value])
     }
   }
 
@@ -92,16 +92,20 @@ export default function ExternalArticlesList() {
     return subjects.find((subject) => subject._id === ref)?.title
   }
 
+  const alteredSubjects = subjects.map((subject) => {
+    return subject.title
+  })
+
   return (
     <div className="max-w-3xl mx-auto mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         {/* <SortMenu sort={sort} setSort={setSort} /> */}
         <SortMenu sort={sort} setSort={setSort} />
-        {/* <SubjectsMenu
-          subjects={subjects}
+        <SubjectsMenu
+          subjects={alteredSubjects}
           selectedSubjects={selectedSubjects}
           onAddSubject={onAddSubject}
-        /> */}
+        />
         <div className="w-fit h-16 items-center">
           <button
             onClick={() => onRemoveAll()}
