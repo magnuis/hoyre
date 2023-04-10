@@ -66,29 +66,3 @@ interface SisselTimeline extends Base {
   content: Block[]
   date: number
 }
-
-interface CustomImage extends Base {
-  url: string
-  alt: string
-  _id: string
-}
-
-type navCard = {
-  title: string
-  slug: string
-  image: CustomImage
-  description: string
-}
-
-interface SummerPost extends Base {
-  title: string
-  slug: Slug
-  image: CustomImage
-  description: string
-  date: string
-  category: {
-    title: string
-    href: string
-  }
-  body: Block[]
-}
