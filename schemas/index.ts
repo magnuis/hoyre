@@ -13,6 +13,7 @@ export const schemaTypes = [
   author,
   subject,
   summerPost,
+  summerPost,
   navigation,
   blockContent,
   blogBost,
