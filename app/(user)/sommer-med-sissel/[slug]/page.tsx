@@ -42,10 +42,12 @@ export default async function SummerWSisselPost({ params: { slug } }: SummerWSis
     )
   }
   return (
-    <div className="flex flex-col gap-y-16 max-w-5xl mx-auto mt-16">
-      <p className="text-3xl font-bold ">{summerPost.title}</p>
-      <div>
-        <PortableText value={summerPost.body} components={RichTextComponents} />
+    <div className="max-w-3xl mx-auto mt-16">
+      <div className="flex flex-col mx-6 gap-y-16">
+        <p className="mx-auto text-4xl sm:text-5xl font-bold ">{summerPost.title}</p>
+        <div className="flex flex-col gap-y-6">
+          <PortableText value={summerPost.body} components={RichTextComponents} />
+        </div>
       </div>
     </div>
   )
