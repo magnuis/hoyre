@@ -5,7 +5,7 @@ interface SortMenuProps {
 
 export default function SortMenu({ sort, setSort }: SortMenuProps) {
   return (
-    <div className="w-fit max-w-md">
+    <div className="w-fit max-w-lg h-16">
       {/* <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">
         Sortering
       </label> */}
@@ -15,7 +15,7 @@ export default function SortMenu({ sort, setSort }: SortMenuProps) {
         name="sort"
         value={sort}
         onChange={(e) => setSort(e.target.value)}
-        className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md"
+        className="p-2 pr-10 block w-fulltext-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md"
       >
         <option value="desc">Nyeste først</option>
         <option value="asc">Eldste først</option>
