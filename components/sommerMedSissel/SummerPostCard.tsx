@@ -15,7 +15,6 @@ export interface summerPostCardProps {
 const builder = imageUrlBuilder(client)
 
 export default function SummerPostCard(post: summerPostCardProps) {
-  console.log(post.slug.current)
   return (
     <>
       <hr className="sm:block hidden mb-16" />
