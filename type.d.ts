@@ -22,20 +22,6 @@ interface ExternalArticle extends base {
   date: string
 }
 
-interface Category extends base {
-  title: string
-  description: string
-}
-
-interface ExternalArticle extends base {
-  title: string
-  categories: Category[]
-  publisher: string
-  description: string
-  externalLink: string
-  date: string
-}
-
 interface CustomImage extends Base {
   url: string
   alt: string
