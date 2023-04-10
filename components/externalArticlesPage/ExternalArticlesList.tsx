@@ -126,7 +126,6 @@ export default function ExternalArticlesList() {
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
-        {/* <SortMenu sort={sort} setSort={setSort} /> */}
         <SortMenu sort={sort} setSort={setSort} />
         <SubjectsMenu
           subjects={alteredSubjects}
@@ -134,6 +133,7 @@ export default function ExternalArticlesList() {
           onAddSubject={onAddSubject}
         />
         <div className="w-fit h-16 items-center">
+          {/* TODO: Finn ut hvorfor denne får oransje farge on focus */}
           <button
             onClick={() => onRemoveAll()}
             className="px-3 py-2 block w-fulltext-base border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md focus-visible:border-primary "
