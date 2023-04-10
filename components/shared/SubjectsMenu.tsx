@@ -8,6 +8,23 @@ interface SubjectsMenuProps {
   selectedSubjects: string[]
   onAddSubject: (value: string) => void
 }
+import { Fragment, useEffect, useState } from 'react'
+import { Combobox, Transition } from '@headlessui/react'
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+
+export default function Example({ subjects, onAddSubject }: SubjectsMenuProps) {
+  const [selected, setSelected] = useState('')
+  const [query, setQuery] = useState('')
+
+  const filteredSubjects =
+    query === ''
+      ? subjects
+      : subjects.filter((subject) =>
+          subject
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(query.toLowerCase().replace(/\s+/g, ''))
+        )
 
 export default function Example({ subjects, onAddSubject }: SubjectsMenuProps) {
   const [selected, setSelected] = useState('')
