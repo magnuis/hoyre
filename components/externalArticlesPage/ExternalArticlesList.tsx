@@ -1,6 +1,8 @@
 'use client'
 
+import SelectedFilter from 'components/shared/SelectedFilter'
 import SortMenu from 'components/shared/SortMenu'
+import SubjectsMenu from 'components/shared/SubjectsMenu'
 import { groq } from 'next-sanity'
 import { useEffect, useState } from 'react'
 import { client } from 'sanity-conf/sanity.client'
@@ -24,12 +26,13 @@ var initialPost = [
 export default function ExternalArticlesList() {
   const [subjects, setSubjects] = useState([])
   const [articles, setArticles] = useState(initialPost)
-  const [sort, setSort] = useState('desc')
+  const [sort, setSort] = useState<string>('desc')
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([])
 
   const subjectsQuery = groq`
     *[_type == "subject"] {
-    ...}
-    `
+    title
+    }`
   useEffect(() => {
     const fetchSubjects = async () => {
       const result = await client.fetch(subjectsQuery)
@@ -55,18 +58,57 @@ export default function ExternalArticlesList() {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
     }
+
     fetchArticles()
-  }, [subjects, sort])
+  }, [sort, selectedSubjects])
+
   if (articles.length === 1)
     return (
       <div className="max-w-3xl mx-auto mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16"></div>
     )
 
+  const onRemove = (subject: string) => {
+    setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
+  }
+
+  const onAddSubject = (subject: string) => {
+    if (!selectedSubjects.includes(subject)) {
+      setSelectedSubjects([...selectedSubjects, subject])
+    }
+  }
+
+  const onRemoveAll = () => {
+    setSelectedSubjects([])
+  }
+
   return (
     <div className="max-w-3xl mx-auto mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
-      <SortMenu sort={sort} setSort={setSort} />
+      <div className="flex flex-row gap-x-4 items-center flex-wrap">
+        <SortMenu sort={sort} setSort={setSort} />
+        <SubjectsMenu
+          subjects={subjects}
+          selectedSubjects={selectedSubjects}
+          onAddSubject={onAddSubject}
+        />
+        <div className="w-fit h-16 items-center">
+          <button
+            onClick={() => onRemoveAll()}
+            type="button"
+            className="px-3 py-2 block w-fulltext-base border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md"
+          >
+            Nullstill filtre
+          </button>
+        </div>
+
+        {selectedSubjects.length > 0 &&
+          selectedSubjects.map((sub) => (
+            <div key={sub} className="w-fit max-w-lg h-16">
+              <SelectedFilter subject={sub} onRemove={onRemove} />
+            </div>
+          ))}
+      </div>
       {articles.map((post) => (
-        <article key={post._id} className="flex max-w-xl flex-col items-start justify-between">
+        <article key={post._id} className="z-1 flex max-w-xl flex-col items-start justify-between">
           <div className="flex items-center gap-x-4 text-xs">
             <time dateTime={post.date} className="text-gray-500">
               {post.date}
@@ -80,10 +122,10 @@ export default function ExternalArticlesList() {
           </div>
           <div className="group relative">
             <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-              <a href={post.externalLink}>
+              {/* <a href={post.externalLink}>
                 <span className="absolute inset-0" />
                 {post.title}
-              </a>
+              </a> */}
             </h3>
             <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
           </div>
