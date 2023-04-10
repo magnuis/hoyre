@@ -86,6 +86,7 @@ export default function ExternalArticlesList() {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
     }
+
     fetchArticles()
   }, [sort, selectedSubjects])
 
