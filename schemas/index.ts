@@ -5,12 +5,12 @@ import author from './author'
 import navigation from './navigation'
 import externalArticles from './externalArticles'
 import summerPost from './summerPost'
-import externalArticles from './externalArticles'
 
 export const schemaTypes = [
   post,
   author,
   subject,
+  summerPost,
   summerPost,
   navigation,
   blockContent,
