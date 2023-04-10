@@ -50,13 +50,13 @@ interface navCard extends Base {
 
 interface SummerPost extends Base {
   title: string
-  slug: string
+  slug: Slug
   image: CustomImage
   description: string
   date: string
-  datetime: string
   category: {
     title: string
     href: string
   }
+  body: Block[]
 }

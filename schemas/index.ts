@@ -4,5 +4,14 @@ import post from './post'
 import author from './author'
 import navigation from './navigation'
 import externalArticles from './externalArticles'
+import summerPost from './summerPost'
 
-export const schemaTypes = [post, author, subject, navigation, blockContent, externalArticles]
+export const schemaTypes = [
+  post,
+  author,
+  subject,
+  summerPost,
+  navigation,
+  blockContent,
+  externalArticles,
+]
