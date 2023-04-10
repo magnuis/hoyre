@@ -126,7 +126,6 @@ export default function ExternalArticlesList() {
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
-        {/* <SortMenu sort={sort} setSort={setSort} /> */}
         <SortMenu sort={sort} setSort={setSort} />
         <SubjectsMenu
           subjects={alteredSubjects}
