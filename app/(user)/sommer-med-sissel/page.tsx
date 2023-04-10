@@ -1,87 +1,15 @@
-import SommerPost from 'components/sommerMedSissel/post'
+import SummerPostCard, { summerPostCardProps } from 'components/sommerMedSissel/SummerPostCard'
+import { groq } from 'next-sanity'
+import { client } from 'sanity-conf/sanity.client'
 
-import { SummerPost } from 'type'
+export default async function SummerWSissel() {
+  const query = groq`
+*[_type=='summerPost'] {
+title, slug, image, description, date, _id 
+} `
 
-const posts = [
-  {
-    _id: 'gkjhlkj',
-    title: 'Boost your conversion rate',
-    slug: '#',
-    description:
-      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.',
-    imageUrl:
-      'https://premium.vgc.no/v2/images/5cd96f31-9262-4ae7-abd6-ba30e9bfa769?fit=crop&format=auto&h=1383&w=1900&s=43ceb61880aa7936e3207216f53c8949df82a1bd',
-    date: 'Mar 16, 2020',
-    datetime: '2020-03-16',
-    category: { title: 'Marketing', href: '#' },
-    author: {
-      name: 'Michael Foster',
-      role: 'Co-Founder / CTO',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  },
-  {
-    _id: 'ihjln',
-    title: 'Boost your conversion rate',
-    href: '#',
-    description:
-      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.',
-    imageUrl:
-      'https://premium.vgc.no/v2/images/5cd96f31-9262-4ae7-abd6-ba30e9bfa769?fit=crop&format=auto&h=1383&w=1900&s=43ceb61880aa7936e3207216f53c8949df82a1bd',
-    date: 'Mar 16, 2020',
-    datetime: '2020-03-16',
-    category: { title: 'Marketing', href: '#' },
-    author: {
-      name: 'Michael Foster',
-      role: 'Co-Founder / CTO',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  },
-  {
-    _id: 'cyvub',
-    title: 'Boost your conversion rate',
-    href: '#',
-    description:
-      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.',
-    imageUrl:
-      'https://premium.vgc.no/v2/images/5cd96f31-9262-4ae7-abd6-ba30e9bfa769?fit=crop&format=auto&h=1383&w=1900&s=43ceb61880aa7936e3207216f53c8949df82a1bd',
-    date: 'Mar 16, 2020',
-    datetime: '2020-03-16',
-    category: { title: 'Marketing', href: '#' },
-    author: {
-      name: 'Michael Foster',
-      role: 'Co-Founder / CTO',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  },
-  {
-    _id: 'hjklm',
-    title: 'Boost your conversion rate',
-    href: '#',
-    description:
-      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.',
-    imageUrl:
-      'https://premium.vgc.no/v2/images/5cd96f31-9262-4ae7-abd6-ba30e9bfa769?fit=crop&format=auto&h=1383&w=1900&s=43ceb61880aa7936e3207216f53c8949df82a1bd',
-    date: 'Mar 16, 2020',
-    datetime: '2020-03-16',
-    category: { title: 'Marketing', href: '#' },
-    author: {
-      name: 'Michael Foster',
-      role: 'Co-Founder / CTO',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  },
-]
+  const summerPosts = await client.fetch(query)
 
-export default function SummerWSissel() {
   // TODO fix responsive rendering of images
   return (
     <div className=" bg-white py-16 lg:py-32">
@@ -141,8 +69,8 @@ export default function SummerWSissel() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-4xl">
             <div className="space-y-16 lg:space-y-16">
-              {posts.map((post) => (
-                <div key={post._id}>{SommerPost(post)}</div>
+              {summerPosts.map((post: summerPostCardProps) => (
+                <div key={post._id}>{SummerPostCard(post)}</div>
               ))}
             </div>
           </div>
