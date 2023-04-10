@@ -1,14 +1,25 @@
 import SummerPostCard, { summerPostCardProps } from 'components/sommerMedSissel/SummerPostCard'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
+import imageUrlBuilder from '@sanity/image-url'
+
+const builder = imageUrlBuilder(client)
 
 export default async function SummerWSissel() {
-  const query = groq`
+  const postQuery = groq`
 *[_type=='summerPost'] {
 title, slug, image, description, date, _id 
 } `
+  const imgQuery = groq`*[_type == "sanity.imageAsset" && references("SmPITB92PCr5r7guzAyPD2")] {
+  url,
+  alt,
+  _id
+}`
 
-  const summerPosts = await client.fetch(query)
+  const summerPosts = await client.fetch(postQuery)
+  const images = await client.fetch(imgQuery)
+
+  console.log(images)
 
   // TODO fix responsive rendering of images
   return (
@@ -33,7 +44,7 @@ title, slug, image, description, date, _id
           <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
             <div className="hidden lg:block w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
               <img
-                src="https://www.fjordnorway.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdjew0njor%2Fimage%2Fupload%2Far_1.5%2Cc_fill%2Cq_95%2Cw_1280%2Fv1%2FVisit%2520Region%2520Stavanger%2FGo%2520Fjords%2FPreikestolen-plateau-Go-Fjords-Bob-Engelsen-P1026771_kljg5o%3F_a%3DATAABAA0&w=1920&q=75"
+                src={builder.image(images[3]).url()}
                 alt=""
                 className="aspect-[9/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
               />
@@ -42,21 +53,21 @@ title, slug, image, description, date, _id
             <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
               <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
                 <img
-                  src="https://gladmat.no/wp-content/uploads/Gladmat-hoteller-scaled.jpg"
+                  src={builder.image(images[2]).url()}
                   alt=""
                   className="aspect-[7/5] w-[24rem] lg:w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                 />
               </div>
               <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
                 <img
-                  src="https://premium.vgc.no/v2/images/801d2632-9bf1-484c-9d05-fedaf58308a4?fit=crop&format=auto&h=1425&w=1900&s=7ff2f3f92785213a8b3c761d7ccdc528d6bffdae"
+                  src={builder.image(images[1]).url()}
                   alt=""
                   className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
                 />
               </div>
               <div className="order-first flex w-64 flex-none lg:justify-end justify-center self-end lg:self-center lg:w-auto">
                 <img
-                  src="https://premium.vgc.no/v2/images/5cd96f31-9262-4ae7-abd6-ba30e9bfa769?fit=crop&format=auto&h=1383&w=1900&s=43ceb61880aa7936e3207216f53c8949df82a1bd"
+                  src={builder.image(images[0]).url()}
                   alt=""
                   className="aspect-[4/3] lg:w-[24rem] w-[16rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
                 />
