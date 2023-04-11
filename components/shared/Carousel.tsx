@@ -104,10 +104,12 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
             fill
           /> */}
 
-          <img
+          <Image
             src={item.content.image}
             alt=""
-            className="sm:aspect-[9/7] md:aspect-[9/5] aspect-[1] sm:w-max bg-gray-50 object-cover"
+            width={1920}
+            height={1080}
+            className="sm:aspect-[9/7] md:aspect-[9/5] aspect-[1] sm:w-max w-max bg-gray-50 object-cover"
           />
         </div>
       ))}
