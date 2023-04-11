@@ -11,5 +11,16 @@
     "project": ["./tsconfig.json"]
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "multiline-ternary": "off",
+    "@typescript-eslint/indent": "off"
+  }
 }
