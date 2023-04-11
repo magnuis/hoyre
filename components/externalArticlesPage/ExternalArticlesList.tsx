@@ -133,7 +133,7 @@ export default function ExternalArticlesList() {
           subjects={alteredSubjects}
           selectedSubjects={selectedSubjects}
           onAddSubject={onAddSubject}
-        /> */}
+        />
         <div className="w-fit h-16 items-center">
           <button
             onClick={() => onRemoveAll()}
