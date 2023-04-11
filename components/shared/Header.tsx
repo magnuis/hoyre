@@ -8,6 +8,7 @@ const navigation = [
   { name: 'Partiprogram', href: '/partiprogram' },
   { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
+  { name: 'Artikler', href: '/eksterne-artikler' },
 ]
 
 export default function Header() {
