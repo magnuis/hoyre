@@ -5,6 +5,7 @@ import author from './author'
 import navigation from './navigation'
 import externalArticles from './externalArticles'
 import summerPost from './summerPost'
+import blogBost from './blogBost'
 import sisselTimeline from './sisselTimeline'
 
 export const schemaTypes = [
@@ -14,6 +15,7 @@ export const schemaTypes = [
   summerPost,
   navigation,
   blockContent,
+  blogBost,
   externalArticles,
   sisselTimeline,
 ]
