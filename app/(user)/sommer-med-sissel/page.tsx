@@ -19,8 +19,6 @@ title, slug, image, description, date, _id
   const summerPosts = await client.fetch(postQuery)
   const images = await client.fetch(imgQuery)
 
-  console.log(images)
-
   // TODO fix responsive rendering of images
   return (
     <div className=" bg-white py-16 lg:py-32">
