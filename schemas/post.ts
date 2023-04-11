@@ -38,6 +38,7 @@ export default defineType({
       title: 'Categories',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'subject' } }],
+
     }),
     defineField({
       name: 'publishedAt',
