@@ -4,7 +4,6 @@ import SelectedFilter from 'components/shared/SelectedFilter'
 import SortMenu from 'components/shared/SortMenu'
 import Example from 'components/shared/SubjectsMenu'
 import { groq } from 'next-sanity'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
@@ -56,6 +55,7 @@ export default function BlogPostsList() {
 
     const blogPostsQuery = groq`
     *[_type == "blogPost" ${subjectFilter}] {
+      _id,
       title, 
       slug, 
       image, 
