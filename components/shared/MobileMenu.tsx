@@ -31,16 +31,20 @@ export default function MobileMenu() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="z-30 fixed inset-y-0 right-0 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Stavanger Høyre</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
-            </a>
+            <div className="flex lg:flex-1">
+              <Link className="-m-1.5 p-1.5" href={'/'}>
+                <span className="flex flex-row text-primary gap-x-3 items-center text-lg">
+                  <img
+                    src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
+                    alt="logo"
+                    className="h-9"
+                  />
+                  Stavanger Høyre
+                </span>
+              </Link>
+            </div>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
