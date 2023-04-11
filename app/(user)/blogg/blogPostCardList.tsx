@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
 import { BlogPost } from 'type'
+import BlogPostCard from './BlogPostCard'
 
 const builder = imageUrlBuilder(client)
 
@@ -70,13 +71,6 @@ export default function BlogPostsList() {
     console.log(' blog posts: ', blogPosts)
   }, [blogPosts])
 
-  // only show if blogPosts are loaded
-  //   if (blogPosts.length === 0) {
-  //     return (
-  //       <div className="max-w-3xl mx-auto mt-10 space-y-16 border-gray-200 pt-10 sm:mt-16 sm:pt-16"></div>
-  //     )
-  //   }
-
   const onRemove = (subject: string) => {
     setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
   }
@@ -92,22 +86,31 @@ export default function BlogPostsList() {
     setSort('desc')
   }
 
-  const findSubjectById = (ref: string) => {
-    return subjects.find((subject) => subject._id === ref)?.title
+  const findSubjectById = (ref: string): string => {
+    return subjects.find((subject) => subject._id === ref)?.title ?? ''
   }
 
   const findSubjectByTitle = (title: string): string => {
     return subjects.find((subject) => subject.title === title)?._id ?? ''
   }
 
-  const findTitles = (refs: string[]) => {
-    return refs.map((ref) => findSubjectById(ref))
+  //   const findTitles = (refs): string[] => {
+  //     return refs.map((ref) => findSubjectById(ref))
+  //   }
+
+  const findTitles = (refs: { _ref: string }[]): string[] => {
+    return refs.map((ref) => findSubjectById(ref._ref))
   }
 
   const alteredSubjects = subjects.map((subject) => {
     return subject.title
   })
 
+  useEffect(() => {
+    if (blogPosts.length != 0) {
+      console.log(blogPosts[0].categories)
+    }
+  })
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
@@ -139,9 +142,9 @@ export default function BlogPostsList() {
         </div>
       )}
       {blogPosts.map((post: BlogPost) => (
-        <div className="group">
+        <div className="group" key={post._id}>
           <hr className="sm:block hidden mb-16" />
-          <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
+          {/* <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
             <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
               <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">
                 <img
@@ -167,19 +170,12 @@ export default function BlogPostsList() {
                         </div>
                       )
                   )}
-                  {/* <a
-              href={post.category.href}
-              className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-            >
-              {post.category.title}
-            </a> */}
                 </div>
                 <div className="relative max-w-xl ">
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                     <span className="absolute inset-0" />
                     {post.title}
                   </h3>
-                  {/* <p className="line-clamp-2 text-gray-500 text-lg 2xl:text-xl">{stage.shortDesc}</p> */}
 
                   <p className="mt-5 line-clamp-4 text-sm leading-6 text-gray-600">
                     {post.description}
@@ -190,7 +186,8 @@ export default function BlogPostsList() {
                 </div>
               </div>
             </article>
-          </Link>
+          </Link> */}
+          <BlogPostCard post={post} categories={findTitles(post.categories)} />
         </div>
       ))}
     </div>
