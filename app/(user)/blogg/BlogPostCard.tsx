@@ -12,7 +12,7 @@ const builder = imageUrlBuilder(client)
 
 export default function BlogPostCard({ post, categories }: blogPostCardProps) {
   return (
-    <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
+    <Link href={`blogg/${post.slug.current}`} className="flex items-center">
       <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
         <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">
           <img
