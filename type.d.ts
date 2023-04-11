@@ -54,7 +54,7 @@ interface BlogPost extends Base {
   date: string
   categories: [
     {
-      _ref: string
+      title: string
     }
   ]
   body: Block[]
