@@ -1,69 +1,57 @@
 import imageUrlBuilder from '@sanity/image-url'
 import Link from 'next/link'
-import { Image, Slug } from 'sanity'
 import { client } from 'sanity-conf/sanity.client'
+import { BlogPost } from 'type'
 
 export interface blogPostCardProps {
-  title: string
-  slug: Slug
-  image: Image
-  description: string
-  date: string
-  _id: string
+  post: BlogPost
   categories: string[]
 }
 
 const builder = imageUrlBuilder(client)
 
-export default function BlogPostCard(post: blogPostCardProps) {
+export default function BlogPostCard({ post, categories }: blogPostCardProps) {
   return (
-    <div key={post._id}>
-      <>
-        <hr />
-        <article className="flex max-w-xl flex-col items-start justify-between sm:mb-16 mt-8">
-          <div className="flex items-center gap-x-4 text-xs flex-wrap">
+    <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
+      <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
+        <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">
+          <img
+            src={builder.image(post.image).url()}
+            alt=""
+            className="absolute inset-0 h-full w-full rounded-t-2xl lg:rounded-2xl bg-gray-50 object-cover sm:opacity-90 group-hover:opacity-100"
+          />
+          <div className="absolute inset-0 rounded-t-2xl lg:rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+        </div>
+        <div>
+          <div className="flex items-center gap-x-4 text-xs">
             <time dateTime={post.date} className="text-gray-500">
               {post.date}
             </time>
-            <div className="h-4 w-0.5 bg-gray-300" />
-            {/* <p className=" text-gray-500">{post.publisher}</p> */}
-            {post.categories.map(
-              (category) => (
-                // category ? (
-                <div
-                  key={category}
-                  className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-blue-600 "
-                >
-                  {category}
-                </div>
-              )
-              // ) : (
-              //   <div key={ind} />
-              // )
+            {categories.map(
+              (category) =>
+                category !== '' && (
+                  <div
+                    key={category}
+                    className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-blue-600 "
+                  >
+                    {category}
+                  </div>
+                )
             )}
           </div>
-          <div className="group relative">
-            <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 ">{post.title}</h3>
-            <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
+          <div className="relative max-w-xl ">
+            <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+              <span className="absolute inset-0" />
+              {post.title}
+            </h3>
+
+            <p className="mt-5 line-clamp-4 text-sm leading-6 text-gray-600">{post.description}</p>
+            <p className="flex items-center mt-5 font-bold group-hover:underline text-gray-900 group-hover:text-gray-600">
+              Les mer
+            </p>
           </div>
-          <div className="relative mt-8 flex items-center gap-x-4">
-            {/* <img src={'jkbln'} alt="" className="h-10 w-10 rounded-full bg-gray-50" /> */}
-            <div className="text-sm leading-6">
-              {/* <p className="font-semibold text-gray-900">
-                      <a href={post.author.href}>
-                        <span className="absolute inset-0" />
-                        {post.author.name}
-                      </a>
-                    </p> */}
-              {/* <Link href={post.externalLink}>
-                    <button className="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                      Gå til artikkelen
-                    </button>
-                  </Link> */}
-            </div>
-          </div>
-        </article>
-      </>
-    </div>
+        </div>
+      </article>
+    </Link>
   )
 }
