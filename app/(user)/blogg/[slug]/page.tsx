@@ -22,7 +22,6 @@ export async function generateStaticParams() {
 
   const slugs: BlogPost[] = await client.fetch(query)
   const slugRoutes = slugs.map((slug) => slug.slug.current)
-  console.log(slugRoutes)
   return slugRoutes.map((slug) => ({
     slug,
   }))
@@ -33,7 +32,6 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
     *[_type=='blogPost' && slug.current == $slug][0] {
         ...,
     }`
-  console.log('slug', slug)
   const blogPost: BlogPost = await client.fetch(query, { slug })
   if (!blogPost) {
     return (
@@ -42,6 +40,7 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
       </div>
     )
   }
+  console.log(blogPost.categories)
 
   return (
     <div className="max-w-7xl mx-auto sm:mt-16">
