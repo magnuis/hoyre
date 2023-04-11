@@ -45,10 +45,26 @@ export default function ExternalArticlesList() {
     fetchSubjects()
   }, [])
 
+  // TODO consider fetch all, and do sorting in frontend
+
   // fetch articles, refetch when sort order or selected subjects changes
   useEffect(() => {
+    let subjectFilter = ''
+    if (selectedSubjects.length > 0) {
+      console.log('selected subjects', selectedSubjects)
+      subjectFilter = '&& ('
+      selectedSubjects.forEach((subject, index) => {
+        if (index === 0) {
+          subjectFilter += `references("${findSubjectByTitle(subject)}") `
+        } else {
+          subjectFilter += ` || references("${findSubjectByTitle(subject)}")`
+        }
+      })
+      subjectFilter += ')'
+    }
+
     const articlesQuery = groq`
-*[_type == "externalArticle"] {
+*[_type == "externalArticle" ${subjectFilter}] {
     _id,
     title,
     categories[] -> {
@@ -61,6 +77,7 @@ export default function ExternalArticlesList() {
     } | order(date ${sort})
     `
 
+    console.log('articlesQuery', articlesQuery)
     const fetchArticles = async () => {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
@@ -92,6 +109,10 @@ export default function ExternalArticlesList() {
 
   const findSubjectById = (ref: string) => {
     return subjects.find((subject) => subject._id === ref)?.title
+  }
+
+  const findSubjectByTitle = (title: string) => {
+    return subjects.find((subject) => subject.title === title)?._id
   }
 
   const alteredSubjects = subjects.map((subject) => {
