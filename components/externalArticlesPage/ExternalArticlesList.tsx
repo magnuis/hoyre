@@ -127,7 +127,7 @@ export default function ExternalArticlesList() {
           <hr />
           <article
             key={post._id}
-            className="z-1 flex max-w-xl flex-col items-start justify-between mb-16"
+            className="flex max-w-xl flex-col items-start justify-between mb-16"
           >
             <div className="flex items-center gap-x-4 text-xs flex-wrap">
               <time dateTime={post.date} className="text-gray-500">
