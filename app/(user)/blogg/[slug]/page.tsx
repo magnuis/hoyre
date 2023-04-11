@@ -40,8 +40,6 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
       </div>
     )
   }
-  console.log(blogPost.categories)
-
   return (
     <div className="max-w-7xl mx-auto sm:mt-16">
       <div className="sm:absolute relative ml-6 ">
