@@ -43,7 +43,6 @@ export default function BlogPostsList() {
   useEffect(() => {
     let subjectFilter = ''
     if (selectedSubjects.length > 0) {
-      console.log('selected subjects', selectedSubjects)
       subjectFilter = '&& ('
       selectedSubjects.forEach((subject, index) => {
         if (index === 0) {
@@ -56,10 +55,17 @@ export default function BlogPostsList() {
     }
 
     const blogPostsQuery = groq`
-*[_type == "blogPost" ${subjectFilter}] {
-...
+    *[_type == "blogPost" ${subjectFilter}] {
+      title, 
+      slug, 
+      image, 
+      description,
+      date, 
+      categories[]->{title}, 
+      body
     } | order(date ${sort})
     `
+
     const fetchblogPosts = async () => {
       const result = await client.fetch(blogPostsQuery)
       setBlogPosts(result)
@@ -67,18 +73,14 @@ export default function BlogPostsList() {
     fetchblogPosts()
   }, [sort, selectedSubjects])
 
-  useEffect(() => {
-    console.log(' blog posts: ', blogPosts)
-  }, [blogPosts])
-
-  const onRemove = (subject: string) => {
-    setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
-  }
-
   const onAddSubject = (value: string) => {
     if (!selectedSubjects.includes(value)) {
       setSelectedSubjects([...selectedSubjects, value])
     }
+  }
+
+  const onRemove = (subject: string) => {
+    setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
   }
 
   const onRemoveAll = () => {
@@ -86,37 +88,20 @@ export default function BlogPostsList() {
     setSort('desc')
   }
 
-  const findSubjectById = (ref: string): string => {
-    return subjects.find((subject) => subject._id === ref)?.title ?? ''
-  }
-
   const findSubjectByTitle = (title: string): string => {
     return subjects.find((subject) => subject.title === title)?._id ?? ''
   }
 
-  //   const findTitles = (refs): string[] => {
-  //     return refs.map((ref) => findSubjectById(ref))
-  //   }
-
-  const findTitles = (refs: { _ref: string }[]): string[] => {
-    return refs.map((ref) => findSubjectById(ref._ref))
-  }
-
-  const alteredSubjects = subjects.map((subject) => {
+  const subjectTitles = subjects.map((subject) => {
     return subject.title
   })
 
-  useEffect(() => {
-    if (blogPosts.length != 0) {
-      console.log(blogPosts[0].categories)
-    }
-  })
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
         <Example
-          subjects={alteredSubjects}
+          subjects={subjectTitles}
           selectedSubjects={selectedSubjects}
           onAddSubject={onAddSubject}
         />
@@ -144,50 +129,7 @@ export default function BlogPostsList() {
       {blogPosts.map((post: BlogPost) => (
         <div className="group" key={post._id}>
           <hr className="sm:block hidden mb-16" />
-          {/* <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
-            <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
-              <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">
-                <img
-                  src={builder.image(post.image).url()}
-                  alt=""
-                  className="absolute inset-0 h-full w-full rounded-t-2xl lg:rounded-2xl bg-gray-50 object-cover sm:opacity-90 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 rounded-t-2xl lg:rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-              </div>
-              <div>
-                <div className="flex items-center gap-x-4 text-xs">
-                  <time dateTime={post.date} className="text-gray-500">
-                    {post.date}
-                  </time>
-                  {post.categories.map(
-                    (category) =>
-                      category._ref && (
-                        <div
-                          key={category._ref}
-                          className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-blue-600 "
-                        >
-                          {findSubjectById(category._ref)}
-                        </div>
-                      )
-                  )}
-                </div>
-                <div className="relative max-w-xl ">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <span className="absolute inset-0" />
-                    {post.title}
-                  </h3>
-
-                  <p className="mt-5 line-clamp-4 text-sm leading-6 text-gray-600">
-                    {post.description}
-                  </p>
-                  <p className="flex items-center mt-5 font-bold group-hover:underline text-gray-900 group-hover:text-gray-600">
-                    Les mer
-                  </p>
-                </div>
-              </div>
-            </article>
-          </Link> */}
-          <BlogPostCard post={post} categories={findTitles(post.categories)} />
+          <BlogPostCard post={post} />
         </div>
       ))}
     </div>
