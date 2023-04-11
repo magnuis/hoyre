@@ -1,5 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url'
-import { ImageGallery } from 'components/landingPage/ImageGallery'
+import Carousel from 'components/shared/Carousel'
 import { groq } from 'next-sanity'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,18 +22,33 @@ export default async function Home() {
   const navCards = await client.fetch(navCardsQuery)
   const images = await client.fetch(imgQuery)
 
+  const CarouselProps = images.map((image: any) => {
+    console.log(image.url)
+    return {
+      content: {
+        title: 'title',
+        description: 'description',
+        button: 'button',
+        image: image.url,
+      },
+    }
+  })
+
+  console.log(CarouselProps)
+
   return (
     <main>
       <div className="flex flex-col gap-y-8">
-        <div style={{ height: '500px' }} className="relative max-w-7xl">
-          <Image
+        {/* <div style={{ height: '500px' }} className="relative max-w-7xl"> */}
+        {/* <Image
             priority
             className="absolute object-center object-cover top-0 h-auto w-auto opacity-100 mx-auto"
             src={images[0].url}
             alt={'Landing page image'}
             fill
-          />
-        </div>
+          /> */}
+        <Carousel content={CarouselProps} />
+        {/* </div> */}
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
           {navCards.map((navCard: any) => (
             <Link key={navCard._id} href={`/${navCard.slug.current}`}>
