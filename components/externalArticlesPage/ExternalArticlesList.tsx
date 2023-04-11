@@ -114,8 +114,8 @@ export default function ExternalArticlesList() {
     return subjects.find((subject) => subject._id === ref)?.title
   }
 
-  const findSubjectByTitle = (title: string) => {
-    return subjects.find((subject) => subject.title === title)?._id
+  const findSubjectByTitle = (title: string): string => {
+    return subjects.find((subject) => subject.title === title)?._id ?? ''
   }
 
   const alteredSubjects = subjects.map((subject) => {
