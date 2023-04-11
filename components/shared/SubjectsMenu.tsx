@@ -1,13 +1,13 @@
 'use client'
+import { Fragment, useState } from 'react'
+import { Combobox, Transition } from '@headlessui/react'
+import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 interface SubjectsMenuProps {
   subjects: string[]
   selectedSubjects: string[]
   onAddSubject: (value: string) => void
 }
-import { Fragment, useState } from 'react'
-import { Combobox, Transition } from '@headlessui/react'
-import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 export default function Example({ subjects, onAddSubject }: SubjectsMenuProps) {
   const [selected, setSelected] = useState('')
