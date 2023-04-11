@@ -5,12 +5,12 @@ import { BlogPost } from 'type'
 
 export interface blogPostCardProps {
   post: BlogPost
-  categories: string[]
+  // categories: string[]
 }
 
 const builder = imageUrlBuilder(client)
 
-export default function BlogPostCard({ post, categories }: blogPostCardProps) {
+export default function BlogPostCard({ post }: blogPostCardProps) {
   return (
     <Link href={`blogg/${post.slug.current}`} className="flex items-center">
       <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
@@ -27,14 +27,14 @@ export default function BlogPostCard({ post, categories }: blogPostCardProps) {
             <time dateTime={post.date} className="text-gray-500">
               {post.date}
             </time>
-            {categories.map(
+            {post.categories.map(
               (category) =>
-                category !== '' && (
+                category && (
                   <div
-                    key={category}
+                    key={category.title}
                     className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-blue-600 "
                   >
-                    {category}
+                    {category.title}
                   </div>
                 )
             )}
