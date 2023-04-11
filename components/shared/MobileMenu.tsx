@@ -46,7 +46,6 @@ export default function MobileMenu() {
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
               onClick={() => {
                 setMobileMenuOpen(false)
-                console.log('close')
               }}
             >
               <span className="sr-only">Close menu</span>
