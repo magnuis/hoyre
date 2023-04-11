@@ -109,7 +109,7 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
             alt=""
             width={1920}
             height={1080}
-            className="sm:aspect-[9/7] md:aspect-[9/5] aspect-[1] sm:w-max w-max bg-gray-50 object-cover"
+            className="sm:aspect-[9/7] md:aspect-[9/5] aspect-[1] w-[100vw] bg-gray-50 object-cover"
           />
         </div>
       ))}
