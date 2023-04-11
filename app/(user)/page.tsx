@@ -1,5 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url'
-import { ImageGallery } from 'components/landingPage/ImageGallery'
+import Carousel from 'components/shared/Carousel'
 import { groq } from 'next-sanity'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,13 +26,14 @@ export default async function Home() {
     <main>
       <div className="flex flex-col gap-y-8">
         <div style={{ height: '500px' }} className="relative max-w-7xl">
-          <Image
+          {/* <Image
             priority
             className="absolute object-center object-cover top-0 h-auto w-auto opacity-100 mx-auto"
             src={images[0].url}
             alt={'Landing page image'}
             fill
-          />
+          /> */}
+          <Carousel />
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
           {navCards.map((navCard: any) => (
