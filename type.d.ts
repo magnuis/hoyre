@@ -46,6 +46,20 @@ interface SummerPost extends Base {
   }
   body: Block[]
 }
+interface BlogPost extends Base {
+  title: string
+  slug: Slug
+  image: Image
+  description: string
+  date: string
+  categories: [
+    {
+      title: string
+      _ref: string
+    }
+  ]
+  body: Block[]
+}
 
 interface SisselTimeline extends Base {
   title: string
