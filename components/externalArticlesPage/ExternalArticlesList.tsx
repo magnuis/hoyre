@@ -50,7 +50,6 @@ export default function ExternalArticlesList() {
   }, [articles])
 
   // TODO consider fetch all, and do sorting in frontend
-
   // fetch articles, refetch when sort order or selected subjects changes
   useEffect(() => {
     let subjectFilter = ''
