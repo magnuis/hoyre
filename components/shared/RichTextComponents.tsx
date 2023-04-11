@@ -8,7 +8,7 @@ export const RichTextComponents = {
       return (
         <div className="relative w-full mb-8">
           <Image
-            className="mx-auto aspect-[8/5] w-[20rem] lg:w-full flex-none rounded-lg md:rounded-2xl bg-gray-50 object-cover"
+            className="mx-auto aspect-[8/5]  md:w-full flex-none rounded-lg md:rounded-2xl bg-gray-50 object-cover"
             width={1080}
             height={720}
             src={urlFor(value).url()}
