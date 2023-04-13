@@ -5,7 +5,7 @@ const nextConfig = {
     fontLoaders: [{ loader: '@next/font/google', options: { subsets: ['latin'] } }],
   },
   images: {
-    domains: ['cdn.sanity.io'],
+    domains: ['cdn.sanity.io', 'hoyre.no', 'gfx.nrk.no', 'images.unsplash.com'],
   },
 }
 
