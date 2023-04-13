@@ -8,7 +8,9 @@ export default async function Blogg() {
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
           <div className="mx-auto max-w-2xl ">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mx-auto">Bloggen</h2>
+              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mx-auto">
+                Smaken av Stavanger
+              </h2>
             </div>
 
             <p className="mt-8 text-lg leading-8 text-gray-600">
