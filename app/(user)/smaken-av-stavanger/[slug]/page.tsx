@@ -43,7 +43,7 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
   return (
     <div className="max-w-7xl mx-auto sm:mt-16">
       <div className="sm:absolute relative ml-6 ">
-        <BackArrow slug="/blogg" />
+        <BackArrow slug="/smaken-av-stavanger" />
       </div>
       <div className=" max-w-3xl mx-auto flex flex-col gap-y-8 p-6">
         <p className="mx-auto text-4xl sm:text-5xl font-bold ">{blogPost.title}</p>

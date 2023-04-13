@@ -6,9 +6,9 @@ import MobileMenu from './MobileMenu'
 
 const navigation = [
   { name: 'Partiprogram', href: '/partiprogram' },
-  { name: 'Oppskrifter', href: '/oppskrifter' },
+  { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
-  { name: 'Blogg', href: '/blogg' },
+  // { name: 'Blogg', href: '/blogg' },
 ]
 
 export default function Header() {

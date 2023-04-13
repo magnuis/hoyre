@@ -36,7 +36,8 @@ export default async function Home() {
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
           {navCards.map((navCard: any) => (
-            <Link key={navCard._id} href={`/${navCard.slug.current}`}>
+            // <Link key={navCard._id} href={`/${navCard.slug.current}`}>
+            <Link key={navCard._id} href={`https://hoyre.no/stavanger/hard-olav-bastiansen/}`}>
               <div className="flex flex-col group cursor-pointer">
                 <div className="relative w-full h-80 group-hover:scale-105 transition-transform duration-200 ease-out">
                   <Image
