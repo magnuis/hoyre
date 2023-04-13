@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 const navigation = [
   { name: 'Partiprogram', href: '/partiprogram' },
-  { name: 'Oppskrifter', href: '/oppskrifter' },
+  { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
   { name: 'Blogg', href: '/blogg' },
   { name: 'Artikler', href: '/eksterne-artikler' },
