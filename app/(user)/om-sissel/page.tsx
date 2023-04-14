@@ -1,34 +1,47 @@
+import { PortableText } from '@portabletext/react'
 import BackArrow from 'components/shared/BackArrow'
+import { RichTextComponents } from 'components/shared/RichTextComponents'
+import { groq } from 'next-sanity'
 import Image from 'next/image'
+import { client } from 'sanity-conf/sanity.client'
+import { SisselTimeline } from 'type'
 import StoryContent, { StoryContentProps } from './StoryContent'
 
-const storyContent = [
-  {
-    title: 'BARNDOM I HARSTAD:',
-    content:
-      'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
-    img: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
-  },
-  {
-    title: 'UNGDOMSÅRENE:',
-    content:
-      'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
-    img: 'https://hoyre.no/content/uploads/sites/212/2022/09/20220907_123329386_iOS-scaled.jpg',
-  },
-  {
-    title: 'VEIEN INN I POLITIKKEN:',
-    content:
-      'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
-    img: '',
-  },
-  {
-    title: 'FAMILIELIV:',
-    content:
-      'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
-    img: 'https://hoyre.no/content/uploads/sites/212/2022/09/20220907_123329386_iOS-scaled.jpg',
-  },
-]
-export default function AboutSissel() {
+// let storyContent = [
+//   {
+//     title: 'BARNDOM I HARSTAD:',
+//     text: 'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
+//     img: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+//   },
+//   {
+//     title: 'UNGDOMSÅRENE:',
+//     text: 'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
+//     img: 'https://hoyre.no/content/uploads/sites/212/2022/09/20220907_123329386_iOS-scaled.jpg',
+//   },
+//   {
+//     title: 'VEIEN INN I POLITIKKEN:',
+//     text: 'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
+//     img: '',
+//   },
+//   {
+//     title: 'FAMILIELIV:',
+//     text: 'Vi har oppnådd mye. Jeg er stolt av det Stavanger vi sammen har skapt, fra å være oljehovedstad til energihovedstad. Jeg har et brennende engasjement for næringslivet. Nye arbeidsplasser skal vokse frem på skuldrene av olje- og gasseventyret. Nå blir det en viktig jobb å skaffe arbeidskraften vi trenger for å ta steget videre inn i det grønne skiftet.',
+//     img: 'https://hoyre.no/content/uploads/sites/212/2022/09/20220907_123329386_iOS-scaled.jpg',
+//   },
+// ]
+export default async function AboutSissel() {
+  const storyQuery = groq`
+    *[_type == "sisselTimeline"] {
+        title,
+        content,
+        "img": image.asset->url
+    } | order(date desc)
+    `
+
+  const storyContent: SisselTimeline[] = await client.fetch(storyQuery)
+
+  const lastStory = storyContent.pop()
+  console.log(lastStory)
   return (
     <div className="max-w-7xl mx-auto sm:mt-16">
       {/* <div className="sm:absolute relative ml-6 ">
@@ -65,8 +78,8 @@ export default function AboutSissel() {
           ))}
           <div className="pb-8 relative">
             <div className="pl-8 flex flex-col gap-y-5">
-              <p className="text-gray-500 text-xs">{'ORDFØRERKANDIDAT:'}</p>
-              <p>Nå er Sissel godt i gang med arbeidet mot å bli Stavanger neste ordfører.</p>
+              <p className="text-gray-500 text-xs">{lastStory?.title}</p>
+              <PortableText value={lastStory?.content} components={RichTextComponents} />
             </div>
             <div className="absolute top-0 transform h-3 w-3 bg-white rounded-full border border-primary translate-x-[-6.5px]" />
           </div>
