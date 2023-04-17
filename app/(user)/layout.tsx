@@ -11,14 +11,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className="max-w-7xl mx-auto">
         {/* <WideHeader />
         <NarrowHeader /> */}
-
         <Header />
-        <main>
-          <div className="mt-20">{children}</div>
-        </main>
+        <div className="mt-20">{children}</div>
       </body>
     </html>
   )
