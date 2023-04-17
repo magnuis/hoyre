@@ -1,5 +1,3 @@
-import { PortableText } from '@portabletext/react'
-import { RichTextComponents } from 'components/shared/RichTextComponents'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import { SisselTimeline } from 'type'
@@ -27,7 +25,7 @@ url
   }
   const storyContent: SisselTimeline[] = await client.fetch(storyQuery)
   const images = await client.fetch(imgQuery)
-  const lastStory = storyContent.pop()
+  // const lastStory = storyContent.pop()
   const galleryImages: a[] = images.map((image: any) => {
     return {
       original: image.url,
@@ -46,8 +44,8 @@ url
       >
         <p className="text-white text-4xl ">Bli kjent med Sissel</p>
       </div>
-      <div className="text-center max-w-lg mx-auto my-24 px-4">
-        <p className="font-bold text-xl sm:text-2xl">
+      <div className="text-center max-w-lg mx-auto my-48 px-4">
+        <p className="font-bold text-xl sm:text-xl">
           Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og
           Fredrik.
         </p>
@@ -59,22 +57,20 @@ url
         className="w-full h-[50vh] object-cover object-center"
       />
 
-      <div className="mx-auto flex flex-col gap-y-8 p-6">
-        <div className="relative max-w-xl mx-auto">
+      <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-36 mt-24 md:mt-36">
+        <div className="relative mx-auto">
           {storyContent.map((story, index) => (
-            <div key={index}>
-              <StoryContent title={story.title} img={story.img} content={story.content} />
-            </div>
+            <span key={index}>
+              <StoryContent
+                title={story.title}
+                img={story.img}
+                content={story.content}
+                last={index === storyContent.length - 1}
+              />
+            </span>
           ))}
-          <div className="pb-8 relative group">
-            <div className="pl-8 flex flex-col gap-y-5">
-              <p className="text-gray-500 text-xs">{lastStory?.title}</p>
-              <PortableText value={lastStory?.content} components={RichTextComponents} />
-            </div>
-            <div className="absolute top-0 transform md:h-3 h-4 md:w-3 w-4 bg-white rounded-full border border-primary translate-x-[-8px] md:translate-x-[-5.5px] group-hover:bg-primary" />
-          </div>
-          <FollowSisselNavCard />
         </div>
+        <FollowSisselNavCard />
       </div>
     </div>
   )
