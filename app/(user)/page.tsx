@@ -32,7 +32,6 @@ export default async function Home() {
       },
     }
   })
-
   return (
     <main>
       <div className="flex flex-col gap-y-8">
