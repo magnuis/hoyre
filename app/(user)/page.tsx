@@ -23,7 +23,6 @@ export default async function Home() {
   const images = await client.fetch(imgQuery)
 
   const CarouselProps = images.map((image: any) => {
-    console.log(image.url)
     return {
       content: {
         title: 'title',
@@ -35,46 +34,49 @@ export default async function Home() {
   })
 
   return (
-    <div className="flex flex-col gap-y-8">
-      {/* <div style={{ height: '500px' }} className="relative max-w-7xl"> */}
-      {/* <Image
+    <main>
+      <div className="flex flex-col gap-y-8">
+        {/* <div style={{ height: '500px' }} className="relative max-w-7xl"> */}
+        {/* <Image
             priority
             className="absolute object-center object-cover top-0 h-auto w-auto opacity-100 mx-auto"
             src={images[0].url}
             alt={'Landing page image'}
             fill
           /> */}
-      <Carousel content={CarouselProps} />
-      {/* </div> */}
-      <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
-        {navCards.map((navCard: any) => (
-          <Link key={navCard._id} href={`/${navCard.slug.current}`}>
-            <div className="flex flex-col group cursor-pointer">
-              <div className="relative w-full h-80 group-hover:scale-105 transition-transform duration-200 ease-out">
-                <Image
-                  src={builder.image(navCard.image).url()}
-                  alt={navCard.title}
-                  className="object-cover object-left lg:object-center"
-                  fill
-                />
-                <div className="absolute bottom-0 w-full text-white">
-                  <p className="text-xl m-2 font-bold">{navCard.dayNo}</p>
+        <Carousel content={CarouselProps} />
+        {/* </div> */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
+          {navCards.map((navCard: any) => (
+            // <Link key={navCard._id} href={`/${navCard.slug.current}`}>
+            <Link key={navCard._id} href={`https://hoyre.no/stavanger/hard-olav-bastiansen/}`}>
+              <div className="flex flex-col group cursor-pointer">
+                <div className="relative w-full h-80 group-hover:scale-105 transition-transform duration-200 ease-out">
+                  <Image
+                    src={builder.image(navCard.image).url()}
+                    alt={navCard.title}
+                    className="object-cover object-left lg:object-center"
+                    fill
+                  />
+                  <div className="absolute bottom-0 w-full text-white">
+                    <p className="text-xl m-2 font-bold">{navCard.dayNo}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-5 flex-1">
-                <p className="underline text-xl 2xl:text-2xl font-bold">{navCard.title}</p>
-                <p className="line-clamp-2 text-gray-500 text-lg 2xl:text-xl">
-                  {navCard.shortDesc}
-                </p>
-              </div>
-              {/* <p className="flex items-center mt-5 font-bold group-hover:underline text-lg 2xl:text-xl">
+                <div className="mt-5 flex-1">
+                  <p className="underline text-xl 2xl:text-2xl font-bold">{navCard.title}</p>
+                  <p className="line-clamp-2 text-gray-500 text-lg 2xl:text-xl">
+                    {navCard.shortDesc}
+                  </p>
+                </div>
+                {/* <p className="flex items-center mt-5 font-bold group-hover:underline text-lg 2xl:text-xl">
                   Les mer <ArrowUpRightIcon className="ml-2 h-4 w-4 " />
                 </p> */}
-            </div>
-          </Link>
-        ))}
-        {/* <ImageGallery images={images} /> */}
+              </div>
+            </Link>
+          ))}
+          {/* <ImageGallery images={images} /> */}
+        </div>
       </div>
-    </div>
+    </main>
   )
 }
