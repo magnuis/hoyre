@@ -6,11 +6,9 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const navigation = [
-  { name: 'Partiprogram', href: '/partiprogram' },
   { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
-  { name: 'Blogg', href: '/blogg' },
-  { name: 'Artikler', href: '/eksterne-artikler' },
+  { name: 'Høyre i media', href: '/hoyre-i-media' },
 ]
 
 export default function MobileMenu() {
@@ -34,7 +32,6 @@ export default function MobileMenu() {
       >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-
           <div className="flex items-center justify-between">
             <div className="flex lg:flex-1">
               <Link className="-m-1.5 p-1.5" href={'/'}>
