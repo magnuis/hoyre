@@ -1,14 +1,10 @@
 import { PortableText } from '@portabletext/react'
-import BackArrow from 'components/shared/BackArrow'
 import { RichTextComponents } from 'components/shared/RichTextComponents'
 import { groq } from 'next-sanity'
-import Image from 'next/image'
 import { client } from 'sanity-conf/sanity.client'
 import { SisselTimeline } from 'type'
-import StoryContent, { StoryContentProps } from './StoryContent'
-import ImageGallery from 'react-image-gallery'
-import Button from 'components/shared/Button'
 import FollowSisselNavCard from './FollowSisselNavCard'
+import StoryContent from './StoryContent'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -41,9 +37,6 @@ url
 
   return (
     <div className="max-w-7xl mx-auto sm:mt-16">
-      {/* <div className="sm:absolute relative ml-6 ">
-        <BackArrow slug="/smaken-av-stavanger" />
-      </div> */}
       <div
         className={`relative container top-0 left-0 w-full md:max-w-7xl h-[90vh] md:h-[60vh] text-center bg-cover bg-center pt-[50vh]`}
         style={{
@@ -73,13 +66,12 @@ url
               <StoryContent title={story.title} img={story.img} content={story.content} />
             </div>
           ))}
-          <div className="pb-8 relative">
+          <div className="pb-8 relative group">
             <div className="pl-8 flex flex-col gap-y-5">
               <p className="text-gray-500 text-xs">{lastStory?.title}</p>
               <PortableText value={lastStory?.content} components={RichTextComponents} />
             </div>
-            <div className="absolute top-0 transform h-3 w-3 bg-white rounded-full border border-primary translate-x-[-6.5px]" />
-            <div className="ml-8">{/* <ImageGallery items={galleryImages} /> */}</div>
+            <div className="absolute top-0 transform md:h-3 h-4 md:w-3 w-4 bg-white rounded-full border border-primary translate-x-[-8px] md:translate-x-[-5.5px] group-hover:bg-primary" />
           </div>
           <FollowSisselNavCard />
         </div>
