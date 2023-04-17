@@ -9,6 +9,7 @@ const navigation = [
   { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
   { name: 'Høyre i media', href: '/hoyre-i-media' },
+  { name: 'Om Sissel', href: '/om-sissel' },
 ]
 
 export default function MobileMenu() {
