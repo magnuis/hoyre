@@ -7,6 +7,7 @@ import { client } from 'sanity-conf/sanity.client'
 import { SisselTimeline } from 'type'
 import StoryContent, { StoryContentProps } from './StoryContent'
 import ImageGallery from 'react-image-gallery'
+import Button from 'components/shared/Button'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -91,30 +92,24 @@ url
               {/* <ImageGallery items={galleryImages} /> */}
             </div>
           </div>
-          <div className="rounded-xl bg-primary">
+          <div className="rounded-xl bg-dark">
             <img
               src="https://hoyre.no/content/uploads/sites/212/2022/09/20220826_181949666_iOS-scaled.jpg"
               alt=""
               className="rounded-t-lg object-cover object-top h-[30vh] w-full"
             />
-            <div className="relative flex flex-col gap-y-5 text-white p-5">
-              <div className="text-center text-2xl font-bold">
-                <p>Følg Sissel i hverdagen</p>
+            <div className="relative flex flex-col gap-y-7 text-white p-5 text-center">
+              <p className="text-2xl font-bold">Følg Sissel i hverdagen</p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Button text="FACEBOOK" href="https://www.facebook.com/sissel.k.hegdal" />
+                <Button text="INSTAGRAM" href="https://www.instagram.com/sisselhegdal/" />
+                <Button text="LINKEDIN" href="https://www.linkedin.com/in/sissel-knutsen-hegdal/" />
               </div>
-              <div>
-                <p>Facebook</p>
-              </div>
-              <div>
-                <p>Instagram</p>
-              </div>
-              <div>
-                <p>Linkedin</p>
-              </div>
-              <span className="text-white w-fit">
-                {/* <FaLinkedin className="h-6 w-6" /> */}
 
-                <p>Høyre</p>
-              </span>
+              <Button
+                text="SISSELS PERSONPROFIL (HØYRE.NO)"
+                href="https://hoyre.no/stavanger/sissel-knutsen-hegdal-var-ordforerkandidat/"
+              />
             </div>
           </div>
         </div>
