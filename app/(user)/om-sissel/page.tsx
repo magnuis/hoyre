@@ -50,8 +50,8 @@ url
       >
         <p className="relative top-[60vh] text-white text-4xl ">Bli kjent med Sissel</p>
       </div>
-      <div className="absolute text-center w-[100vw] mx-auto mt-[100vh] bg-white translate-y-[-80px]">
-        <div className="my-48">
+      <div className="absolute w-[100vw] mx-auto mt-[100vh] bg-white translate-y-[-80px]">
+        <div className="my-48 text-center">
           <p className="font-bold text-xl sm:text-xl">
             Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og
             Fredrik.
