@@ -23,7 +23,6 @@ export default async function Home() {
   const images = await client.fetch(imgQuery)
 
   const CarouselProps = images.map((image: any) => {
-    console.log(image.url)
     return {
       content: {
         title: 'title',
@@ -33,9 +32,6 @@ export default async function Home() {
       },
     }
   })
-
-  console.log(CarouselProps)
-
   return (
     <main>
       <div className="flex flex-col gap-y-8">

@@ -9,7 +9,8 @@ interface SortMenuProps {
   setSort: (sort: string) => void
 }
 
-export default function SortMenu({ sort: sort, setSort: setSort }: SortMenuProps) {
+export default function SortMenu({ sort, setSort }: SortMenuProps) {
+
   return (
     <div className="relative w-36 h-16 items-center">
       <Listbox value={sort} onChange={setSort}>
