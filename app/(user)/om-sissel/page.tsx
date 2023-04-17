@@ -59,13 +59,13 @@ url
           Fredrik.
         </p>
       </div>
-      <Image
+
+      <img
         src="https://premium.vgc.no/v2/images/ea71d845-a98a-47af-a34f-7623b5e1b7b1?fit=crop&format=auto&h=1425&w=1900&s=e10bed9c5cbfa2e48d588258d2cf5f208e0442aa"
         alt=""
-        width={900}
-        height={900}
-        className="container h-[50vh] object-cover object-center"
+        className="w-full h-[50vh] object-cover object-center"
       />
+
       <div className="mx-auto flex flex-col gap-y-8 p-6">
         <div className="relative max-w-xl mx-auto">
           {storyContent.map((story, index) => (
