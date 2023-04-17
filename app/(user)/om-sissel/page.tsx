@@ -8,6 +8,7 @@ import { SisselTimeline } from 'type'
 import StoryContent, { StoryContentProps } from './StoryContent'
 import ImageGallery from 'react-image-gallery'
 import Button from 'components/shared/Button'
+import FollowSisselNavCard from './FollowSisselNavCard'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -52,8 +53,8 @@ url
       >
         <p className="text-white text-4xl ">Bli kjent med Sissel</p>
       </div>
-      <div className="text-center max-w-lg mx-auto my-24">
-        <p className="font-bold text-2xl">
+      <div className="text-center max-w-lg mx-auto my-24 px-4">
+        <p className="font-bold text-xl sm:text-2xl">
           Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og
           Fredrik.
         </p>
@@ -78,40 +79,9 @@ url
               <PortableText value={lastStory?.content} components={RichTextComponents} />
             </div>
             <div className="absolute top-0 transform h-3 w-3 bg-white rounded-full border border-primary translate-x-[-6.5px]" />
-            <div className="ml-8">
-              {/* <img
-                src={images[0].url}
-                alt=""
-                className="rounded-t-lg object-cover object-center h-[30vh] w-full"
-              />
-              <div className="flex flex-row justify-between mt-[3%]">
-                <img src={images[1].url} alt={''} className="relative w-[31%]" />
-                <img src={images[2].url} alt={''} className="relative w-[31%]" />
-                <img src={images[3].url} alt={''} className="relative w-[31%]" />
-              </div> */}
-              {/* <ImageGallery items={galleryImages} /> */}
-            </div>
+            <div className="ml-8">{/* <ImageGallery items={galleryImages} /> */}</div>
           </div>
-          <div className="rounded-xl bg-dark">
-            <img
-              src="https://hoyre.no/content/uploads/sites/212/2022/09/20220826_181949666_iOS-scaled.jpg"
-              alt=""
-              className="rounded-t-lg object-cover object-top h-[30vh] w-full"
-            />
-            <div className="relative flex flex-col gap-y-7 text-white p-5 text-center">
-              <p className="text-2xl font-bold">Følg Sissel i hverdagen</p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <Button text="FACEBOOK" href="https://www.facebook.com/sissel.k.hegdal" />
-                <Button text="INSTAGRAM" href="https://www.instagram.com/sisselhegdal/" />
-                <Button text="LINKEDIN" href="https://www.linkedin.com/in/sissel-knutsen-hegdal/" />
-              </div>
-
-              <Button
-                text="SISSELS PERSONPROFIL (HØYRE.NO)"
-                href="https://hoyre.no/stavanger/sissel-knutsen-hegdal-var-ordforerkandidat/"
-              />
-            </div>
-          </div>
+          <FollowSisselNavCard />
         </div>
       </div>
     </div>
