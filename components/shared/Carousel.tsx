@@ -48,7 +48,6 @@ interface c {
 export default function Carousel({ content }: CarouselProps): JSX.Element {
   const [cont, setCont] = useState(0)
   const [activeSlide, setActiveSlide] = useState(0)
-  console.log('Logger her', content[0].content.image)
 
   useEffect(() => {
     const xy = setInterval(() => {
