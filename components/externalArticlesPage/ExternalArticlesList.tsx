@@ -45,11 +45,6 @@ export default function ExternalArticlesList() {
     fetchSubjects()
   }, [])
 
-  // fetch articles, refetch when sort order or selected subjects changes
-  useEffect(() => {
-    console.log('articles, ', articles)
-  }, [articles])
-
   // TODO consider fetch all, and do sorting in frontend
   // fetch articles, refetch when sort order or selected subjects changes
   useEffect(() => {
@@ -61,7 +56,6 @@ export default function ExternalArticlesList() {
   useEffect(() => {
     let subjectFilter = ''
     if (selectedSubjects.length > 0) {
-      console.log('selected subjects', selectedSubjects)
       subjectFilter = '&& ('
       selectedSubjects.forEach((subject, index) => {
         if (index === 0) {
@@ -87,7 +81,6 @@ export default function ExternalArticlesList() {
     } | order(date ${sort})
     `
 
-    console.log('articlesQuery', articlesQuery)
     const fetchArticles = async () => {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
