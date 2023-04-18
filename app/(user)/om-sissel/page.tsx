@@ -6,29 +6,6 @@ import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
 import StoryContent from './StoryContent'
 
-const imgs = [
-  {
-    id: 1,
-    src: 'https://cdn.sanity.io/images/1hwvyivq/production/60e738d253fc2cc6b3892116c94b40c2b1b23925-2048x1365.jpg',
-    alt: 'Image 1',
-  },
-  {
-    id: 2,
-    src: 'https://cdn.sanity.io/images/1hwvyivq/production/89149edaa223d1b70cdaf3d9b9885c96124c1851-1280x853.webp',
-    alt: 'Image 2',
-  },
-  {
-    id: 3,
-    src: 'https://cdn.sanity.io/images/1hwvyivq/production/d650ac194fab882ffb74cee90a17166901d9505c-1200x630.jpg',
-    alt: 'Image 3',
-  },
-  {
-    id: 4,
-    src: 'https://cdn.sanity.io/images/1hwvyivq/production/60e738d253fc2cc6b3892116c94b40c2b1b23925-2048x1365.jpg',
-    alt: 'Image 4',
-  },
-]
-
 export default async function AboutSissel() {
   const storyQuery = groq`
    *[_type == "sisselTimeline"] {
@@ -102,7 +79,7 @@ url
               </span>
             ))}
           </div>
-          <ImageGallery images={imgs} />
+          <ImageGallery images={images} />
           <FollowSisselNavCard />
         </div>
       </div>

@@ -6,8 +6,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid'
 import Button from './Button'
 
 type ImageProps = {
-  src: string
-  alt: string
+  url: string
 }
 
 type ImageGalleryProps = {
@@ -51,8 +50,8 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div>
       <img
-        src={displayBigImage.src}
-        alt={displayBigImage.alt}
+        src={displayBigImage.url}
+        alt={''}
         className="w-full h-full object-cover cursor-pointer rounded-t-lg"
         onClick={() => handleModalopen(0)}
       />
@@ -61,8 +60,8 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           {displaySmallImages.map((image, index) => (
             <div key={index} className="w-1/3 aspect-[8/5]">
               <img
-                src={image.src}
-                alt={image.alt}
+                src={image.url}
+                alt={''}
                 className="w-full h-full object-cover cursor-pointer"
                 onClick={() => handleModalopen(index)}
               />
@@ -99,13 +98,14 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
                   <span className="relative z-60 top-0 left-1 text-white sm:text-sm text-xs">
                     <p>{`${selectedImage + 1} / ${images.length}`}</p>
                   </span>
-
-                  <img
-                    {...handlers}
-                    src={images[selectedImage].src}
-                    alt={images[selectedImage].alt}
-                    className="max-w-[100vw] max-h-[80vh]"
-                  />
+                  <div className="w-[100vw] md:w-[80vw] aspect-[8/5]">
+                    <img
+                      {...handlers}
+                      src={images[selectedImage].url}
+                      alt={''}
+                      className="w-full h-full object-cover "
+                    />
+                  </div>
                   <div
                     className="absolute top-[50%] left-2 bg-gray-700 opacity-30 p-3 hover:cursor-pointer hover:opacity-70 hidden sm:block"
                     onClick={() => {
