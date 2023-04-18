@@ -8,6 +8,7 @@ const navigation = [
   { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
   { name: 'Høyre i media', href: '/hoyre-i-media' },
+  { name: 'Om Sissel', href: '/om-sissel' },
 ]
 
 export default function Header() {
@@ -28,7 +29,7 @@ export default function Header() {
 
   return (
     <header
-      className={`z-50 max-w-7xl w-full fixed bg-white transition-all duration-500 ease-in-out ${
+      className={`z-50 w-full fixed bg-white transition-all duration-500 ease-in-out ${
         showHeader ? 'top-0 ' : 'top-[-100%]'
       } ease-in-out `}
     >

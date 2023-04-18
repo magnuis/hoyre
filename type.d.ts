@@ -59,3 +59,11 @@ interface BlogPost extends Base {
   ]
   body: Block[]
 }
+
+interface SisselTimeline extends Base {
+  title: string
+  img: string
+  content: Block[]
+  date: number
+}
+
