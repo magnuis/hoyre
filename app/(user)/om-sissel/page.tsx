@@ -64,7 +64,7 @@ url
           className="w-[100vw] max-h-[100vh] object-cover object-center"
         />
 
-        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-36 mt-24 md:mt-36">
+        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-36 mt-24 md:mt-36 mb-48">
           <div className="relative mx-auto">
             {storyContent.map((story, index) => (
               <span key={index}>
