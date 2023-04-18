@@ -66,3 +66,4 @@ interface SisselTimeline extends Base {
   content: Block[]
   date: number
 }
+
