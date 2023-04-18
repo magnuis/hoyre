@@ -1,8 +1,33 @@
+import ImageGallery from 'components/shared/ImageCarousel'
 import { groq } from 'next-sanity'
+import Image from 'next/image'
 import { client } from 'sanity-conf/sanity.client'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
 import StoryContent from './StoryContent'
+
+const imgs = [
+  {
+    id: 1,
+    src: 'https://cdn.sanity.io/images/1hwvyivq/production/60e738d253fc2cc6b3892116c94b40c2b1b23925-2048x1365.jpg',
+    alt: 'Image 1',
+  },
+  {
+    id: 2,
+    src: 'https://cdn.sanity.io/images/1hwvyivq/production/89149edaa223d1b70cdaf3d9b9885c96124c1851-1280x853.webp',
+    alt: 'Image 2',
+  },
+  {
+    id: 3,
+    src: 'https://cdn.sanity.io/images/1hwvyivq/production/d650ac194fab882ffb74cee90a17166901d9505c-1200x630.jpg',
+    alt: 'Image 3',
+  },
+  {
+    id: 4,
+    src: 'https://cdn.sanity.io/images/1hwvyivq/production/60e738d253fc2cc6b3892116c94b40c2b1b23925-2048x1365.jpg',
+    alt: 'Image 4',
+  },
+]
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -64,7 +89,7 @@ url
           className="w-[100vw] max-h-[100vh] object-cover object-center"
         />
 
-        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-36 mt-24 md:mt-36 mb-48">
+        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 mb-48">
           <div className="relative mx-auto">
             {storyContent.map((story, index) => (
               <span key={index}>
@@ -77,6 +102,7 @@ url
               </span>
             ))}
           </div>
+          <ImageGallery images={imgs} />
           <FollowSisselNavCard />
         </div>
       </div>
