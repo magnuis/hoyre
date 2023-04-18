@@ -5,11 +5,11 @@ import { useSwipeable } from 'react-swipeable'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid'
 import Button from './Button'
 
-type ImageProps = {
+interface ImageProps {
   url: string
 }
 
-type ImageGalleryProps = {
+interface ImageGalleryProps {
   images: ImageProps[]
 }
 
