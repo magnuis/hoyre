@@ -177,14 +177,7 @@ export default function ExternalArticlesList() {
                 </p>
               </div>
               <div className="relative mt-8 flex items-center gap-x-4">
-                {/* <img src={'jkbln'} alt="" className="h-10 w-10 rounded-full bg-gray-50" /> */}
                 <div className="text-sm leading-6">
-                  {/* <p className="font-semibold text-gray-900">
-                      <a href={post.author.href}>
-                        <span className="absolute inset-0" />
-                        {post.author.name}
-                      </a>
-                    </p> */}
                   <Link href={post.externalLink}>
                     <button className="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                       Gå til artikkelen
