@@ -1,10 +1,5 @@
-import { PortableText } from '@portabletext/react'
-import BackArrow from 'components/shared/BackArrow'
-import { RichTextComponents } from 'components/shared/RichTextComponents'
 import { groq } from 'next-sanity'
-import Image from 'next/image'
 import { client } from 'sanity-conf/sanity.client'
-// import { SisselTimeline } from 'type'
 import ImageGallery from 'react-image-gallery'
 import { TeamTimeline } from 'type'
 import TimelineItem from 'components/shared/TimeLineItem'
@@ -16,12 +11,11 @@ export default async function LagetPage() {
         title,
         content,
         date,
-           "img": image.asset._ref
+        "img": image.asset._ref
     } | order(date asc) 
     `
-  const imgQuery = groq`*[_type == "sanity.imageAsset" && references("1gKhFzwtTHqc5n8Z8DKZtk")] 
-  {
-    url,
+  const imgQuery = groq`*[_type == "sanity.imageAsset" && references("1gKhFzwtTHqc5n8Z8DKZtk")] {
+        url,
     }`
 
   const storyContent: TeamTimeline[] = await client.fetch(storyQuery)
@@ -44,14 +38,14 @@ export default async function LagetPage() {
         <hr className="mb-2" />
         <div>
           {storyContent.map((story, index) => (
-            <div key={index}>
+            <span key={index}>
               <TimelineItem
                 title={story.title}
                 img={story.img}
                 content={story.content}
                 last={index == storyContent.length - 1}
               />
-            </div>
+            </span>
           ))}
           <div className="pb-8 relative"></div>
         </div>
