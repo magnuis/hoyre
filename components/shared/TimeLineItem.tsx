@@ -17,7 +17,9 @@ export default function TimelineItem(props: timelineItemProps): JSX.Element {
       className={`group ${props.last ? '' : 'border-l'} border-primary pb-4 ml-2 md:m-0 relative`}
     >
       <div className="pl-4 md:pl-10 flex flex-col gap-y-4">
-        <p className="text-gray-500 text-xs">{props.title.toUpperCase()}</p>
+        <p className="text-gray-500 text-xs">
+          {props.title ? props.title.toUpperCase() : 'ingen tittel'.toUpperCase()}
+        </p>
         <PortableText value={props.content} components={RichTextComponents} />
         {props.img && (
           <img src={builder.image(props.img).url()} alt={''} height={500} width={500} />
