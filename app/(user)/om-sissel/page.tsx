@@ -1,11 +1,11 @@
 import ImageGallery from 'components/shared/ImageCarousel'
+import TimelineItem from 'components/shared/TimeLineItem'
 import { groq } from 'next-sanity'
 import Image from 'next/image'
 import { client } from 'sanity-conf/sanity.client'
 import { urlFor } from 'sanity-conf/urlFor'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
-import StoryContent from './StoryContent'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -89,7 +89,7 @@ export default async function AboutSissel() {
           <div className="relative mx-auto">
             {storyContent.map((story, index) => (
               <span key={index}>
-                <StoryContent
+                <TimelineItem
                   title={story.title}
                   img={story.img}
                   content={story.content}
