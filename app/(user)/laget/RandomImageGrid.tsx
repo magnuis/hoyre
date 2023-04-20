@@ -1,9 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react'
+import imageUrlBuilder from '@sanity/image-url'
+import { client } from 'sanity-conf/sanity.client'
 
+const builder = imageUrlBuilder(client)
 interface RandomImageGridProps {
   images: {
-    url: string
+    _id: string
   }[]
 }
 
@@ -31,14 +34,12 @@ export default function RandomImageGrid({ images }: RandomImageGridProps) {
   }, [gridImages])
 
   return (
-    <div className="grid grid-cols-4 grid-rows-3 sm:grid-cols-3 md:w-1/2">
+    <div className="grid grid-cols-4 grid-rows-3 md:grid-cols-3 md:w-1/2">
       {gridImages.map((image, index) => (
         <img
           key={index}
-          src={image.url}
+          src={builder.image(image).format('webp').width(150).url()}
           alt={''}
-          width={200}
-          height={200}
           className={`${
             index === 0
               ? 'rounded-tl-xl'

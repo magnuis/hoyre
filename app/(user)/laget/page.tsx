@@ -15,11 +15,11 @@ export default async function LagetPage() {
     } | order(date asc) 
     `
   const imgQuery = groq`*[_type == "sanity.imageAsset" && references("1gKhFzwtTHqc5n8Z8DKZtk")] {
-        url,
+        _id,
     }`
 
   const storyContent: TeamTimeline[] = await client.fetch(storyQuery)
-  const imgUrls: { url: string }[] = await client.fetch(imgQuery)
+  const imgUrls: { _id: string }[] = await client.fetch(imgQuery)
 
   console.log(storyContent)
 

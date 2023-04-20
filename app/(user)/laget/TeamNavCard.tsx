@@ -4,7 +4,7 @@ import Link from 'next/link'
 import RandomImageGrid from './RandomImageGrid'
 
 interface TeamNavCardProps {
-  imgUrls: { url: string }[]
+  imgUrls: { _id: string }[]
 }
 export default function TeamNavCard({ imgUrls }: TeamNavCardProps) {
   return (
