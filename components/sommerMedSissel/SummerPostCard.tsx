@@ -19,10 +19,10 @@ export default function SummerPostCard(post: summerPostCardProps) {
     <div className="group">
       <hr className="sm:block hidden mb-16" />
       <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
-        <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
+        <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row w-full">
           <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">
             <img
-              src={builder.image(post.image).url()}
+              src={builder.image(post.image).width(700).format('webp').url()}
               alt=""
               className="absolute inset-0 h-full w-full rounded-t-2xl lg:rounded-2xl bg-gray-50 object-cover sm:opacity-90 group-hover:opacity-100"
             />

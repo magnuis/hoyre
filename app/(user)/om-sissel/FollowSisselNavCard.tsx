@@ -1,10 +1,20 @@
 import Button from 'components/shared/Button'
+import { urlFor } from 'sanity-conf/urlFor'
 
-export default function FollowSisselNavCard() {
+interface followSisselNavCardProps {
+  image: {
+    _id: string
+  }
+}
+export default function FollowSisselNavCard({ image }: followSisselNavCardProps) {
   return (
     <div className="rounded-xl bg-dark">
       <img
-        src="https://hoyre.no/content/uploads/sites/212/2022/09/20220826_181949666_iOS-scaled.jpg"
+        src={
+          image
+            ? urlFor(image._id).width(600).format('webp').url()
+            : 'https://cdn.sanity.io/images/1hwvyivq/production/42453a115f2e5f0f9d985e31ec6b34607d684c8c-1875x2500.jpg'
+        }
         alt=""
         className="rounded-t-lg object-cover object-top h-[30vh] w-full"
       />
