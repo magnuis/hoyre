@@ -1,6 +1,4 @@
-import imageUrlBuilder from '@sanity/image-url'
 import ExternalArticlesList from 'components/externalArticlesPage/ExternalArticlesList'
-import { client } from 'sanity-conf/sanity.client'
 
 export default async function ExternalArticles() {
   return (
