@@ -67,3 +67,9 @@ interface SisselTimeline extends Base {
   date: number
 }
 
+interface TeamTimeline extends Base {
+  title: string
+  img: CustomImage
+  content: Block[]
+  date: string
+}

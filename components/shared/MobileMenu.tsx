@@ -6,10 +6,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const navigation = [
+  { name: 'Hjem', href: '/' },
   { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
   { name: 'Høyre i media', href: '/hoyre-i-media' },
   { name: 'Om Sissel', href: '/om-sissel' },
+  { name: 'Laget', href: '/laget' },
 ]
 
 export default function MobileMenu() {
