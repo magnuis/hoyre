@@ -1,6 +1,5 @@
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
-import ImageGallery from 'react-image-gallery'
 import { TeamTimeline } from 'type'
 import TimelineItem from 'components/shared/TimeLineItem'
 import TeamNavCard from './TeamNavCard'
