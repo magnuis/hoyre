@@ -21,8 +21,6 @@ export default async function LagetPage() {
   const storyContent: TeamTimeline[] = await client.fetch(storyQuery)
   const imgUrls: { _id: string }[] = await client.fetch(imgQuery)
 
-  console.log(storyContent)
-
   return (
     <div className="max-w-7xl mx-auto sm:mt-16">
       <div className="flex flex-col max-w-lg mx-auto mt-32 mb-16 px-8 gap-y-6">
@@ -34,8 +32,10 @@ export default async function LagetPage() {
           oss på veien!
         </p>
       </div>
-      <div className="flex flex-col gap-y-8 px-6 max-w-xl mx-auto">
-        <hr className="mb-2" />
+      {/* <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 mb-48">
+          <div className="relative mx-auto"> */}
+      <hr className="mb-2 max-w-xl mx-auto" />
+      <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-16 md:mt-36 mb-48">
         <div>
           {storyContent.map((story, index) => (
             <span key={index}>
