@@ -5,7 +5,6 @@ import { BlogPost } from 'type'
 
 export interface blogPostCardProps {
   post: BlogPost
-  // categories: string[]
 }
 
 const builder = imageUrlBuilder(client)
@@ -16,7 +15,7 @@ export default function BlogPostCard({ post }: blogPostCardProps) {
       <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row">
         <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">
           <img
-            src={builder.image(post.image).url()}
+            src={builder.image(post.image).width(600).url()}
             alt=""
             className="absolute inset-0 h-full w-full rounded-t-2xl lg:rounded-2xl bg-gray-50 object-cover sm:opacity-90 group-hover:opacity-100"
           />

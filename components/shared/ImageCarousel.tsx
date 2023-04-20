@@ -3,10 +3,10 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useSwipeable } from 'react-swipeable'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid'
-import Button from './Button'
+import { urlFor } from 'sanity-conf/urlFor'
 
 interface ImageProps {
-  url: string
+  _id: string
 }
 
 interface ImageGalleryProps {
@@ -20,10 +20,6 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   const handleModalopen = (index: number) => {
     setSelectedImage(index)
     setOpen(true)
-  }
-
-  const handleModalClose = () => {
-    setOpen(false)
   }
 
   const handlePreviousImage = () => {
@@ -50,7 +46,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div>
       <img
-        src={displayBigImage.url}
+        src={displayBigImage ? urlFor(displayBigImage._id).format('webp').width(600).url() : ''}
         alt={''}
         className="w-full h-full object-cover cursor-pointer rounded-t-lg"
         onClick={() => handleModalopen(0)}
@@ -60,7 +56,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
           {displaySmallImages.map((image, index) => (
             <div key={index} className="w-1/3 aspect-[8/5]">
               <img
-                src={image.url}
+                src={image ? urlFor(image._id).format('webp').width(200).url() : ''}
                 alt={''}
                 className="w-full h-full object-cover cursor-pointer"
                 onClick={() => handleModalopen(index)}
@@ -101,7 +97,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
                   <div className="w-[100vw] md:w-[80vw] aspect-[8/5]">
                     <img
                       {...handlers}
-                      src={images[selectedImage].url}
+                      src={urlFor(images[selectedImage]._id).format('webp').url()}
                       alt={''}
                       className="w-full h-full object-cover "
                     />

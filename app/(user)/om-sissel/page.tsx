@@ -2,6 +2,7 @@ import ImageGallery from 'components/shared/ImageCarousel'
 import { groq } from 'next-sanity'
 import Image from 'next/image'
 import { client } from 'sanity-conf/sanity.client'
+import { urlFor } from 'sanity-conf/urlFor'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
 import StoryContent from './StoryContent'
@@ -16,32 +17,43 @@ export default async function AboutSissel() {
     } | order(date asc)
     `
 
-  const imgQuery = groq`
-*[_type == "sanity.imageAsset" && references('f5T2DmY3fkMt6I6qKWVOvS')] {
-url
-} 
-`
-  interface a {
-    original: string
-    thumbnail: string
+  const imageGalleryQuery = groq`
+  *[_type == "sanity.imageAsset" && references('f5T2DmY3fkMt6I6qKWVOvS')] {
+    _id
+  } 
+  `
+  const followSisselImgQuery = groq`
+  *[_type=="sanity.imageAsset" && references('5445c04f-0df7-40bf-9d74-bae1dd5b4ff1')][0] {
+    _id,
   }
+  `
+  const mainImageQuery = groq`
+  *[_type=="sanity.imageAsset" && references('cATHX4G6FGXXOYvuY0iqI')][0] {
+    _id,
+  }
+  `
+  const secondaryImageQuery = groq`
+  *[_type=="sanity.imageAsset" && references('cATHX4G6FGXXOYvuY0iqI')][0] {
+    _id,
+  }
+  `
+
   const storyContent: SisselTimeline[] = await client.fetch(storyQuery)
-  const images = await client.fetch(imgQuery)
-  // const lastStory = storyContent.pop()
-  const galleryImages: a[] = images.map((image: any) => {
-    return {
-      original: image.url,
-      thumbnail: image.url,
-    }
-  })
+  const galleryImages = await client.fetch(imageGalleryQuery)
+  const followsisselImg = await client.fetch(followSisselImgQuery)
+  const mainImage = await client.fetch(mainImageQuery)
+  const secondaryImage = await client.fetch(secondaryImageQuery)
 
   return (
     <div>
       <div
         className={`fixed top-0 left-0 w-[100vw] h-screen text-center bg-cover bg-center`}
         style={{
-          backgroundImage:
-            'url(https://hoyre.no/content/uploads/sites/212/2021/11/2W9A5316-kopi-1024x660.jpg)',
+          backgroundImage: `url(${
+            mainImage
+              ? urlFor(mainImage._id).format('webp').url()
+              : 'https://hoyre.no/content/uploads/sites/212/2021/11/2W9A5316-kopi-1024x660.jpg'
+          })`,
         }}
       />
       <div
@@ -60,10 +72,17 @@ url
           </p>
         </div>
 
-        <img
-          src="https://premium.vgc.no/v2/images/ea71d845-a98a-47af-a34f-7623b5e1b7b1?fit=crop&format=auto&h=1425&w=1900&s=e10bed9c5cbfa2e48d588258d2cf5f208e0442aa"
+        <Image
+          src={
+            secondaryImage
+              ? urlFor(secondaryImage).format('webp').url()
+              : 'https://cdn.sanity.io/images/1hwvyivq/production/cce44ce9dfa82be61ce17659b63bcad4568230ef-1900x1425.jpg'
+          }
           alt=""
           className="w-[100vw] max-h-[100vh] object-cover object-center"
+          sizes="100vw"
+          height={1425}
+          width={1900}
         />
 
         <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 mb-48">
@@ -79,8 +98,8 @@ url
               </span>
             ))}
           </div>
-          <ImageGallery images={images} />
-          <FollowSisselNavCard />
+          <ImageGallery images={galleryImages} />
+          <FollowSisselNavCard image={followsisselImg} />
         </div>
       </div>
     </div>
