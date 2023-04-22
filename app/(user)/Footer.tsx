@@ -38,12 +38,12 @@ const navigation = {
 
 export default function Example() {
   return (
-    <footer className="bg-dark" aria-labelledby="footer-heading">
+    <footer aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
 
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32 bg-secondary">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <img
@@ -128,10 +128,10 @@ export default function Example() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-400">
-            &copy; 2023 Høyre, Inc. All rights reserved.
-          </p>
+      </div>
+      <div className="bg-dark text-center">
+        <div className="py-8">
+          <p className="text-xs leading-5 text-gray-400">&copy; 2023 Høyre Stavanger</p>
         </div>
       </div>
     </footer>
