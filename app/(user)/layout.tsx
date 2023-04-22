@@ -1,5 +1,6 @@
 import Header from 'components/shared/Header'
 import '../../styles/globals.css'
+import Example from './Footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="overscroll-y-none">
         <Header />
         <div className="mt-20">{children}</div>
+        <Example />
       </body>
     </html>
   )

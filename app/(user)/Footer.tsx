@@ -38,7 +38,7 @@ const navigation = {
 
 export default function Example() {
   return (
-    <footer className="bg-gray-900" aria-labelledby="footer-heading">
+    <footer className="bg-dark" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -51,7 +51,7 @@ export default function Example() {
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Bilde av noe Høyre relatert. Gjerne Sissel eller logoen til Høyre"
             />
-            <p className="text-sm leading-6 text-gray-300">Sammen for stavanger</p>
+            <p className="text-sm leading-6 text-gray-300">Får du ikke nok av oss?</p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <a key={item.name} href={item.href} className="text-gray-500 hover:text-gray-400">
