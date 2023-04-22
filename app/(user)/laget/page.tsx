@@ -3,6 +3,7 @@ import { client } from 'sanity-conf/sanity.client'
 import { TeamTimeline } from 'type'
 import TimelineItem from 'components/shared/TimeLineItem'
 import TeamNavCard from './TeamNavCard'
+import { poppins } from 'styles/fonts'
 
 export default async function LagetPage() {
   const storyQuery = groq`
@@ -21,12 +22,10 @@ export default async function LagetPage() {
   const imgUrls: { _id: string }[] = await client.fetch(imgQuery)
 
   return (
-    <div className="max-w-7xl mx-auto sm:mt-16">
-      <div className="flex flex-col max-w-lg mx-auto mt-32 mb-16 px-8 gap-y-6">
-        <div className="text-center">
-          <p className="font-bold text-3xl ">Veien til valget</p>
-        </div>
-        <p>
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col max-w-lg mx-auto mt-24 md:mt-48 mb-12 px-8 sm:px-0 gap-y-4 md:gap-y-10 text-center">
+        <h1 className={`md:text-5xl text-3xl font-bold ${poppins.className}`}>Veien til valget</h1>
+        <p className="text-lg">
           Stavanger-laget har hendene fulle i opptakten til høstens kommunevalg. Her kan du følge
           oss på veien!
         </p>
@@ -34,7 +33,7 @@ export default async function LagetPage() {
       {/* <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 mb-48">
           <div className="relative mx-auto"> */}
       <hr className="mb-2 max-w-xl mx-auto" />
-      <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-16 md:mt-36 mb-48">
+      <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-6 mb-48">
         <div>
           {storyContent.map((story, index) => (
             <span key={index}>

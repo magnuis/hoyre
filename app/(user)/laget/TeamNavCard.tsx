@@ -1,6 +1,7 @@
 'use cient'
 
 import Link from 'next/link'
+import { poppins } from 'styles/fonts'
 import RandomImageGrid from './RandomImageGrid'
 
 interface TeamNavCardProps {
@@ -13,16 +14,16 @@ export default function TeamNavCard({ imgUrls }: TeamNavCardProps) {
 
       <div className="flex flex-col gap-y-3 p-6 text-white text-center justify-center">
         <div className="">
-          <p className="text-2xl">Stavangerlaget 2023</p>
+          <p className={`${poppins.className} text-2xl`}>Stavangerlaget 2023</p>
         </div>
         <p className="text-light">Finn ut hvem som stiller til valg fra din kommunedel!</p>
         <Link
           href="https://hoyre.no/stavanger/stavangerlaget2023/"
-          className="rounded bg-primary text-center p-2"
+          className="rounded bg-primary hover:bg-primary_dark text-center p-2"
           rel="noreferrer opener"
           target={'_blank'}
         >
-          <p className="text-xs">BLI BEDRE KJENT MED STAVANGERLAGET </p>{' '}
+          <p className="text-xs font-bold">BLI BEDRE KJENT MED STAVANGERLAGET </p>{' '}
         </Link>
       </div>
     </div>
