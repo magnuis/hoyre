@@ -1,6 +1,8 @@
 import Header from 'components/shared/Header'
 import '../../styles/globals.css'
 
+import { roboto } from 'styles/fonts'
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -10,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <head />
 
-      <body className="overscroll-y-none">
+      <body className={`${roboto.className} overscroll-y-none`}>
         <Header />
         <div className="mt-20">{children}</div>
       </body>
