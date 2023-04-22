@@ -17,10 +17,10 @@ const navigation = [
 export default function MobileMenu() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
-    <div className="flex lg:hidden">
+    <div className="flex lg:hidden text-primary">
       <button
         type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
         onClick={() => setMobileMenuOpen(true)}
       >
         <span className="sr-only">Open main menu</span>
@@ -44,13 +44,13 @@ export default function MobileMenu() {
                     alt="logo"
                     className="h-9"
                   />
-                  Stavanger Høyre
+                  <p>Stavanger Høyre</p>
                 </span>
               </Link>
             </div>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 "
               onClick={() => {
                 setMobileMenuOpen(false)
               }}
@@ -67,7 +67,7 @@ export default function MobileMenu() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 font-semibold leading-7 hover:bg-gray-50 text-primary text-lg"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}

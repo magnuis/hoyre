@@ -33,15 +33,15 @@ export default function Header() {
     <header
       className={`z-50 w-full fixed bg-white transition-all duration-500 ease-in-out ${
         showHeader ? 'top-0 ' : 'top-[-100%]'
-      } ease-in-out `}
+      } ease-in-out text-primary`}
     >
       <nav
-        className="flex mx-auto max-w-7xl items-center justify-between p-6 lg:px-0"
+        className="flex mx-auto max-w-7xl items-center justify-between px-8 py-5 xl:px-0 "
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
           <Link className="-m-1.5 p-1.5" href={'/'}>
-            <span className="flex flex-row text-primary gap-x-3 items-center text-lg">
+            <span className="flex flex-row gap-x-3 items-center text-lg font-bold">
               <img
                 src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
                 alt="logo"
@@ -52,12 +52,12 @@ export default function Header() {
           </Link>
         </div>
         <MobileMenu />
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-2">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-bold leading-6 rounded-full hover:bg-gray-100 hover:text-gray-900 px-3"
             >
               {item.name}
             </Link>
