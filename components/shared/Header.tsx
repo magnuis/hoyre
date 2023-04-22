@@ -36,7 +36,7 @@ export default function Header() {
       } ease-in-out text-primary`}
     >
       <nav
-        className="flex mx-auto max-w-7xl items-center justify-between px-8 py-5 xl:px-0 "
+        className="flex mx-auto max-w-7xl items-center justify-between p-4 md:px-8 md:py-5 xl:px-0 "
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
