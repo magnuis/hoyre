@@ -13,7 +13,7 @@ export default function Button({ text, href }: ButtonProps) {
       rel="noreferrer opener"
       target={'_blank'}
     >
-      <p className="text-sm">{text} </p>{' '}
+      <p className="text-xs tracking-wide">{text} </p>{' '}
     </Link>
   )
 }

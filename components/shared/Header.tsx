@@ -41,7 +41,7 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <Link className="-m-1.5 p-1.5" href={'/'}>
-            <span className="flex flex-row gap-x-3 items-center text-lg font-bold">
+            <span className="flex flex-row gap-x-3 items-center text-lg font-light">
               <img
                 src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
                 alt="logo"
@@ -57,7 +57,7 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-bold leading-6 rounded-full hover:bg-gray-100 hover:text-gray-900 px-3"
+              className="text-sm font-light leading-6 rounded-full hover:bg-gray-100 hover:text-gray-900 px-3"
             >
               {item.name}
             </Link>

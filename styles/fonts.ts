@@ -1,7 +1,7 @@
 import { Roboto, Inter, Poppins } from '@next/font/google'
 
 const roboto = Roboto({
-  weight: ['300'],
+  weight: ['300', '400'],
   subsets: ['latin'],
 })
 
