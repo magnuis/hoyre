@@ -17,11 +17,11 @@ export default function ExternalArticleCard({ article }: blogPostCardProps) {
       <hr />
       <article className="flex max-w-xl flex-col items-start justify-between sm:mb-16 mt-8">
         <div className="flex items-center gap-x-4 text-xs flex-wrap">
-          <time dateTime={article.date} className="text-gray-500">
+          <time dateTime={article.date} className="text-light_gray">
             {article.date}
           </time>
           <div className="h-4 w-0.5 bg-gray-300" />
-          <p className=" text-gray-500">{article.publisher}</p>
+          <p className=" text-light_gray">{article.publisher}</p>
           {article.categories.map(
             (category) =>
               category && (
@@ -35,10 +35,12 @@ export default function ExternalArticleCard({ article }: blogPostCardProps) {
           )}
         </div>
         <div className="group relative">
-          <h3 className={`mt-3 text-lg font-semibold leading-6 text-gray-900 ${poppins.className}`}>
+          <h3
+            className={`mt-3 text-lg font-semibold leading-6 text-dark_gray ${poppins.className}`}
+          >
             {article.title}
           </h3>
-          <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{article.description}</p>
+          <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray">{article.description}</p>
         </div>
         <div className="relative mt-8 flex items-center gap-x-4">
           <Button text={'GÅ TIL ARTIKKELEN'} href={article.externalLink} />

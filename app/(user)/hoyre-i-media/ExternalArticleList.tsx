@@ -129,7 +129,7 @@ export default function ExternalArticlesList() {
       {articles.length === 0 && (
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-2xl font-bold">Ingen treff</h2>
-          <p className="text-gray-500">Prøv å endre filterne dine</p>
+          <p className="text-gray">Prøv å endre filterne dine</p>
         </div>
       )}
       {articles.map(

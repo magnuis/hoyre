@@ -123,7 +123,7 @@ export default function BlogPostsList() {
       {blogPosts.length === 0 && (
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-2xl font-bold">Ingen treff</h2>
-          <p className="text-gray-500">Prøv å endre filterne dine</p>
+          <p className="text-light_gray">Prøv å endre filterne dine</p>
         </div>
       )}
       <hr className="sm:hidden block mb-16" />

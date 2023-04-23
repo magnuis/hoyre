@@ -19,11 +19,11 @@ export default function BlogPostCard({ post }: blogPostCardProps) {
             alt=""
             className="absolute inset-0 h-full w-full rounded-t-2xl lg:rounded-2xl bg-gray-50 object-cover sm:opacity-90 group-hover:opacity-100"
           />
-          <div className="absolute inset-0 rounded-t-2xl lg:rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+          <div className="absolute inset-0 rounded-t-2xl lg:rounded-2xl ring-1 ring-inset ring-dark_gray/10" />
         </div>
         <div>
           <div className="flex items-center gap-x-4 text-xs">
-            <time dateTime={post.date} className="text-gray-500">
+            <time dateTime={post.date} className="text-light_gray">
               {post.date}
             </time>
             {post.categories.map(
@@ -39,13 +39,13 @@ export default function BlogPostCard({ post }: blogPostCardProps) {
             )}
           </div>
           <div className="relative max-w-xl ">
-            <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            <h3 className="mt-3 text-lg font-semibold leading-6 text-dark_gray group-hover:text-gray">
               <span className="absolute inset-0" />
               {post.title}
             </h3>
 
-            <p className="mt-5 line-clamp-4 text-sm leading-6 text-gray-600">{post.description}</p>
-            <p className="flex items-center mt-5 font-bold group-hover:underline text-gray-900 group-hover:text-gray-600">
+            <p className="mt-5 line-clamp-4 text-sm leading-6 text-gray">{post.description}</p>
+            <p className="flex items-center mt-5 font-bold group-hover:underline text-dark_gray group-hover:text-gray">
               Les mer
             </p>
           </div>

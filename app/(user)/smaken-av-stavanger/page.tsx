@@ -13,7 +13,7 @@ export default async function Blogg() {
           </h1>
         </div>
 
-        <p className="text-lg leading-8 text-gray-600">
+        <p className="text-lg leading-8 text-gray">
           Har du lurt på hva Sissel tenker om Stavangerskolen? Eller hvordan hun tenker å takle
           eldrebølgen? Her kan du lese om det og mye mer.
         </p>

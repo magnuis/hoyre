@@ -64,7 +64,7 @@ export default async function Home() {
                 </div>
                 <div className="mt-5 flex-1">
                   <p className="underline text-xl 2xl:text-2xl font-bold">{navCard.title}</p>
-                  <p className="line-clamp-2 text-gray-500 text-lg 2xl:text-xl">
+                  <p className="line-clamp-2 text-light_gray text-lg 2xl:text-xl">
                     {navCard.shortDesc}
                   </p>
                 </div>

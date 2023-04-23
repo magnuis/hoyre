@@ -31,12 +31,12 @@ title, slug, image, description, date, _id
                 Sommer med Sissel
               </h1>
             </span>
-            <p className="mt-6 text-xl leading-8 text-gray-600">
+            <p className="mt-6 text-xl leading-8 text-gray">
               Sissel har bodd i Stavanger i over 30 år, og har en stor lidenskap for å vise frem
               byen. Bli med på en spennende sommertur i Stavanger og omegn, og opplev byen fra en
               helt ny vinkel.
             </p>
-            <p className="mt-6 text-base leading-7 text-gray-600">
+            <p className="mt-6 text-base leading-7 text-gray">
               Visste du at Stavanger har 52 hverdagsturer spredd utover hver eneste bydel? Eller at
               Breiavatnet og Stokkavatnet ikke er de eneste stedene å mate ender? Les videre for å
               finne ut mer!

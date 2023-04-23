@@ -25,7 +25,7 @@ export default async function LagetPage() {
     <div className="max-w-7xl mx-auto mt-24 md:mt-48">
       <div className="flex flex-col max-w-lg mx-auto mb-12 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
         <h1 className={`md:text-5xl text-3xl font-bold ${poppins.className}`}>Veien til valget</h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-lg text-gray">
           Stavanger-laget har hendene fulle i opptakten til høstens kommunevalg. Her kan du følge
           oss på veien!
         </p>

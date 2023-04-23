@@ -33,7 +33,7 @@ export default function SortMenu({ sort, setSort }: SortMenuProps) {
                 key={'asc'}
                 className={({ active }) =>
                   `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? 'bg-blue-100 text-primary' : 'text-gray-900'
+                    active ? 'bg-blue-100 text-primary' : 'text-dark_gray'
                   }`
                 }
                 value={'asc'}
@@ -55,7 +55,7 @@ export default function SortMenu({ sort, setSort }: SortMenuProps) {
                 key={'desc'}
                 className={({ active }) =>
                   `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? 'bg-blue-100 text-primary' : 'text-gray-900'
+                    active ? 'bg-blue-100 text-primary' : 'text-dark_gray'
                   }`
                 }
                 value={'desc'}
