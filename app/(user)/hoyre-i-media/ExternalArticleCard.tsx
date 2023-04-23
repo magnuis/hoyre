@@ -38,13 +38,6 @@ export default function ExternalArticleCard({ article }: blogPostCardProps) {
           <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{article.description}</p>
         </div>
         <div className="relative mt-8 flex items-center gap-x-4">
-          {/* <div className="text-sm leading-6">
-            <Link href={article.externalLink}>
-              <button className="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                Gå til artikkelen
-              </button>
-            </Link>
-          </div> */}
           <Button text={'GÅ TIL ARTIKKELEN'} href={article.externalLink} />
         </div>
       </article>
