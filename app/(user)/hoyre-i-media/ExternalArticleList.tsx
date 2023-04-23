@@ -56,6 +56,7 @@ export default function ExternalArticlesList() {
     title,
     categories[] -> {
         _id,
+        title,
     },
     publisher,
     description,
@@ -91,10 +92,6 @@ export default function ExternalArticlesList() {
   const onRemoveAll = () => {
     setSelectedSubjects([])
     setSort('desc')
-  }
-
-  const findSubjectById = (ref: string) => {
-    return subjects.find((subject) => subject._id === ref)?.title
   }
 
   const findSubjectByTitle = (title: string): string => {
