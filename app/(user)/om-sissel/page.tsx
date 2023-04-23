@@ -4,6 +4,7 @@ import { groq } from 'next-sanity'
 import Image from 'next/image'
 import { client } from 'sanity-conf/sanity.client'
 import { urlFor } from 'sanity-conf/urlFor'
+import { poppins } from 'styles/fonts'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
 
@@ -62,11 +63,15 @@ export default async function AboutSissel() {
           background: 'linear-gradient(to bottom, rgba(4, 20, 52, 0), rgba(4, 20, 52, 1))',
         }}
       >
-        <p className="relative top-[60vh] text-white text-4xl ">Bli kjent med Sissel</p>
+        <p
+          className={`relative top-[50vh] md:top-[60vh] text-white text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
+        >
+          Bli kjent med Sissel
+        </p>
       </div>
       <div className="absolute w-[100vw] mx-auto mt-[100vh] bg-white translate-y-[-80px]">
-        <div className="my-48 text-center">
-          <p className="font-bold text-xl sm:text-xl">
+        <div className="sm:my-60 my-28 mx-auto max-w-lg text-center">
+          <p className={`text-lg font-semibold ${poppins.className}`}>
             Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og
             Fredrik.
           </p>

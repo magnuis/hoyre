@@ -2,6 +2,7 @@ import SummerPostCard, { summerPostCardProps } from 'components/sommerMedSissel/
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
+import { poppins } from 'styles/fonts'
 
 const builder = imageUrlBuilder(client)
 
@@ -21,19 +22,21 @@ title, slug, image, description, date, _id
 
   // TODO fix responsive rendering of images
   return (
-    <div className=" bg-white py-16 lg:py-32">
+    <div className="mt-24 md:mt-48">
       <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
           <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Sommer med Sissel
-            </h2>
-            <p className="mt-6 text-xl leading-8 text-gray-600">
+            <span className="text-center">
+              <h1 className={`md:text-5xl text-3xl font-bold ${poppins.className}`}>
+                Sommer med Sissel
+              </h1>
+            </span>
+            <p className="mt-6 text-xl leading-8 text-gray">
               Sissel har bodd i Stavanger i over 30 år, og har en stor lidenskap for å vise frem
               byen. Bli med på en spennende sommertur i Stavanger og omegn, og opplev byen fra en
               helt ny vinkel.
             </p>
-            <p className="mt-6 text-base leading-7 text-gray-600">
+            <p className="mt-6 text-base leading-7 text-gray">
               Visste du at Stavanger har 52 hverdagsturer spredd utover hver eneste bydel? Eller at
               Breiavatnet og Stokkavatnet ikke er de eneste stedene å mate ender? Les videre for å
               finne ut mer!

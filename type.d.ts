@@ -14,12 +14,18 @@ interface Category extends base {
 }
 
 interface ExternalArticle extends base {
+  _id: string
   title: string
   categories: Category[]
   publisher: string
   description: string
   externalLink: string
   date: string
+  categories: [
+    {
+      title: string
+    }
+  ]
 }
 
 interface CustomImage extends Base {

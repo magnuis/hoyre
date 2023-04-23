@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlFor } from 'sanity-conf/urlFor'
+import { poppins } from 'styles/fonts'
 
 export const RichTextComponents = {
   types: {
@@ -28,16 +29,18 @@ export const RichTextComponents = {
   },
   block: {
     h1: ({ children }: any) => {
-      return <h1 className="text-5xl py-5 font-bold">{children}</h1>
+      return <h1 className={`${poppins.className} text-5xl py-5 font-bold`}>{children}</h1>
     },
     h2: ({ children }: any) => {
-      return <h2 className="md:text-4xl text-3xl py-6 font-bold">{children}</h2>
+      return (
+        <h2 className={`${poppins.className} md:text-4xl text-3xl py-6 font-bold`}>{children}</h2>
+      )
     },
     h3: ({ children }: any) => {
-      return <h3 className="text-3xl py-5 font-bold">{children}</h3>
+      return <h3 className={`${poppins.className} text-3xl py-5 font-bold`}>{children}</h3>
     },
     h4: ({ children }: any) => {
-      return <h4 className="text-2xl py-5 font-bold">{children}</h4>
+      return <h4 className={`${poppins.className} text-2xl py-5 font-bold`}>{children}</h4>
     },
     blockquote: ({ children }: any) => {
       return (
@@ -58,7 +61,7 @@ export const RichTextComponents = {
         <Link
           href={value.href}
           rel={rel}
-          className="underline text-primary hover:text-blue-900 decoration-primary hover:decoration-blue-900"
+          className="underline text-primary hover:text-dark decoration-primary hover:decoration-dark"
         >
           {children}
         </Link>
