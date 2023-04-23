@@ -5,6 +5,7 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { RichTextComponents } from 'components/shared/RichTextComponents'
 import BackArrow from 'components/shared/BackArrow'
+import { poppins } from 'styles/fonts'
 
 const builder = imageUrlBuilder(client)
 
@@ -49,7 +50,9 @@ export default async function SummerWSisselPost({ params: { slug } }: SummerWSis
         <BackArrow slug="/sommer-med-sissel" />
       </div>
       <div className=" max-w-3xl mx-auto flex flex-col gap-y-8 p-6">
-        <p className="mx-auto text-4xl sm:text-5xl font-bold ">{summerPost.title}</p>
+        <p className={`mx-auto text-3xl md:text-5xl font-bold ${poppins.className}`}>
+          {summerPost.title}
+        </p>
         <time className="flex items-center text-base text-zinc-400 ">
           <span className="h-4 w-0.5 rounded-full bg-zinc-200 " />
           <span className="ml-3">{summerPost.date}</span>
