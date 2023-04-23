@@ -134,11 +134,14 @@ export default function ExternalArticlesList() {
           <p className="text-gray-500">Prøv å endre filterne dine</p>
         </div>
       )}
-      {articles.map((article: ExternalArticle) => (
-        <div key={article._id}>
-          <ExternalArticleCard article={article} />
-        </div>
-      ))}
+      {articles.map(
+        (article: ExternalArticle) =>
+          article.externalLink && (
+            <div key={article._id}>
+              <ExternalArticleCard article={article} />
+            </div>
+          )
+      )}
     </div>
   )
 }

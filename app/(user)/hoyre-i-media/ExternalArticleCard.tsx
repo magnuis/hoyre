@@ -2,6 +2,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import Button from 'components/shared/Button'
 import Link from 'next/link'
 import { client } from 'sanity-conf/sanity.client'
+import { poppins } from 'styles/fonts'
 import { ExternalArticle } from 'type'
 
 export interface blogPostCardProps {
@@ -34,7 +35,9 @@ export default function ExternalArticleCard({ article }: blogPostCardProps) {
           )}
         </div>
         <div className="group relative">
-          <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 ">{article.title}</h3>
+          <h3 className={`mt-3 text-lg font-semibold leading-6 text-gray-900 ${poppins.className}`}>
+            {article.title}
+          </h3>
           <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{article.description}</p>
         </div>
         <div className="relative mt-8 flex items-center gap-x-4">

@@ -8,7 +8,7 @@ interface ButtonProps {
 export default function Button({ text, href }: ButtonProps) {
   return (
     <Link
-      href={href}
+      href={href ? href : '/'}
       className="rounded bg-primary text-center p-2 w-fit text-white"
       rel="noreferrer opener"
       target={'_blank'}
