@@ -9,7 +9,7 @@ export default function Button({ text, href }: ButtonProps) {
   return (
     <Link
       href={href}
-      className="rounded bg-primary text-center p-2 w-fit"
+      className="rounded bg-primary text-center p-2 w-fit text-white"
       rel="noreferrer opener"
       target={'_blank'}
     >
