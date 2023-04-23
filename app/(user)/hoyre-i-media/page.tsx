@@ -4,7 +4,7 @@ import ExternalArticlesList from './ExternalArticleList'
 export default async function ExternalArticles() {
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col max-w-lg mx-auto mt-24 md:mt-48 mb-12 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
+      <div className="flex flex-col max-w-xl mx-auto mt-24 md:mt-48 mb-12 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
         <h1 className={`md:text-5xl text-3xl font-bold ${poppins.className}`}>Høyre i media</h1>
         <p className="text-lg text-gray-600">
           Her har vi samlet et par artikler der Stavanger Høyre og Sissel er omtalt, slik at du kan

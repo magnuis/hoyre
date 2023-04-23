@@ -106,9 +106,13 @@ export default function BlogPostsList() {
           onAddSubject={onAddSubject}
         />
         <div className="w-fit h-16 items-center">
+          {/* <button
+            onClick={() => onRemoveAll()}
+            className="mt-1 relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:text-sm"
+          > */}
           <button
             onClick={() => onRemoveAll()}
-            className="px-3 py-2 block w-fulltext-base border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md focus-visible:border-primary "
+            className="mt-1 px-3 py-2 border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md focus-visible:border-primary "
           >
             Nullstill filtre
           </button>
@@ -126,6 +130,7 @@ export default function BlogPostsList() {
           <p className="text-gray-500">Prøv å endre filterne dine</p>
         </div>
       )}
+      <hr className="sm:hidden block mb-16" />
       {blogPosts.map((post: BlogPost) => (
         <div className="group" key={post._id}>
           <hr className="sm:block hidden mb-16" />
