@@ -1,9 +1,8 @@
 import imageUrlBuilder from '@sanity/image-url'
 import Carousel from 'components/shared/Carousel'
 import { groq } from 'next-sanity'
-import Image from 'next/image'
-import Link from 'next/link'
 import { client } from 'sanity-conf/sanity.client'
+import TasteOfStavangerCard from './TasteOfStavangerCard'
 
 const builder = imageUrlBuilder(client)
 
@@ -33,22 +32,32 @@ export default async function Home() {
     }
   })
 
+  const query = groq`
+    *[_type == "blogPost"][0..4] {
+      _id,
+      title, 
+      slug, 
+      image, 
+      description,
+      date, 
+      categories[]->{title}, 
+      body
+    } | order(_updatedAt desc)
+    `
+  const posts = await client.fetch(query)
+
   return (
     <main>
-      <div className="flex flex-col gap-y-8">
-        {/* <div style={{ height: '500px' }} className="relative max-w-7xl"> */}
-        {/* <Image
-            priority
-            className="absolute object-center object-cover top-0 h-auto w-auto opacity-100 mx-auto"
-            src={images[0].url}
-            alt={'Landing page image'}
-            fill
-          /> */}
-        <Carousel content={CarouselProps} />
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col gap-y-10 sm:mx-10">
+          <Carousel content={CarouselProps} />
+          <div className="flex flex-col justify-center object-center items-center max-w-4xl mx-auto px-4 sm:px-0">
+            <TasteOfStavangerCard posts={posts} />
+          </div>
+        </div>
         {/* </div> */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
-          {navCards.map((navCard: any) => (
-            // <Link key={navCard._id} href={`/${navCard.slug.current}`}>
+        <div className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
+          {/* {navCards.map((navCard: any) => (
             <Link key={navCard._id} href={`https://hoyre.no/stavanger/hard-olav-bastiansen/}`}>
               <div className="flex flex-col group cursor-pointer">
                 <div className="relative w-full h-80 group-hover:scale-105 transition-transform duration-200 ease-out">
@@ -68,12 +77,9 @@ export default async function Home() {
                     {navCard.shortDesc}
                   </p>
                 </div>
-                {/* <p className="flex items-center mt-5 font-bold group-hover:underline text-lg 2xl:text-xl">
-                  Les mer <ArrowUpRightIcon className="ml-2 h-4 w-4 " />
-                </p> */}
               </div>
             </Link>
-          ))}
+          ))} */}
           {/* <ImageGallery images={images} /> */}
         </div>
       </div>

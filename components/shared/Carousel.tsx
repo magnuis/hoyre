@@ -35,17 +35,17 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
   }, [cont])
 
   return (
-    <div className="">
+    <div className="relative w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh]">
       {content.map((item, index) => (
         <div
           key={index + 1}
           id={`slider-${index + 1}`}
-          className={`w-full absolute  duration-1000 ease-in-out transition-opacity ${
+          className={`w-full absolute duration-1000 ease-in-out transition-opacity ${
             activeSlide === index ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div
-            className="mx-auto max-w-7xl bg-cover bg-center w-screen sm:w-[94%] aspect-[1] sm:aspect-[10/6] max-h-[77vh] text-white flex items-end pb-10 justify-center"
+            className="mx-auto max-w-7xl bg-cover bg-center w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh] text-white flex items-end pb-10 justify-center"
             style={{
               backgroundImage: `url(${item.content.image})`,
             }}
