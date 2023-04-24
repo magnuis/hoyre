@@ -25,7 +25,7 @@ export default function NavCard({
   console.log(bg)
   return (
     <div
-      className={`rounded-lg bg-${bg} flex flex-col ${
+      className={`rounded-lg ${bg} flex flex-col ${
         imgFirst ? 'md:flex-row' : 'md:flex-row-reverse'
       }`}
     >
@@ -37,9 +37,7 @@ export default function NavCard({
         height={500}
         width={500}
       />
-      <div
-        className={`flex flex-col gap-y-3 p-6 text-${textColor} justify-center tracking-wide mx-3`}
-      >
+      <div className={`flex flex-col gap-y-3 p-6 ${textColor} justify-center tracking-wide mx-3`}>
         <p className={`${poppins.className} text-3xl font-medium`}>{title}</p>
         <p className={''}>{description}</p>
         {/* <Link

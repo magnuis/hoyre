@@ -80,8 +80,8 @@ export default async function Home() {
               image={sisselNav.url}
               button={'MØT SISSEL'}
               href={'/om-sissel'}
-              bg={'secondary_dark'}
-              textColor={'light'}
+              bg={'bg-secondary_dark'}
+              textColor={'text-light'}
               imgFirst={false}
             />
             <NavCard
@@ -92,8 +92,8 @@ export default async function Home() {
               image={lagetNav.url}
               button={'FØLG LAGET'}
               href={'/laget'}
-              bg={'lighter_gray'}
-              textColor={'secondary'}
+              bg={'bg-lighter_gray'}
+              textColor={'text-secondary_dark'}
               imgFirst={true}
             />
             <TasteOfStavangerCard posts={posts} />
