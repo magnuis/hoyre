@@ -11,8 +11,10 @@ interface tasteOfStavangerCardProps {
 export default function TasteOfStavangerCard({ posts }: tasteOfStavangerCardProps) {
   return (
     <div className="">
-      <span className="text-center">
-        <h2 className={`${poppins.className} font-medium text-2xl`}>Smaken av Stavanger</h2>
+      <span className="flex items-end gap-x-4">
+        <h2 className={`${poppins.className} font-medium tracking-wide text-3xl`}>
+          Smaken av Stavanger
+        </h2>
         {/* <p className="text-primary underline">Se mer</p> */}
       </span>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-4 lg:gap-6 mt-6">

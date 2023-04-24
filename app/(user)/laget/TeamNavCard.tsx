@@ -9,7 +9,7 @@ interface TeamNavCardProps {
 }
 export default function TeamNavCard({ imgUrls }: TeamNavCardProps) {
   return (
-    <div className="rounded-xl bg-dark flex flex-col md:flex-row">
+    <div className="rounded-xl bg-secondary_dark flex flex-col md:flex-row">
       <RandomImageGrid images={imgUrls} />
 
       <div className="flex flex-col gap-y-3 p-6 text-white text-center justify-center">

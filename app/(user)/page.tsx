@@ -1,5 +1,6 @@
 import imageUrlBuilder from '@sanity/image-url'
 import Carousel from 'components/shared/Carousel'
+import NavCard from 'components/shared/NavCard'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import TasteOfStavangerCard from './TasteOfStavangerCard'
@@ -32,7 +33,7 @@ export default async function Home() {
     }
   })
 
-  const query = groq`
+  const postsQuery = groq`
     *[_type == "blogPost"][0..4] {
       _id,
       title, 
@@ -44,14 +45,36 @@ export default async function Home() {
       body
     } | order(_updatedAt desc)
     `
-  const posts = await client.fetch(query)
+
+  const lagetNavQuery = groq`
+  *[
+    _type == 'sanity.imageAsset' &&
+      references(*[_type == 'media.tag' && name.current == 'hele_laget']._id)
+  ][0] {
+    url,
+  }`
+
+  const posts = await client.fetch(postsQuery)
+  const lagetNav = await client.fetch(lagetNavQuery)
 
   return (
     <main>
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col gap-y-10 sm:mx-10">
+        <div className="flex flex-col gap-y-16 px-4 md:px-8 xl:px-0">
           <Carousel content={CarouselProps} />
-          <div className="flex flex-col justify-center object-center items-center max-w-4xl mx-auto px-4 sm:px-0">
+          <div className="flex flex-col gap-y-16 justify-center object-center items-center max-w-4xl mx-auto ">
+            <NavCard
+              title={'Møt Stavanger-laget'}
+              description={
+                'I opptakten til høstens kommunevalg har Stvaangerlaget hendene fulle. Her kan du bli kjent med dem og deres arbeid.'
+              }
+              image={lagetNav.url}
+              button={'FØLG LAGET'}
+              href={'/laget'}
+              bg={'lighter_gray'}
+              textColor={'secondary'}
+              imgFirst={false}
+            />
             <TasteOfStavangerCard posts={posts} />
           </div>
         </div>

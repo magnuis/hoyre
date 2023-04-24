@@ -9,7 +9,7 @@ interface followSisselNavCardProps {
 }
 export default function FollowSisselNavCard({ image }: followSisselNavCardProps) {
   return (
-    <div className="rounded-xl bg-dark">
+    <div className="rounded-xl bg-secondary_dark">
       <img
         src={
           image

@@ -61,7 +61,7 @@ export const RichTextComponents = {
         <Link
           href={value.href}
           rel={rel}
-          className="underline text-primary hover:text-dark decoration-primary hover:decoration-dark"
+          className="underline text-primary hover:text-secondary_dark decoration-primary hover:decoration-secondary_dark"
         >
           {children}
         </Link>

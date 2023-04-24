@@ -29,7 +29,7 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
         setCont(cont + 1)
         setActiveSlide(activeSlide + 1)
       }
-    }, 3000)
+    }, 7000)
 
     return () => clearInterval(xy)
   }, [cont])
