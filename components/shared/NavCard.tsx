@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { poppins } from 'styles/fonts'
 import Button from './Button'
 
@@ -23,6 +22,7 @@ export default function NavCard({
   textColor,
   imgFirst,
 }: navCardProps) {
+  console.log(bg)
   return (
     <div
       className={`rounded-lg bg-${bg} flex flex-col ${

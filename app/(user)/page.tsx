@@ -54,8 +54,17 @@ export default async function Home() {
     url,
   }`
 
+  const sisselNavQuery = groq`
+  *[
+    _type == 'sanity.imageAsset' &&
+      references(*[_type == 'media.tag' && name.current == 'om_sissel_øverst']._id)
+  ][0] {
+    url,
+  }`
+
   const posts = await client.fetch(postsQuery)
   const lagetNav = await client.fetch(lagetNavQuery)
+  const sisselNav = await client.fetch(sisselNavQuery)
 
   return (
     <main>
@@ -64,16 +73,28 @@ export default async function Home() {
           <Carousel content={CarouselProps} />
           <div className="flex flex-col gap-y-16 justify-center object-center items-center max-w-4xl mx-auto ">
             <NavCard
+              title={'Bli kjent med Sissel'}
+              description={
+                'Sissel er Høyres ordførerkandidat i Stavanger. Hun har et brennende ønske om at nettop DU skal få det bedre, der du bor. Trykk under for å finne ut mer om henne.'
+              }
+              image={sisselNav.url}
+              button={'MØT SISSEL'}
+              href={'/om-sissel'}
+              bg={'secondary_dark'}
+              textColor={'light'}
+              imgFirst={false}
+            />
+            <NavCard
               title={'Møt Stavanger-laget'}
               description={
-                'I opptakten til høstens kommunevalg har Stvaangerlaget hendene fulle. Her kan du bli kjent med dem og deres arbeid.'
+                'I opptakten til høstens kommunevalg har Stavangerlaget hendene fulle. Her kan du bli kjent med dem og deres arbeid.'
               }
               image={lagetNav.url}
               button={'FØLG LAGET'}
               href={'/laget'}
               bg={'lighter_gray'}
               textColor={'secondary'}
-              imgFirst={false}
+              imgFirst={true}
             />
             <TasteOfStavangerCard posts={posts} />
           </div>
