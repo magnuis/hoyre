@@ -3,6 +3,8 @@ import Carousel from 'components/shared/Carousel'
 import NavCard from 'components/shared/NavCard'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
+import { ExternalArticle } from 'type'
+import FeaturedArticles from './featuredArticles'
 import TasteOfStavangerCard from './TasteOfStavangerCard'
 
 const builder = imageUrlBuilder(client)
@@ -62,9 +64,25 @@ export default async function Home() {
     url,
   }`
 
+  const articlesQuery = groq`
+  *[_type == 'externalArticle' && featured == true] {
+    _id,
+    title,
+    categories[] -> {
+        _id,
+        title,
+    },
+    publisher,
+    description,
+    date,
+    externalLink
+  }`
+
   const posts = await client.fetch(postsQuery)
   const lagetNav = await client.fetch(lagetNavQuery)
   const sisselNav = await client.fetch(sisselNavQuery)
+  const articles: ExternalArticle[] = await client.fetch(articlesQuery)
+  console.log(typeof articles)
 
   return (
     <main>
@@ -97,35 +115,13 @@ export default async function Home() {
               imgFirst={true}
             />
             <TasteOfStavangerCard posts={posts} />
+            <FeaturedArticles articles={articles} />
           </div>
         </div>
         {/* </div> */}
-        <div className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}>
-          {/* {navCards.map((navCard: any) => (
-            <Link key={navCard._id} href={`https://hoyre.no/stavanger/hard-olav-bastiansen/}`}>
-              <div className="flex flex-col group cursor-pointer">
-                <div className="relative w-full h-80 group-hover:scale-105 transition-transform duration-200 ease-out">
-                  <Image
-                    src={builder.image(navCard.image).url()}
-                    alt={navCard.title}
-                    className="object-cover object-left lg:object-center"
-                    fill
-                  />
-                  <div className="absolute bottom-0 w-full text-white">
-                    <p className="text-xl m-2 font-bold">{navCard.dayNo}</p>
-                  </div>
-                </div>
-                <div className="mt-5 flex-1">
-                  <p className="underline text-xl 2xl:text-2xl font-bold">{navCard.title}</p>
-                  <p className="line-clamp-2 text-light_gray text-lg 2xl:text-xl">
-                    {navCard.shortDesc}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))} */}
-          {/* <ImageGallery images={images} /> */}
-        </div>
+        <div
+          className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}
+        ></div>
       </div>
     </main>
   )

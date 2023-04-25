@@ -36,5 +36,10 @@ export default defineType({
       title: 'Dato',
       type: 'date',
     }),
+    defineField({
+      name: 'featured',
+      title: 'Skal vises på forsiden',
+      type: 'boolean',
+    }),
   ],
 })

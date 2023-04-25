@@ -22,7 +22,6 @@ export default function NavCard({
   textColor,
   imgFirst,
 }: navCardProps) {
-  console.log(bg)
   return (
     <div
       className={`rounded-lg ${bg} flex flex-col ${
