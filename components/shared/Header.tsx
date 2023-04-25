@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import MobileMenu from './MobileMenu'
+import { useScrollToTop } from 'hooks/useScrollToTop'
 
 const navigation = [
   { name: 'Hjem', href: '/' },
@@ -16,6 +17,8 @@ const navigation = [
 export default function Header() {
   const [showHeader, setShowHeader] = useState(true)
   const [prevScrollPos, setPrevScrollPos] = useState(0)
+
+  useScrollToTop()
 
   useEffect(() => {
     const handleScroll = () => {
