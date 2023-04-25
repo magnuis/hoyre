@@ -19,22 +19,27 @@ export default async function AboutSissel() {
     `
 
   const imageGalleryQuery = groq`
-  *[_type == "sanity.imageAsset" && references('f5T2DmY3fkMt6I6qKWVOvS')] {
+  *[_type == "sanity.imageAsset" && 
+    references(*[_type == 'media.tag' && name.current == 'sissel']._id)
+    ] {
     _id
   } 
   `
   const followSisselImgQuery = groq`
-  *[_type=="sanity.imageAsset" && references('5445c04f-0df7-40bf-9d74-bae1dd5b4ff1')][0] {
+  *[_type=="sanity.imageAsset" && 
+  references(*[_type == 'media.tag' && name.current == 'følg_sissel']._id)][0] {
     _id,
   }
   `
   const mainImageQuery = groq`
-  *[_type=="sanity.imageAsset" && references('cATHX4G6FGXXOYvuY0iqI')][0] {
+  *[_type=="sanity.imageAsset" && 
+    references(*[_type == 'media.tag' && name.current == 'om_sissel_øverst']._id)][0] {
     _id,
   }
   `
   const secondaryImageQuery = groq`
-  *[_type=="sanity.imageAsset" && references('cATHX4G6FGXXOYvuY0iqI')][0] {
+  *[_type=="sanity.imageAsset" && 
+    references(*[_type == 'media.tag' && name.current == 'om_sissel_nest_øverst']._id)][0] {
     _id,
   }
   `

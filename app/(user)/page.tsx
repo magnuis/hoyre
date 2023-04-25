@@ -1,4 +1,3 @@
-import imageUrlBuilder from '@sanity/image-url'
 import Carousel from 'components/shared/Carousel'
 import NavCard from 'components/shared/NavCard'
 import { groq } from 'next-sanity'
@@ -7,21 +6,15 @@ import { ExternalArticle } from 'type'
 import FeaturedArticles from './featuredArticles'
 import TasteOfStavangerCard from './TasteOfStavangerCard'
 
-const builder = imageUrlBuilder(client)
-
 export default async function Home() {
-  const imgQuery = groq`*[_type == "sanity.imageAsset" && references("YnlZeKMD8CzfnPkn94VV1v")] {
+  const imgQuery = groq`*[_type == "sanity.imageAsset" && 
+    references(*[_type == 'media.tag' && name.current == 'landing_image']._id)
+  ] {
   url,
   alt,
   _id
 }`
 
-  const navCardsQuery = groq`
-*[_type=='navigation'] {
-...,
-} `
-
-  const navCards = await client.fetch(navCardsQuery)
   const images = await client.fetch(imgQuery)
 
   const CarouselProps = images.map((image: any) => {
@@ -102,7 +95,7 @@ export default async function Home() {
               description={
                 'Sissel er Høyres ordførerkandidat i Stavanger. Hun har et brennende ønske om at nettop DU skal få det bedre, der du bor. Trykk under for å finne ut mer om henne.'
               }
-              image={sisselNav._id}
+              image={sisselNav ? sisselNav._id : ''}
               button={'MØT SISSEL'}
               href={'/om-sissel'}
               bg={'bg-secondary_dark'}
@@ -114,7 +107,7 @@ export default async function Home() {
               description={
                 'I opptakten til høstens kommunevalg har Stavangerlaget hendene fulle. Her kan du bli kjent med dem og deres arbeid.'
               }
-              image={lagetNav._id}
+              image={lagetNav ? lagetNav._id : ''}
               button={'FØLG LAGET'}
               href={'/laget'}
               bg={'bg-lighter_gray'}
@@ -127,7 +120,7 @@ export default async function Home() {
               description={
                 'Bli med Sissel å utforske alt det spennende en sommer i Stavanger har å by på - fra Flor & Fjære til Hengjanenibbå, og alt imellom!'
               }
-              image={sommerNav._id}
+              image={sommerNav ? sommerNav._id : ''}
               button={'LES MER'}
               href={'/sommer-med-sissel'}
               bg={'bg-lighter'}
