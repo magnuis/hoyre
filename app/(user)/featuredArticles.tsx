@@ -8,6 +8,7 @@ interface featuredArticlesProps {
   articles: ExternalArticle[]
 }
 export default function FeaturedArticles({ articles }: featuredArticlesProps) {
+  if (articles.length === 0) return <div></div>
   return (
     <div className="rounded-lg w-fit ">
       <Link href={'/hoyre-i-media'} className="flex gap-x-2 items-center mb-6">

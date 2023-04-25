@@ -97,7 +97,11 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
                   <div className="w-[100vw] md:w-[80vw] aspect-[8/5]">
                     <img
                       {...handlers}
-                      src={urlFor(images[selectedImage]._id).format('webp').url()}
+                      src={
+                        images[selectedImage]
+                          ? urlFor(images[selectedImage]._id).format('webp').url()
+                          : ''
+                      }
                       alt={''}
                       className="w-full h-full object-cover "
                     />

@@ -23,6 +23,10 @@ export default function NavCard({
   textColor,
   imgFirst,
 }: navCardProps) {
+  if (image === '') {
+    return <div></div>
+  }
+
   return (
     <div
       className={`rounded-lg ${bg} flex flex-col ${
