@@ -45,9 +45,9 @@ export default function BlogPostsList() {
       subjectFilter = '&& ('
       selectedSubjects.forEach((subject, index) => {
         if (index === 0) {
-          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)) `
+          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)`
         } else {
-          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id))`
+          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id)`
         }
       })
       subjectFilter += ')'

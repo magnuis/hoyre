@@ -42,9 +42,9 @@ export default function ExternalArticlesList() {
       subjectFilter = '&& ('
       selectedSubjects.forEach((subject, index) => {
         if (index === 0) {
-          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)) `
+          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)`
         } else {
-          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id))`
+          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id)`
         }
       })
       subjectFilter += ')'
@@ -64,7 +64,7 @@ export default function ExternalArticlesList() {
     externalLink
     } | order(date ${sort})
     `
-
+    console.log('LOGGER ', articlesQuery)
     const fetchArticles = async () => {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
