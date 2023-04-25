@@ -63,6 +63,13 @@ export default async function Home() {
   ][0] {
     url,
   }`
+  const sommerNavQuery = groq`
+  *[
+    _type == 'sanity.imageAsset' &&
+      references(*[_type == 'media.tag' && name.current == 'sommer_landing']._id)
+  ][0] {
+    url,
+  }`
 
   const articlesQuery = groq`
   *[_type == 'externalArticle' && featured == true] {
@@ -81,8 +88,8 @@ export default async function Home() {
   const posts = await client.fetch(postsQuery)
   const lagetNav = await client.fetch(lagetNavQuery)
   const sisselNav = await client.fetch(sisselNavQuery)
+  const sommerNav = await client.fetch(sommerNavQuery)
   const articles: ExternalArticle[] = await client.fetch(articlesQuery)
-  console.log(typeof articles)
 
   return (
     <main>
@@ -115,6 +122,18 @@ export default async function Home() {
               imgFirst={true}
             />
             <TasteOfStavangerCard posts={posts} />
+            <NavCard
+              title={'Sommer med Sissel'}
+              description={
+                'Bli med Sissel å utforske alt det spennende en sommer i Stavanger har å by på - fra Flor & Fjære til Hengjanenibbå, og alt imellom!'
+              }
+              image={sommerNav.url}
+              button={'LES MER'}
+              href={'/sommer-med-sissel'}
+              bg={'bg-lighter'}
+              textColor={'text-secondary'}
+              imgFirst={true}
+            />
             <FeaturedArticles articles={articles} />
           </div>
         </div>

@@ -10,7 +10,7 @@ export default function FeaturedArticles({ articles }: featuredArticlesProps) {
     <div className="rounded-lg w-fit ">
       <h1 className={`${poppins.className} text-3xl font-medium mb-6`}>Nyheter om Høyre</h1>
       <div className=" bg-lighter_gray flex flex-col px-4 pt-2 pb-4 rounded-lg">
-        <span className="max-h-[40vh] overflow-y-scroll rounded mb-2">
+        <span className="max-h-[40vh] overflow-y-scroll rounded mb-4">
           {/* map articles to div */}
           {articles.map(
             (article: ExternalArticle, index: number) =>
