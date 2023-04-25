@@ -11,7 +11,8 @@ export default async function SummerWSissel() {
 *[_type=='summerPost'] {
 title, slug, image, description, date, _id 
 } `
-  const imgQuery = groq`*[_type == "sanity.imageAsset" && references("SmPITB92PCr5r7guzAyPD2")][0..4] {
+  const imgQuery = groq`*[_type == "sanity.imageAsset" && 
+    references(*[_type == 'media.tag' && name.current == 'sommer_med_sissel']._id)][0..4] {
   url,
   alt,
   _id

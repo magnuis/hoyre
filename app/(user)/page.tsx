@@ -7,7 +7,9 @@ import FeaturedArticles from './featuredArticles'
 import TasteOfStavangerCard from './TasteOfStavangerCard'
 
 export default async function Home() {
-  const imgQuery = groq`*[_type == "sanity.imageAsset" && references("YnlZeKMD8CzfnPkn94VV1v")] {
+  const imgQuery = groq`*[_type == "sanity.imageAsset" && 
+    references(*[_type == 'media.tag' && name.current == 'landing_image']._id)
+  ] {
   url,
   alt,
   _id

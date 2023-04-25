@@ -24,7 +24,7 @@ export default function ExternalArticlesList() {
   useEffect(() => {
     const subjectsQuery = groq`
     *[_type == "subject"] {
-    title, _id
+    title
     }`
 
     const fetchSubjects = async () => {
@@ -42,9 +42,9 @@ export default function ExternalArticlesList() {
       subjectFilter = '&& ('
       selectedSubjects.forEach((subject, index) => {
         if (index === 0) {
-          subjectFilter += `references("${findSubjectByTitle(subject)}") `
+          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)) `
         } else {
-          subjectFilter += ` || references("${findSubjectByTitle(subject)}")`
+          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id))`
         }
       })
       subjectFilter += ')'
@@ -94,10 +94,6 @@ export default function ExternalArticlesList() {
   const onRemoveAll = () => {
     setSelectedSubjects([])
     setSort('desc')
-  }
-
-  const findSubjectByTitle = (title: string): string => {
-    return subjects.find((subject) => subject.title === title)?._id ?? ''
   }
 
   const alteredSubjects = subjects.map((subject) => {

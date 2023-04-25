@@ -27,7 +27,7 @@ export default function BlogPostsList() {
   useEffect(() => {
     const subjectsQuery = groq`
     *[_type == "subject"] {
-    title, _id
+    title,
     }`
 
     const fetchSubjects = async () => {
@@ -45,9 +45,9 @@ export default function BlogPostsList() {
       subjectFilter = '&& ('
       selectedSubjects.forEach((subject, index) => {
         if (index === 0) {
-          subjectFilter += `references("${findSubjectByTitle(subject)}") `
+          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)) `
         } else {
-          subjectFilter += ` || references("${findSubjectByTitle(subject)}")`
+          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id))`
         }
       })
       subjectFilter += ')'
@@ -86,10 +86,6 @@ export default function BlogPostsList() {
   const onRemoveAll = () => {
     setSelectedSubjects([])
     setSort('desc')
-  }
-
-  const findSubjectByTitle = (title: string): string => {
-    return subjects.find((subject) => subject.title === title)?._id ?? ''
   }
 
   const subjectTitles = subjects.map((subject) => {
