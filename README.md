@@ -4,11 +4,12 @@ This is a web application made for Høyre Stavanger. The site is intended to be 
 
 ## 1 .env
 
-The following env-variables (with values) should be added to a .env.local-file which you'll have to create:
+The following env-variables (with values) should be added to a .env.development-file which you'll have to create:
 
 ```
-NEXT_PUBLIC_SANITY_PROJECT_ID
-NEXT_PUBLIC_SANITY_DATASET
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+NEXT_PUBLIC_SANITY_API_VERSION=
 ```
 
 ## 2 Running locally
