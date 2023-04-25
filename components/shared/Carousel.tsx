@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { urlFor } from 'sanity-conf/urlFor'
 import { poppins } from 'styles/fonts'
 import Button from './Button'
 
@@ -47,7 +48,10 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
           <div
             className="mx-auto max-w-7xl bg-cover bg-center w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh] text-white flex items-end pb-10 justify-center"
             style={{
-              backgroundImage: `url(${item.content.image})`,
+              backgroundImage: `url(${urlFor(item.content.image)
+                .width(1280)
+                .format('webp')
+                .url()})`,
             }}
           >
             <div className="flex flex-col gap-y-2 items-center">

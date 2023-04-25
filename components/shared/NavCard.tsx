@@ -1,3 +1,4 @@
+import { urlFor } from 'sanity-conf/urlFor'
 import { poppins } from 'styles/fonts'
 import Button from './Button'
 
@@ -25,30 +26,23 @@ export default function NavCard({
   return (
     <div
       className={`rounded-lg ${bg} flex flex-col ${
-        imgFirst ? 'md:flex-row' : 'md:flex-row-reverse'
+        imgFirst ? 'sm:flex-row' : 'sm:flex-row-reverse'
       }`}
     >
       <img
-        src={image}
-        className={`w-full aspect-[8/5] md:aspect-[8/7] object-cover object-center md:w-1/2 rounded-t-lg ${
-          imgFirst ? 'md:rounded-l-lg md:rounded-r-none' : 'md:rounded-r-lg md:rounded-l-none'
+        src={urlFor(image).width(600).height(400).format('webp').url()}
+        className={`w-full aspect-[8/5] sm:aspect-[8/7] object-cover object-center sm:w-1/2 rounded-t-lg ${
+          imgFirst ? 'sm:rounded-l-lg sm:rounded-r-none' : 'sm:rounded-r-lg sm:rounded-l-none'
         }`}
-        height={500}
-        width={500}
+        height={400}
+        width={600}
+        alt=""
       />
       <div
         className={`flex flex-col gap-y-3 p-3 pb-6 sm:p-6 ${textColor} justify-center tracking-wide mx-3`}
       >
         <p className={`${poppins.className} text-2xl md:text-3xl font-medium`}>{title}</p>
         <p className={''}>{description}</p>
-        {/* <Link
-          href={href}
-          className="rounded bg-primary hover:bg-primary_dark text-center p-2"
-          rel="noreferrer opener"
-          target={'_blank'}
-        >
-          <p className="text-xs font-bold text-white">{description} </p>{' '}
-        </Link> */}
         <Button href={href} text={button} />
       </div>
     </div>

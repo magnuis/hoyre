@@ -53,7 +53,7 @@ export default async function Home() {
     _type == 'sanity.imageAsset' &&
       references(*[_type == 'media.tag' && name.current == 'hele_laget']._id)
   ][0] {
-    url,
+    _id,
   }`
 
   const sisselNavQuery = groq`
@@ -61,14 +61,14 @@ export default async function Home() {
     _type == 'sanity.imageAsset' &&
       references(*[_type == 'media.tag' && name.current == 'om_sissel_øverst']._id)
   ][0] {
-    url,
+    _id,
   }`
   const sommerNavQuery = groq`
   *[
     _type == 'sanity.imageAsset' &&
       references(*[_type == 'media.tag' && name.current == 'sommer_landing']._id)
   ][0] {
-    url,
+    _id,
   }`
 
   const articlesQuery = groq`
@@ -102,7 +102,7 @@ export default async function Home() {
               description={
                 'Sissel er Høyres ordførerkandidat i Stavanger. Hun har et brennende ønske om at nettop DU skal få det bedre, der du bor. Trykk under for å finne ut mer om henne.'
               }
-              image={sisselNav.url}
+              image={sisselNav._id}
               button={'MØT SISSEL'}
               href={'/om-sissel'}
               bg={'bg-secondary_dark'}
@@ -114,7 +114,7 @@ export default async function Home() {
               description={
                 'I opptakten til høstens kommunevalg har Stavangerlaget hendene fulle. Her kan du bli kjent med dem og deres arbeid.'
               }
-              image={lagetNav.url}
+              image={lagetNav._id}
               button={'FØLG LAGET'}
               href={'/laget'}
               bg={'bg-lighter_gray'}
@@ -127,7 +127,7 @@ export default async function Home() {
               description={
                 'Bli med Sissel å utforske alt det spennende en sommer i Stavanger har å by på - fra Flor & Fjære til Hengjanenibbå, og alt imellom!'
               }
-              image={sommerNav.url}
+              image={sommerNav._id}
               button={'LES MER'}
               href={'/sommer-med-sissel'}
               bg={'bg-lighter'}

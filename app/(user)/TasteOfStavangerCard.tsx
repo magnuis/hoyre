@@ -19,14 +19,14 @@ export default function TasteOfStavangerCard({ posts }: tasteOfStavangerCardProp
           </h2>
           <ArrowTopRightOnSquareIcon className="h-6" />
         </Link>
-        {/* <p className="text-primary underline">Se mer</p> */}
       </span>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-4 lg:gap-6 mt-6">
         {posts.map((post) => (
           <Link href={`/smaken-av-stavanger/${post.slug.current}`} className="group" key={post._id}>
             <img
               className="w-full aspect-square object-cover object-center rounded-lg opacity-90 group-hover:opacity-100 group-hover:shadow-lg transition-all duration-300 ease-in-out"
-              src={builder.image(post.image).url()}
+              src={builder.image(post.image).width(600).height(400).format('webp').url()}
+              alt=""
             />
             <p
               className={`${poppins.className} font-medium group-hover:text-primary sm:text-lg line-clamp-2`}
