@@ -6,14 +6,15 @@ interface ButtonProps {
 }
 
 export default function Button({ text, href }: ButtonProps) {
+  const internalLink = href.charAt(0) === '/'
   return (
     <Link
       href={href}
       className="rounded bg-primary text-center p-2 w-fit text-white"
-      rel="noreferrer opener"
-      target={'_blank'}
+      rel={`${internalLink ? '' : 'noreferrer opener'}`}
+      target={`${internalLink ? '' : '_blank'}`}
     >
-      <p className="text-xs tracking-wide">{text} </p>{' '}
+      <p className="text-xs tracking-widest">{text} </p>
     </Link>
   )
 }

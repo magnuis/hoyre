@@ -1,37 +1,9 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-
-// const content = [
-//   {
-//     title: 'Title 1',
-//     description: 'Description 1',
-//     button: 'Button 1',
-//     image:
-//       'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
-//   },
-//   {
-//     title: 'Title 2',
-//     description: 'Description 2',
-//     button: 'Button 2',
-//     image:
-//       'https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80',
-//   },
-//   {
-//     title: 'Title 3',
-//     description: 'Description 4',
-//     button: 'Button 4',
-//     image:
-//       'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
-//   },
-//   {
-//     title: 'Title 4',
-//     description: 'Description 4',
-//     button: 'Button 4',
-//     image:
-//       'https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80',
-//   },
-// ]
+import { urlFor } from 'sanity-conf/urlFor'
+import { poppins } from 'styles/fonts'
+import Button from './Button'
 
 interface CarouselProps {
   content: c[]
@@ -58,58 +30,44 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
         setCont(cont + 1)
         setActiveSlide(activeSlide + 1)
       }
-    }, 12000)
+    }, 7000)
 
     return () => clearInterval(xy)
   }, [cont])
 
   return (
-    <div className="sliderAx relative " style={{ height: '700px' }}>
+    <div className="relative w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh]">
       {content.map((item, index) => (
         <div
           key={index + 1}
           id={`slider-${index + 1}`}
-          className={`absolute container top-0 left-0 w-full h-full duration-1000 ease-in-out transition-opacity ${
+          className={`w-full absolute duration-1000 ease-in-out transition-opacity ${
             activeSlide === index ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ height: '700px', width: '100%', maxWidth: '100%' }}
         >
-          {/* <div
-            className="bg-cover bg-center h-auto text-white py-24 px-10  "
+          <div
+            className="mx-auto max-w-7xl bg-cover bg-center w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh] text-white flex items-end pb-10 justify-center"
             style={{
-              backgroundImage: `url(${item.image})`,
+              backgroundImage: `url(${urlFor(item.content.image)
+                .width(1280)
+                .format('webp')
+                .url()})`,
             }}
           >
-            <div className="md:w-1/2">
-              <p className="font-bold text-sm uppercase">Services {`${item.title}`}</p>
-              <p className="text-3xl font-bold">Hello world</p>
-              <p className="text-2xl mb-10 leading-none">Carousel with TailwindCSS and React</p>
-              <button
-                onClick={() => {
-                  console.log('Click 1')
-                }}
-                className={`bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs  hover:bg-gray-200 hover:text-gray-800 ${
-                  true ? 'bg-purple-800' : ''
-                }`}
+            <div className="flex flex-col gap-y-2 items-center">
+              <span
+                className={`text-3xl md:text-5xl font-bold flex flex-col sm:flex-row text-center justify-center ${poppins.className}`}
               >
-                Button {`${index + 1}`}
-              </button>
+                <span className="flex translate-x-2 sm:translate-x-0">
+                  <p className="mr-3 underline italic">SAMMEN </p>
+                  <p className="mr-3">FOR</p>
+                </span>
+                <p>STAVANGER</p>
+              </span>
+              <p className={`text-lg font-bold`}>Vil du være med å gjøre en forskjell?</p>
+              <Button href="https://hoyre.no/bli-med/bli-medlem/" text="BLI MEDLEM"></Button>
             </div>
-          </div>  <Image
-            priority
-            className="absolute object-center object-cover top-0 h-auto w-auto opacity-100 mx-auto"
-            src={item.content.image}
-            alt={'Landing page image'}
-            fill
-          /> */}
-
-          <Image
-            src={item.content.image}
-            alt=""
-            width={1920}
-            height={1080}
-            className="sm:aspect-[9/7] md:aspect-[9/5] aspect-[1] w-[100vw] bg-gray-50 object-cover"
-          />
+          </div>
         </div>
       ))}
     </div>

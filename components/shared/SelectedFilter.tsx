@@ -9,7 +9,7 @@ export default function SelectedFilter({ subject, onRemove }: SelectedFilterProp
       <button
         onClick={() => onRemove(subject)}
         type="button"
-        className="ml-0.5 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full text-primary hover:bg-light hover:text-dark focus:bg-primary focus:text-white focus:outline-none"
+        className="ml-0.5 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full text-primary hover:bg-light hover:text-secondary_dark focus:bg-primary focus:text-white focus:outline-none"
       >
         <span className="sr-only">Remove large option</span>
         <svg className="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
