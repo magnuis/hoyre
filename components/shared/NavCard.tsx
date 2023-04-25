@@ -36,8 +36,10 @@ export default function NavCard({
         height={500}
         width={500}
       />
-      <div className={`flex flex-col gap-y-3 p-6 ${textColor} justify-center tracking-wide mx-3`}>
-        <p className={`${poppins.className} text-3xl font-medium`}>{title}</p>
+      <div
+        className={`flex flex-col gap-y-3 p-3 pb-6 sm:p-6 ${textColor} justify-center tracking-wide mx-3`}
+      >
+        <p className={`${poppins.className} text-2xl md:text-3xl font-medium`}>{title}</p>
         <p className={''}>{description}</p>
         {/* <Link
           href={href}

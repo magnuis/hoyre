@@ -1,6 +1,8 @@
 import { ExternalArticle } from 'type'
 import { poppins } from 'styles/fonts'
 import Button from 'components/shared/Button'
+import Link from 'next/link'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid'
 
 interface featuredArticlesProps {
   articles: ExternalArticle[]
@@ -8,7 +10,12 @@ interface featuredArticlesProps {
 export default function FeaturedArticles({ articles }: featuredArticlesProps) {
   return (
     <div className="rounded-lg w-fit ">
-      <h1 className={`${poppins.className} text-3xl font-medium mb-6`}>Nyheter om Høyre</h1>
+      <Link href={'/hoyre-i-media'} className="flex gap-x-2 items-center mb-6">
+        <h1 className={`${poppins.className} text-2xl sm:text-3xl font-medium`}>
+          Nyheter om Høyre
+        </h1>
+        <ArrowTopRightOnSquareIcon className="h-6" />
+      </Link>
       <div className=" bg-lighter_gray flex flex-col px-4 pt-2 pb-4 rounded-lg">
         <span className="max-h-[40vh] overflow-y-scroll rounded mb-4">
           {/* map articles to div */}
