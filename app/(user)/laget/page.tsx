@@ -35,7 +35,7 @@ export default async function LagetPage() {
           oss på veien!
         </p>
       </div>
-      <hr className="mb-2 max-w-xl mx-auto border-light_gray" />
+      <hr className="mb-2 mx-3 sm:mx-o max-w-xl md:mx-auto border-light_gray" />
       <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-6 mb-48">
         <div>
           {storyContent.map((story, index) => (
