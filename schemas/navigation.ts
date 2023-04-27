@@ -9,21 +9,25 @@ export default defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
       title: 'Ikke endre denne',
       type: 'slug',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
       title: 'Bilde',
       type: 'image',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Beskrivelse',
       type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })
