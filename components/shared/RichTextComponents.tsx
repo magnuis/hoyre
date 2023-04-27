@@ -29,28 +29,36 @@ export const RichTextComponents = {
   },
   block: {
     h1: ({ children }: any) => {
-      return <h1 className={`${poppins.className} text-5xl py-5 font-bold`}>{children}</h1>
+      return (
+        <h1 className={`${poppins.className} text-3xl md:text-5xl mt-5 font-semibold`}>
+          {children}
+        </h1>
+      )
     },
     h2: ({ children }: any) => {
       return (
-        <h2 className={`${poppins.className} md:text-4xl text-3xl py-6 font-bold`}>{children}</h2>
+        <h2 className={`${poppins.className} text-2xl md:text-4xl mt-5 font-semibold`}>
+          {children}
+        </h2>
       )
     },
     h3: ({ children }: any) => {
-      return <h3 className={`${poppins.className} text-3xl py-5 font-bold`}>{children}</h3>
+      return (
+        <h3 className={`${poppins.className} text-xl md:text-3xl mt-5 font-semibold`}>
+          {children}
+        </h3>
+      )
     },
     h4: ({ children }: any) => {
-      return <h4 className={`${poppins.className} text-2xl py-5 font-bold`}>{children}</h4>
+      return <h4 className={`${poppins.className} md:text-2xl mt-3 font-semibold`}>{children}</h4>
     },
     blockquote: ({ children }: any) => {
       return (
-        <blockquote className="border-l-primary border-l-4 pl-5 py-5 my-5 italic ">
-          {children}
-        </blockquote>
+        <blockquote className="border-l-primary border-l-4 pl-5 italic ">{children}</blockquote>
       )
     },
     normal: ({ children }: any) => {
-      return <p className="mb-5">{children}</p>
+      return <p className="">{children}</p>
     },
   },
   marks: {
