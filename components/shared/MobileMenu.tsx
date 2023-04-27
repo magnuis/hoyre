@@ -36,7 +36,6 @@ export default function MobileMenu() {
       >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto sm:bg-white bg-lighter_gray px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-dark_gray/10">
-          {/* <Dialog.Panel className="fixed inset-y-0 right-0 z-30 overflow-y-auto px-4 py-4 max-w-sm sm:ring-1 sm:ring-dark_gray/10 bg-lighter_gray"> */}
           <div className="flex items-center justify-between">
             <div className="flex lg:flex-1">
               <Link className="-m-1.5 p-1.5" href={'/'}>
