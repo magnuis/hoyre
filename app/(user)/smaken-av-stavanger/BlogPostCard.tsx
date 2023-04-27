@@ -38,7 +38,7 @@ export default function BlogPostCard({ post }: blogPostCardProps) {
           )}
         </div>
         <div className="relative max-w-xl ">
-          <h3 className="mt-3 text-lg font-semibold leading-6 text-dark_gray group-hover:text-gray">
+          <h3 className="mt-3 text-lg font-semibold leading-6 ">
             <span className="absolute inset-0" />
             {post.title}
           </h3>

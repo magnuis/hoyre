@@ -36,7 +36,7 @@ export default function SummerPostCard(post: summerPostCardProps) {
               </time>
             </div>
             <div className="relative max-w-xl group-hover:text-gray">
-              <h3 className={`mt-3 text-lg font-semibold leading-6 ${poppins.className}`}>
+              <h3 className="mt-3 text-lg font-semibold leading-6 group-hover:text-gray">
                 <span className="absolute inset-0" />
                 {post.title}
               </h3>

@@ -28,11 +28,11 @@ title, slug, image, description, date, _id
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
           <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
             <span className="text-center">
-              <h1 className={`md:text-5xl text-3xl font-bold ${poppins.className}`}>
+              <h1 className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className}`}>
                 Sommer med Sissel
               </h1>
             </span>
-            <p className="mt-6 text-xl leading-8 text-gray">
+            <p className="mt-10 text-xl leading-8 text-gray">
               Sissel har bodd i Stavanger i over 30 år, og har en stor lidenskap for å vise frem
               byen. Bli med på en spennende sommertur i Stavanger og omegn, og opplev byen fra en
               helt ny vinkel.
