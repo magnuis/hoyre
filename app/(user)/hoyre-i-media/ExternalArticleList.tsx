@@ -111,8 +111,13 @@ export default function ExternalArticlesList() {
         />
         <div className="w-fit h-16 items-center">
           <button
+            disabled={selectedSubjects.length === 0}
             onClick={() => onRemoveAll()}
-            className="mt-1 px-3 py-2 border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md focus-visible:border-primary "
+            className={`mt-1 px-3 py-2 shadow hover:outline-none  sm:text-sm rounded-md ${
+              selectedSubjects.length === 0
+                ? 'text-light_gray '
+                : 'hover:shadow-primary focus-visible:border-primary hover:text-primary'
+            }`}
           >
             Nullstill filtre
           </button>
