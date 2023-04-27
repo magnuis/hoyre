@@ -83,7 +83,7 @@ export default function Footer() {
                   </dt>
                   <dd className="text-white">
                     <span className="flex flex-col gap-y-1">
-                      <p>Skagenkaien 1 (3. etasje)</p>
+                      <p>Skagenkaien 1 </p>
                       <p>4006 Stavanger</p>
                     </span>
                   </dd>
