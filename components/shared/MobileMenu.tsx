@@ -4,6 +4,7 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useState } from 'react'
+import Button from './Button'
 
 const navigation = [
   { name: 'Hjem', href: '/' },
@@ -20,7 +21,7 @@ export default function MobileMenu() {
     <div className="flex lg:hidden text-primary">
       <button
         type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+        className=" inline-flex items-center justify-center rounded-md p-2.5"
         onClick={() => setMobileMenuOpen(true)}
       >
         <span className="sr-only">Open main menu</span>
@@ -34,7 +35,8 @@ export default function MobileMenu() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-white px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-dark_gray/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto sm:bg-white bg-lighter_gray px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-dark_gray/10">
+          {/* <Dialog.Panel className="fixed inset-y-0 right-0 z-30 overflow-y-auto px-4 py-4 max-w-sm sm:ring-1 sm:ring-dark_gray/10 bg-lighter_gray"> */}
           <div className="flex items-center justify-between">
             <div className="flex lg:flex-1">
               <Link className="-m-1.5 p-1.5" href={'/'}>
@@ -61,20 +63,21 @@ export default function MobileMenu() {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-light_gray/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 font-semibold leading-7 hover:bg-gray-50 text-primary text-lg"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
+            <div className="flex flex-col w-full space-y-1 py-6">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="rounded  px-3 w-full py-2 tracking-wide font-light leading-7 hover:bg-gray-50 text-primary text-xl bg-white mx-auto"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
+            <span className="flex">
+              <Button text={'BLI MED PÅ LAGET'} href={'https://hoyre.no/bli-med/'} />
+            </span>
           </div>
         </Dialog.Panel>
       </Dialog>
