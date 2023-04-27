@@ -1,4 +1,7 @@
+import Link from 'next/link'
 import React from 'react'
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import { AiOutlineGift, AiOutlineHeart } from 'react-icons/ai'
 
 export default function Footer() {
   return (
@@ -90,85 +93,67 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col bg-secondary sm:items-center">
-            <h2 className="footer-widget--title text-blue_200 min-h-12 mb-4">
-              FÅR DU IKKE NOK AV OSS?
-            </h2>
-            <div className="flex ">
-              <ul className="flex">
-                <li className="mx-2 ">
-                  <a href="https://facebook.com/hoyre">
-                    <div className="bg-primary rounded-full p-2">
-                      <span className="screen-reader-text"></span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 8 16"
-                        width="30px"
-                        height="30px"
-                        className="custom-logo filter brightness-0 invert"
-                      >
-                        <path
-                          d="M2 5.33333H0V8H2V16H5.33333V8H7.76133L8 5.33333H5.33333V4.222C5.33333 3.58533 5.46133 3.33333 6.07667 3.33333H8V0H5.46133C3.064 0 2 1.05533 2 3.07667V5.33333Z"
-                          fill="white"
-                        ></path>
-                      </svg>
-                    </div>
-                  </a>
-                </li>
-                <li className="mx-2 ">
-                  <a href="https://instagram.com/hoyre">
-                    <div className="bg-primary rounded-full p-2">
-                      <span className="screen-reader-text"></span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 50 50"
-                        width="30px"
-                        height="30px"
-                        className="custom-logo filter brightness-0 invert"
-                      >
-                        <path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z" />
-                      </svg>
-                    </div>
-                  </a>
-                </li>
-                <li className="mx-2 ">
-                  <a href="https://linkedin.com/company/hoyre">
-                    <div className="bg-primary rounded-full p-2">
-                      <span className="screen-reader-text"></span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                        width="30px"
-                        height="30px"
-                        className="custom-logo filter brightness-0 invert"
-                      >
-                        <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
-                      </svg>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <h2 className="text-blue_200 min-h-12 mb-4">FÅR DU IKKE NOK AV OSS?</h2>
+
+            <ul className="flex gap-x-2">
+              <li>
+                <Link
+                  href="https://facebook.com/hoyre"
+                  className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
+                >
+                  <FaFacebookF className="h-4 sm:h-5 text-white" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://instagram.com/hoyre"
+                  className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
+                >
+                  <FaInstagram className="sm:h-8 h-7 sm:w-5 w-4 text-white" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://linkedin.com/company/hoyre"
+                  className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
+                >
+                  <FaLinkedin className="sm:w-5 w-4 sm:h-5 h-4 text-white" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://twitter.com/stavangerhoyre?lang=en"
+                  className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
+                >
+                  <FaTwitter className="sm:w-5 w-4 sm:h-5 h-4 text-white" />
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div className="flex flex-col bg-secondary sm:items-center">
-            <div className="mx-3">
-              <h2 className="footer-widget--title text-blue_200 min-h-12 mb-4">BLI MED</h2>
-              <p className="text-white">
-                <a href="https://hoyre.no/bli-med/bli-medlem/" className="text-white">
-                  Bli medlem
-                </a>
-              </p>
-              <p className="text-white">
-                <a href="yohttps://hoyre.no/bli-med/gi-gave/" className="text-white">
-                  Gi gave
-                </a>
-              </p>
+            <div className="text-white">
+              <h2 className="text-blue_200 min-h-12 mb-4">BLI MED</h2>
+              <ul className="flex flex-col gap-y-2">
+                <span className="flex items-center gap-x-2">
+                  <AiOutlineHeart className="h-4 w-4 font-thin" />
+                  <Link href="https://hoyre.no/bli-med/bli-medlem/">
+                    <p>Bli medlem</p>
+                  </Link>
+                </span>
+                <span className="flex items-center gap-x-2">
+                  <AiOutlineGift className="h-4 w-4 font-thin" />
+                  <Link href="https://hoyre.no/bli-med/gi-gave/">
+                    <p>Bli medlem</p>
+                  </Link>
+                </span>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="p-5 bg-secondary_dark flex justify-center text-white text-sm tracking-widest font-thin items-center">
+      <div className="p-5 bg-secondary_dark flex justify-center text-white text-xs sm:text-sm tracking-widest font-thin items-center flex-wrap">
         <div className="text-center mx-3">
           <a href="https://hoyre.no/partiet/kontakt-oss/">
             <p>&copy; 2023 Høyre</p>
