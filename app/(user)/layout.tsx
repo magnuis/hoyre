@@ -1,6 +1,8 @@
-import NarrowHeader from 'components/shared/NarrowHeader'
-import WideHeader from 'components/shared/WideHeader'
+import Header from 'components/shared/Header'
 import '../../styles/globals.css'
+
+import { roboto } from 'styles/fonts'
+import Footer from 'components/shared/Footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,10 +12,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <WideHeader />
-        <NarrowHeader />
-        {children}
+
+      <body className={`${roboto.className} overscroll-y-none`}>
+        <Header />
+        <div>{children}</div>
+        <Footer />
       </body>
     </html>
   )
