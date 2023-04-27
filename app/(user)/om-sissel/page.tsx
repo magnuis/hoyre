@@ -53,7 +53,7 @@ export default async function AboutSissel() {
   return (
     <div>
       <div
-        className={`fixed top-0 left-0 w-[100vw] h-screen text-center bg-cover bg-center`}
+        className={`fixed top-0 left-0 w-[100vw] h-screen z-[-1] text-center bg-cover bg-center`}
         style={{
           backgroundImage: `url(${
             mainImage
@@ -74,8 +74,8 @@ export default async function AboutSissel() {
           Bli kjent med Sissel
         </p>
       </div>
-      <div className="absolute w-[100vw] mx-auto mt-[100vh] bg-white translate-y-[-80px]">
-        <div className="sm:my-60 my-28 mx-auto max-w-lg text-center">
+      <div className="relative w-[100vw] mx-auto mt-[100vh] bg-white pt-28 sm:pt-60">
+        <div className="sm:mb-60 mb-28 mx-auto max-w-lg text-center">
           <p className={`text-lg font-semibold ${poppins.className}`}>
             Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og
             Fredrik.
@@ -95,7 +95,7 @@ export default async function AboutSissel() {
           width={1900}
         />
 
-        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 mb-48">
+        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 pb-48">
           <div className="relative mx-auto">
             {storyContent.map((story, index) => (
               <span key={index}>
