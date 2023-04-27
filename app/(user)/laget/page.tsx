@@ -27,13 +27,15 @@ export default async function LagetPage() {
   return (
     <div className="max-w-7xl mx-auto mt-24 md:mt-48">
       <div className="flex flex-col max-w-lg mx-auto mb-12 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
-        <h1 className={`md:text-5xl text-3xl font-bold ${poppins.className}`}>Veien til valget</h1>
+        <h1 className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className}`}>
+          Veien til valget
+        </h1>
         <p className="text-lg text-gray">
           Stavanger-laget har hendene fulle i opptakten til høstens kommunevalg. Her kan du følge
           oss på veien!
         </p>
       </div>
-      <hr className="mb-2 max-w-xl mx-auto" />
+      <hr className="mb-2 mx-3 sm:mx-o max-w-xl md:mx-auto border-light_gray" />
       <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-6 mb-48">
         <div>
           {storyContent.map((story, index) => (

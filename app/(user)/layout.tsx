@@ -15,11 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className={`${roboto.className} overscroll-y-none`}>
         <Header />
-
         <div>{children}</div>
-=======
-
-
         <Footer />
       </body>
     </html>

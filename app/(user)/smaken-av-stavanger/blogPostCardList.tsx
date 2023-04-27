@@ -93,7 +93,7 @@ export default function BlogPostsList() {
   })
 
   return (
-    <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 sm:pt-16">
+    <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 ">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
         <Example
@@ -103,8 +103,13 @@ export default function BlogPostsList() {
         />
         <div className="w-fit h-16 items-center">
           <button
+            disabled={selectedSubjects.length === 0}
             onClick={() => onRemoveAll()}
-            className="mt-1 px-3 py-2 border border-gray-300 hover:outline-none hover:text-red-500 hover:ring-red-500 hover:border-red-500 sm:text-sm rounded-md focus-visible:border-primary "
+            className={`mt-1 px-3 py-2 shadow hover:outline-none  sm:text-sm rounded-md ${
+              selectedSubjects.length === 0
+                ? 'text-light_gray '
+                : 'hover:shadow-primary focus-visible:border-primary hover:text-primary'
+            }`}
           >
             Nullstill filtre
           </button>
@@ -122,13 +127,15 @@ export default function BlogPostsList() {
           <p className="text-light_gray">Prøv å endre filterne dine</p>
         </div>
       )}
-      <hr className="sm:hidden block mb-16" />
-      {blogPosts.map((post: BlogPost) => (
-        <div className="group" key={post._id}>
-          <hr className="sm:block hidden mb-16" />
-          <BlogPostCard post={post} />
-        </div>
-      ))}
+      <hr className="sm:hidden block mb-16 border-light_gray border-t" />
+      <span className="flex flex-col gap-y-16">
+        {blogPosts.map((post: BlogPost) => (
+          <div className="group" key={post._id}>
+            {/* <hr className="sm:block hidden mb-16 border-t border-light_gray" /> */}
+            <BlogPostCard post={post} />
+          </div>
+        ))}
+      </span>
     </div>
   )
 }
