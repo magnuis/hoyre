@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'categories',
@@ -20,21 +21,25 @@ export default defineType({
       name: 'publisher',
       title: 'Utgiver',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Beskrivelse',
       type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'externalLink',
       title: 'Ekstern lenke',
       type: 'url',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'date',
       title: 'Dato',
       type: 'date',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'featured',

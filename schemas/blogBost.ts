@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -18,12 +19,14 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'categories',
       title: 'Emneknagger',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'subject' } }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
@@ -32,22 +35,26 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Beskrivelse',
       type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'date',
       title: 'Dato',
       type: 'date',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -23,11 +24,13 @@ export default defineType({
       name: 'content',
       title: 'Tekst',
       type: 'blockContent',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'date',
       title: 'Årstall',
       type: 'number',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })
