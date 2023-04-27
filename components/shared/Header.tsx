@@ -55,12 +55,12 @@ export default function Header() {
           </Link>
         </div>
         <MobileMenu />
-        <div className="hidden lg:flex lg:gap-x-2">
+        <div className="hidden lg:flex lg:gap-x-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-light leading-6 rounded-full hover:bg-gray-100 hover:text-dark_gray px-3"
+              className="text tracking-wide font-thin rounded-full leading-6 hover:bg-lighter_gray hover:text-dark_gray px-3"
             >
               {item.name}
             </Link>
