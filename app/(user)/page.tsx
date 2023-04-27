@@ -59,7 +59,7 @@ export default async function Home() {
   const sommerNavQuery = groq`
   *[
     _type == 'sanity.imageAsset' &&
-      references(*[_type == 'media.tag' && name.current == 'sommer_landing']._id)
+      references(*[_type == 'media.tag' && name.current == 'sommer_med_sissel']._id)
   ][0] {
     _id,
   }`
@@ -130,7 +130,7 @@ export default async function Home() {
             <FeaturedArticles articles={articles} />
           </div>
         </div>
-        {/* </div> */}
+
         <div
           className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}
         ></div>
