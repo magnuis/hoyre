@@ -10,7 +10,7 @@ export default function Button({ text, href }: ButtonProps) {
   return (
     <Link
       href={href}
-      className="rounded bg-primary text-center p-2 w-fit text-white"
+      className="rounded bg-primary text-center p-2 w-fit text-white hover:bg-primary_dark transition-colors duration-300 ease-in-out"
       rel={`${internalLink ? '' : 'noreferrer opener'}`}
       target={`${internalLink ? '' : '_blank'}`}
     >
