@@ -2,30 +2,26 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary" aria-labelledby="footer-heading">
+    <footer className="bg-secondary w-full" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
 
-      <div className="container mx-auto px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="flex flex-col bg-secondary ">
-            <div className="flex justify-center">
+      <div className="mx-auto p-8 pt-24 max-w-4xl text-sm tracking-wider font-thin">
+        <div className="grid grid-cols-1 sm:grid-cols-3 justify-between gap-6">
+          <div className="flex flex-col bg-secondary sm:items-center">
+            <div className="flex flex-col justify-start">
               <img
                 width="90"
                 height="42"
                 src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
-                className="custom-logo filter brightness-0 invert mb-4"
+                className="absolute -translate-y-16 brightness-0 invert mb-4"
                 alt="Høyre"
-              ></img>
-            </div>
-            <h2 className="footer-widget--title text-center text-blue_200 min-h-12 mb-4">
-              KONTAKT OSS
-            </h2>
-            <div className="flex justify-center">
-              <dl className="contact-details-wrapper flex flex-col justify-center ">
-                <div className="flex mb-1">
-                  <dt className="email mr-2">
+              />
+              <h2 className="text-blue_200 min-h-12 mb-4">KONTAKT OSS</h2>
+              <dl className="flex flex-col gap-y-3">
+                <div className="flex gap-x-6">
+                  <dt className="email">
                     <div className="w-6">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +42,8 @@ export default function Footer() {
                   </dd>
                 </div>
 
-                <div className="flex mb-1">
-                  <dt className="phone mr-2">
+                <div className="flex gap-x-6">
+                  <dt className="">
                     <div className="w-6">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -63,13 +59,12 @@ export default function Footer() {
                   </dt>
                   <dd className="phone">
                     <a href="tel:+4799999999" className="text-white">
-                      (+47) 99999999
+                      (+47) 99 99 99 99
                     </a>
                   </dd>
                 </div>
-
-                <div className="flex mb-1">
-                  <dt className="address mr-2">
+                <div className="flex gap-x-6 items-center">
+                  <dt className="address">
                     <div className="w-6">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -83,21 +78,26 @@ export default function Footer() {
                       </svg>
                     </div>
                   </dt>
-                  <dd className="text-white">Skagenkaien 1 (3. etasje)</dd>
+                  <dd className="text-white">
+                    <span className="flex flex-col gap-y-1">
+                      <p>Skagenkaien 1 (3. etasje)</p>
+                      <p>4006 Stavanger</p>
+                    </span>
+                  </dd>
                 </div>
               </dl>
             </div>
           </div>
 
-          <div className="flex flex-col bg-secondary ">
-            <h2 className="footer-widget--title text-center text-blue_200 min-h-12 mb-4">
-              HØYRE I SOSIALE MEDIER
+          <div className="flex flex-col bg-secondary sm:items-center">
+            <h2 className="footer-widget--title text-blue_200 min-h-12 mb-4">
+              FÅR DU IKKE NOK AV OSS?
             </h2>
-            <div className="flex justify-center">
+            <div className="flex ">
               <ul className="flex">
-                <li className="mx-2 mb-1">
+                <li className="mx-2 ">
                   <a href="https://facebook.com/hoyre">
-                    <div className="bg-blue-800 rounded-full p-2">
+                    <div className="bg-primary rounded-full p-2">
                       <span className="screen-reader-text"></span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -114,9 +114,9 @@ export default function Footer() {
                     </div>
                   </a>
                 </li>
-                <li className="mx-2 mb-1">
+                <li className="mx-2 ">
                   <a href="https://instagram.com/hoyre">
-                    <div className="bg-blue-800 rounded-full p-2">
+                    <div className="bg-primary rounded-full p-2">
                       <span className="screen-reader-text"></span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -130,9 +130,9 @@ export default function Footer() {
                     </div>
                   </a>
                 </li>
-                <li className="mx-2 mb-1">
+                <li className="mx-2 ">
                   <a href="https://linkedin.com/company/hoyre">
-                    <div className="bg-blue-800 rounded-full p-2">
+                    <div className="bg-primary rounded-full p-2">
                       <span className="screen-reader-text"></span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -150,11 +150,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col bg-secondary ">
-            <div className="text-center mx-3">
-              <h2 className="footer-widget--title text-center text-blue_200 min-h-12 mb-4">
-                BLI MED
-              </h2>
+          <div className="flex flex-col bg-secondary sm:items-center">
+            <div className="mx-3">
+              <h2 className="footer-widget--title text-blue_200 min-h-12 mb-4">BLI MED</h2>
               <p className="text-white">
                 <a href="https://hoyre.no/bli-med/bli-medlem/" className="text-white">
                   Bli medlem
@@ -170,20 +168,23 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="p-5 bg-secondary_dark flex justify-center">
+      <div className="p-5 bg-secondary_dark flex justify-center text-white text-sm tracking-widest font-thin items-center">
         <div className="text-center mx-3">
-          <a href="https://hoyre.no/partiet/kontakt-oss/" className="text-white">
-            <p className="text-white">@2023 Høyre</p>
+          <a href="https://hoyre.no/partiet/kontakt-oss/">
+            <p>&copy; 2023 Høyre</p>
           </a>
         </div>
+        <div className="h-1.5 w-1.5 bg-white rounded-full"></div>
         <div className="text-center mx-3">
-          <a href="https://hoyre.no/personvernerklaering/" className="text-white">
-            <p className="text-white">Personvernerklæring</p>
+          <a href="https://hoyre.no/personvernerklaering/">
+            <p>Personvernerklæring</p>
           </a>
         </div>
+        <div className="h-1.5 w-1.5 bg-white rounded-full"></div>
+
         <div className="text-center mx-3">
-          <a href="https://hoyre.no/vilkar-fastgivere/" className="text-white">
-            <p className="text-white">Vilkår Fastgivere</p>
+          <a href="https://hoyre.no/vilkar-fastgivere/">
+            <p>Vilkår Fastgivere</p>
           </a>
         </div>
       </div>
