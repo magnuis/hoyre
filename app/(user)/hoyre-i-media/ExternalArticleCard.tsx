@@ -14,7 +14,7 @@ const builder = imageUrlBuilder(client)
 export default function ExternalArticleCard({ article }: blogPostCardProps) {
   return (
     <>
-      <hr />
+      <hr className="border-t border-light_gray" />
       <article className="flex max-w-xl flex-col items-start justify-between sm:mb-16 mt-8">
         <div className="flex items-center gap-x-4 text-xs flex-wrap">
           <time dateTime={article.date} className="text-light_gray">
