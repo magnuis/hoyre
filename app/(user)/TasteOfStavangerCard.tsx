@@ -11,7 +11,7 @@ interface tasteOfStavangerCardProps {
 }
 export default function TasteOfStavangerCard({ posts }: tasteOfStavangerCardProps) {
   return (
-    <div className="">
+    <div>
       <span className="flex items-end gap-x-4">
         <Link href={'/smaken-av-stavanger'} className="flex items-center gap-x-2">
           <h2 className={`${poppins.className} font-medium tracking-wide text-2xl sm:text-3xl`}>
@@ -29,7 +29,7 @@ export default function TasteOfStavangerCard({ posts }: tasteOfStavangerCardProp
               alt=""
             />
             <p
-              className={`${poppins.className} font-medium group-hover:text-primary sm:text-lg line-clamp-2`}
+              className={`${poppins.className} mt-1 sm:mt-3 font-medium group-hover:text-primary sm:text-lg line-clamp-2`}
             >
               {post.title}
             </p>
