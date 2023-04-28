@@ -8,7 +8,7 @@ import TasteOfStavangerCard from './TasteOfStavangerCard'
 
 export default async function Home() {
   const imgQuery = groq`*[_type == "sanity.imageAsset" && 
-    references(*[_type == 'media.tag' && name.current == 'landing_image']._id)
+    references(*[_type == 'media.tag' && name.current == 'forsidebilde']._id)
   ] {
   url,
   alt,
