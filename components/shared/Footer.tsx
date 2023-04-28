@@ -144,7 +144,7 @@ export default function Footer() {
                 <span className="flex items-center gap-x-2">
                   <AiOutlineGift className="h-4 w-4 font-thin" />
                   <Link href="https://hoyre.no/bli-med/gi-gave/">
-                    <p>Bli medlem</p>
+                    <p>Gi gave</p>
                   </Link>
                 </span>
               </ul>
