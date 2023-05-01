@@ -1,4 +1,4 @@
-import { Roboto, Inter, Poppins } from '@next/font/google'
+import { Roboto, Poppins } from 'next/font/google'
 
 const roboto = Roboto({
   weight: ['300', '400'],

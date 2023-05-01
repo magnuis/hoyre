@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react'
-import { RichTextComponents } from 'components/shared/RichTextComponents'
+import { RichTextComponents } from 'components/shared/richtext/RichTextComponents'
 import Image from 'next/image'
 
 export interface StoryContentProps {

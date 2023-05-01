@@ -5,6 +5,11 @@ import { client } from 'sanity-conf/sanity.client'
 import { poppins } from 'styles/fonts'
 
 export interface summerPostCardProps {
+  post: summerPostCard
+  first: boolean
+}
+
+export interface summerPostCard {
   title: string
   slug: Slug
   image: Image
@@ -12,13 +17,15 @@ export interface summerPostCardProps {
   date: string
   _id: string
 }
-
 const builder = imageUrlBuilder(client)
 
-export default function SummerPostCard(post: summerPostCardProps) {
+export default function SummerPostCard({ post, first }: summerPostCardProps) {
+  if (first) {
+    console.log(first)
+  }
   return (
     <div className="group">
-      <hr className="sm:block hidden mb-16" />
+      <hr className={`sm:block hidden mb-16 ${first ? 'max-w-3xl' : ''} mx-auto`} />
       <Link href={`sommer-med-sissel/${post.slug.current}`} className="flex items-center">
         <article className="relative isolate flex flex-col gap-6 lg:gap-8 lg:flex-row w-full">
           <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-[5/4] lg:w-64 lg:shrink-0">

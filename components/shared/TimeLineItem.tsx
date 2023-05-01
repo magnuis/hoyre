@@ -1,7 +1,8 @@
 import imageUrlBuilder from '@sanity/image-url'
 import { PortableText } from '@portabletext/react'
-import { RichTextComponents } from 'components/shared/RichTextComponents'
+import { RichTextComponents } from 'components/shared/richtext/RichTextComponents'
 import { client } from 'sanity-conf/sanity.client'
+import { timeLineRichText } from './richtext/TimeLineRichText'
 
 const builder = imageUrlBuilder(client)
 
@@ -20,7 +21,7 @@ export default function TimelineItem(props: timelineItemProps): JSX.Element {
         <p className="text-light_gray text-xs font-bold">
           {props.title ? props.title.toUpperCase() : 'ingen tittel'.toUpperCase()}
         </p>
-        <PortableText value={props.content} components={RichTextComponents} />
+        <PortableText value={props.content} components={timeLineRichText} />
         {props.img && (
           <img src={builder.image(props.img).url()} alt={''} height={500} width={500} />
         )}

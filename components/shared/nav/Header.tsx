@@ -36,7 +36,7 @@ export default function Header() {
     <header
       className={`z-50 w-full fixed bg-white transition-all duration-500 ease-in-out ${
         showHeader ? 'top-0 ' : 'top-[-100%]'
-      } ease-in-out text-primary`}
+      } ease-in-out text-primary sm:max-h-20 max-h-18`}
     >
       <nav
         className="flex mx-auto max-w-7xl items-center justify-between p-4 md:px-8 md:py-5 xl:px-0 "
@@ -48,7 +48,7 @@ export default function Header() {
               <img
                 src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
                 alt="logo"
-                className="h-9"
+                className="h-7 sm:h-9"
               />
               Stavanger Høyre
             </span>
