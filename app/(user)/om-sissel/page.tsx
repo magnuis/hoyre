@@ -63,13 +63,13 @@ export default async function AboutSissel() {
         }}
       />
       <div
-        className="absolute bottom-0 left-0 w-full h-[80vh] text-center"
+        className="absolute bottom-0 left-0 w-full h-[100vh] text-center"
         style={{
           background: 'linear-gradient(to bottom, rgba(4, 20, 52, 0), rgba(4, 20, 52, 1))',
         }}
       >
         <p
-          className={`relative top-[50vh] md:top-[60vh] text-white text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
+          className={`relative top-[70vh] md:top-[80vh] text-white text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
         >
           Bli kjent med Sissel
         </p>
