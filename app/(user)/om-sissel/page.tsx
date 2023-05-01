@@ -7,6 +7,7 @@ import { urlFor } from 'sanity-conf/urlFor'
 import { poppins } from 'styles/fonts'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
+import MainImageComponent from './MainImage'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -47,33 +48,12 @@ export default async function AboutSissel() {
   const storyContent: SisselTimeline[] = await client.fetch(storyQuery)
   const galleryImages = await client.fetch(imageGalleryQuery)
   const followsisselImg = await client.fetch(followSisselImgQuery)
-  const mainImage = await client.fetch(mainImageQuery)
+  const mainImage: { _id: string } = await client.fetch(mainImageQuery)
   const secondaryImage = await client.fetch(secondaryImageQuery)
 
   return (
     <div>
-      <div
-        className={`fixed top-0 left-0 w-[100vw] h-screen z-[-1] text-center bg-cover bg-center`}
-        style={{
-          backgroundImage: `url(${
-            mainImage
-              ? urlFor(mainImage._id).format('webp').url()
-              : 'https://hoyre.no/content/uploads/sites/212/2021/11/2W9A5316-kopi-1024x660.jpg'
-          })`,
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-full h-[100vh] text-center"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(4, 20, 52, 0), rgba(4, 20, 52, 1))',
-        }}
-      >
-        <p
-          className={`relative top-[70vh] md:top-[80vh] text-white text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
-        >
-          Bli kjent med Sissel
-        </p>
-      </div>
+      <MainImageComponent _id={mainImage?._id} />
       <div className="relative w-[100vw] mx-auto mt-[100vh] bg-white pt-28 sm:pt-60">
         <div className="sm:mb-60 mb-28 mx-auto max-w-lg text-center">
           <p className={`text-lg font-semibold ${poppins.className}`}>
