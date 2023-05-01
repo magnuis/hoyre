@@ -1,8 +1,8 @@
-import Header from 'components/shared/Header'
+import Header from 'components/shared/nav/Header'
 import '../../styles/globals.css'
 
 import { roboto } from 'styles/fonts'
-import Footer from 'components/shared/Footer'
+import Footer from 'components/shared/nav/Footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

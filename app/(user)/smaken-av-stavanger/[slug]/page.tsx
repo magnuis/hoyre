@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import { BlogPost } from 'type'
 import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
-import { RichTextComponents } from 'components/shared/RichTextComponents'
+import { RichTextComponents } from 'components/shared/richtext/RichTextComponents'
 import { poppins } from 'styles/fonts'
 
 const builder = imageUrlBuilder(client)

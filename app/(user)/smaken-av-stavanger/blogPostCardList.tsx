@@ -1,8 +1,8 @@
 'use client'
 
-import SelectedFilter from 'components/shared/SelectedFilter'
-import SortMenu from 'components/shared/SortMenu'
-import Example from 'components/shared/SubjectsMenu'
+import SelectedFilter from 'components/shared/filter/SelectedFilter'
+import SortMenu from 'components/shared/filter/SortMenu'
+import Example from 'components/shared/filter/SubjectsMenu'
 import { groq } from 'next-sanity'
 import { useEffect, useState } from 'react'
 import { client } from 'sanity-conf/sanity.client'

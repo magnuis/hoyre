@@ -1,7 +1,4 @@
-import SummerPostCard, {
-  summerPostCard,
-  summerPostCardProps,
-} from 'components/sommerMedSissel/SummerPostCard'
+import SummerPostCard, { summerPostCard } from 'components/sommerMedSissel/SummerPostCard'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
