@@ -63,41 +63,42 @@ export default async function SummerWSisselPost({ params: { slug } }: SummerWSis
     </div>
   )
 }
-export const metadata = {
-  openGraph: {
-    title: 'Sammen for Stavanger',
-    description: 'Sommer med Sissel | Høyre',
-    url: 'https://hoyre.vercel.app/sommer-med-sissel',
-    images: [
-      {
-        url: generateThumbnailUrl(
-          'https://cdn.sanity.io/images/p6r82l3b/production/2cde80717649635a1bce9e08c7b1f90d29fc2993-782x1067.jpg'
-        ),
-        width: 800,
-        height: 600,
-      },
-    ],
-  },
-  robots: {
-    index: true,
-  },
-}
 
 export async function generateMetadata({ params: { slug } }: SummerWSisselProps) {
   const query = groq`
     *[_type=='summerPost' && slug.current == $slug][0] {
         ...,
     }`
-  const blogPost: SummerPost = await client.fetch(query, { slug })
-
+  const summerPost: SummerPost = await client.fetch(query, { slug })
+  if (!summerPost) {
+    return {
+      openGraph: {
+        title: ` Sammen for Stavanger | Sommer med Sissel`,
+        description: '',
+        url: `https://hoyre.vercel.app/sommer-med-sissel/${slug}}`,
+        images: [
+          {
+            url: generateThumbnailUrl(
+              'https://cdn.sanity.io/images/p6r82l3b/production/dfd8859b7abf5b3d3e18f01727f8f5dcc1cc6018-2048x1536.jpg'
+            ),
+            width: 800,
+            height: 600,
+          },
+        ],
+      },
+      robots: {
+        index: true,
+      },
+    }
+  }
   return {
     openGraph: {
-      title: `Stavanger Sammen for Stavanger | Høyre | ${blogPost.title}`,
-      description: blogPost.description,
-      url: `https://hoyre.vercel.app/sommer-med-sissel/${blogPost.slug.current}}`,
+      title: `Sammen for Stavanger | ${summerPost.title}`,
+      description: summerPost.description,
+      url: `https://hoyre.vercel.app/sommer-med-sissel/${summerPost.slug.current}}`,
       images: [
         {
-          url: generateThumbnailUrl(builder.image(blogPost.image).url()),
+          url: generateThumbnailUrl(builder.image(summerPost.image).url()),
           width: 800,
           height: 600,
         },

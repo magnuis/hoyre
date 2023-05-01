@@ -67,7 +67,27 @@ export async function generateMetadata({ params: { slug } }: blogPostProps) {
         ...,
     }`
   const blogPost: BlogPost = await client.fetch(query, { slug })
-
+  if (!blogPost) {
+    return {
+      openGraph: {
+        title: ` Sammen for Stavanger | Sommer med Sissel`,
+        description: '',
+        url: `https://hoyre.vercel.app/sommer-med-sissel/${slug}}`,
+        images: [
+          {
+            url: generateThumbnailUrl(
+              'https://cdn.sanity.io/images/p6r82l3b/production/dfd8859b7abf5b3d3e18f01727f8f5dcc1cc6018-2048x1536.jpg'
+            ),
+            width: 800,
+            height: 600,
+          },
+        ],
+      },
+      robots: {
+        index: true,
+      },
+    }
+  }
   return {
     openGraph: {
       title: `Sammen for Stavanger | ${blogPost.title}`,
