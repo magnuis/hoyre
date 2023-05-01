@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { roboto } from 'styles/fonts'
 import Footer from 'components/shared/nav/Footer'
 import generateThumbnailUrl from 'components/appearance/Thumbnail'
+import Head from 'next/head'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,14 +14,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head>
+      <Head>
         <meta property="og:title" content="Sammen for Stavanger" />
         <meta
           property="og:description"
           content="Høyre Stavanger - sammen for å gjøre Stavanger til en bedre by."
         />
         <meta property="og:image" content={generateThumbnailUrl()} />
-      </head>
+      </Head>
 
       <body className={`${roboto.className}`}>
         <Header />
