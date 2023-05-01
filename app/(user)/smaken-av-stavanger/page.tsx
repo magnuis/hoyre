@@ -1,5 +1,6 @@
 import { poppins } from 'styles/fonts'
 import BlogPostsList from './blogPostCardList'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function Blogg() {
   // TODO fix responsive rendering of images
@@ -22,4 +23,25 @@ export default async function Blogg() {
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger | Smaken av Stavanger',
+    description:
+      'Har du lurt på hva Sissel tenker om Stavangerskolen? Eller hvordan hun tenker å takle eldrebølgen? Her kan du lese om det og mye mer.',
+    url: 'https://hoyre.vercel.app/smaken-av-stavanger',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/ff3491aa8c5da0ead21fe6b62b65d8f461cf64e0-2048x1536.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

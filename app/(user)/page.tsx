@@ -5,6 +5,7 @@ import { client } from 'sanity-conf/sanity.client'
 import { ExternalArticle } from 'type'
 import FeaturedArticles from './featuredArticles'
 import TasteOfStavangerCard from './TasteOfStavangerCard'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function Home() {
   const imgQuery = groq`*[_type == "sanity.imageAsset" && 
@@ -137,4 +138,24 @@ export default async function Home() {
       </div>
     </main>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger',
+    description: 'Bli bedre kjent med de som sammen skal gjøre Stavanger til et bedre sted.',
+    url: 'https://hoyre.vercel.app/',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/644499521d32d5dccedc0547d908ce8cf095ba88-2048x1536.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

@@ -4,6 +4,7 @@ import { TeamTimeline } from 'type'
 import TimelineItem from 'components/shared/TimeLineItem'
 import TeamNavCard from './TeamNavCard'
 import { poppins } from 'styles/fonts'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function LagetPage() {
   const storyQuery = groq`
@@ -54,4 +55,25 @@ export default async function LagetPage() {
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger | Veien til valget',
+    description:
+      'Stavanger-laget har hendene fulle i opptakten til høstens kommunevalg. Her kan du følge oss på veien!',
+    url: 'https://hoyre.vercel.app/laget',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/644499521d32d5dccedc0547d908ce8cf095ba88-2048x1536.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

@@ -8,6 +8,7 @@ import { poppins } from 'styles/fonts'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
 import MainImageComponent from './MainImage'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -94,4 +95,25 @@ export default async function AboutSissel() {
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger | Sissel Knutsen Hegdal',
+    description:
+      'Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og Fredrik.',
+    url: 'https://hoyre.vercel.app/om-sissel',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/4d896210557a6255f789164124788f26096cfc20-1024x660.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

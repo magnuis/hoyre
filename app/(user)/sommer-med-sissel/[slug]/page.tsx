@@ -5,6 +5,7 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { RichTextComponents } from 'components/shared/richtext/RichTextComponents'
 import { poppins } from 'styles/fonts'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 const builder = imageUrlBuilder(client)
 
@@ -61,4 +62,49 @@ export default async function SummerWSisselPost({ params: { slug } }: SummerWSis
       </div>
     </div>
   )
+}
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger',
+    description: 'Sommer med Sissel | Høyre',
+    url: 'https://hoyre.vercel.app/sommer-med-sissel',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/2cde80717649635a1bce9e08c7b1f90d29fc2993-782x1067.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
+}
+
+export async function generateMetadata({ params: { slug } }: SummerWSisselProps) {
+  const query = groq`
+    *[_type=='summerPost' && slug.current == $slug][0] {
+        ...,
+    }`
+  const blogPost: SummerPost = await client.fetch(query, { slug })
+
+  return {
+    openGraph: {
+      title: `Stavanger Sammen for Stavanger | Høyre | ${blogPost.title}`,
+      description: blogPost.description,
+      url: `https://hoyre.vercel.app/sommer-med-sissel/${blogPost.slug.current}}`,
+      images: [
+        {
+          url: generateThumbnailUrl(builder.image(blogPost.image).url()),
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    robots: {
+      index: true,
+    },
+  }
 }

@@ -3,6 +3,7 @@ import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
 import { poppins } from 'styles/fonts'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 const builder = imageUrlBuilder(client)
 
@@ -53,4 +54,25 @@ title, slug, image, description, date, _id
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger | Sommer med Sissel',
+    description:
+      'Sissel har bodd i Stavanger i over 30 år, og har en stor lidenskap for å vise frem byen. Bli med på en spennende sommertur i Stavanger og omegn, og opplev byen fra en helt ny vinkel.',
+    url: 'https://hoyre.vercel.app/sommer-med-sissel',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/dfd8859b7abf5b3d3e18f01727f8f5dcc1cc6018-2048x1536.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

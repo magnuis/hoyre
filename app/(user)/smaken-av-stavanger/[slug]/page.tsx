@@ -5,6 +5,7 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { RichTextComponents } from 'components/shared/richtext/RichTextComponents'
 import { poppins } from 'styles/fonts'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 const builder = imageUrlBuilder(client)
 
@@ -58,4 +59,30 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
       </div>
     </div>
   )
+}
+
+export async function generateMetadata({ params: { slug } }: blogPostProps) {
+  const query = groq`
+    *[_type=='blogPost' && slug.current == $slug][0] {
+        ...,
+    }`
+  const blogPost: BlogPost = await client.fetch(query, { slug })
+
+  return {
+    openGraph: {
+      title: `Sammen for Stavanger | ${blogPost.title}`,
+      description: blogPost.description,
+      url: `https://hoyre.vercel.app/sommer-med-sissel/${blogPost.slug.current}`,
+      images: [
+        {
+          url: generateThumbnailUrl(builder.image(blogPost.image).url()),
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    robots: {
+      index: true,
+    },
+  }
 }
