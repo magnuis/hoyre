@@ -5,7 +5,6 @@ import { poppins } from 'styles/fonts'
 
 export default function MainImageComponent(image: { _id: string }) {
   const [scrolled, setScrolled] = useState<Boolean>(false)
-  const [color, setColor] = useState<string>('text-primary')
 
   useEffect(() => {
     let animationFrameId: number
@@ -26,14 +25,6 @@ export default function MainImageComponent(image: { _id: string }) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    if (scrolled) {
-      setColor('text-white')
-    } else {
-      setColor('text-primary')
-    }
-  }, [scrolled])
 
   return (
     <>
@@ -60,7 +51,7 @@ export default function MainImageComponent(image: { _id: string }) {
         }}
       >
         <p
-          className={`relative top-[70vh] md:top-[80vh] ${color} text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
+          className={`relative top-[70vh] md:top-[80vh] text-white text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
         >
           Bli kjent med Sissel
         </p>
