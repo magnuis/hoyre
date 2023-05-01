@@ -4,7 +4,7 @@ import { urlFor } from 'sanity-conf/urlFor'
 import { poppins } from 'styles/fonts'
 
 export default function MainImageComponent(image: { _id: string }) {
-  const [scrolled, setScrolled] = useState<Boolean>(false)
+  const [scrolled, setScrolled] = useState<boolean>(false)
 
   useEffect(() => {
     let animationFrameId: number

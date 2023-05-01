@@ -5,7 +5,7 @@ import { poppins } from 'styles/fonts'
 import RandomImageGrid from './RandomImageGrid'
 
 interface TeamNavCardProps {
-  imgUrls: { _id: string }[]
+  imgUrls: Array<{ _id: string }>
 }
 export default function TeamNavCard({ imgUrls }: TeamNavCardProps) {
   return (
