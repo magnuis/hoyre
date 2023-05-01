@@ -22,7 +22,7 @@ export default async function LagetPage() {
     }`
 
   const storyContent: TeamTimeline[] = await client.fetch(storyQuery)
-  const imgUrls: { _id: string }[] = await client.fetch(imgQuery)
+  const imgUrls: Array<{ _id: string }> = await client.fetch(imgQuery)
 
   return (
     <div className="max-w-7xl mx-auto mt-24 md:mt-48">
@@ -44,7 +44,7 @@ export default async function LagetPage() {
                 title={story.title}
                 img={story.img}
                 content={story.content}
-                last={index == storyContent.length - 1}
+                last={index === storyContent.length - 1}
               />
             </span>
           ))}

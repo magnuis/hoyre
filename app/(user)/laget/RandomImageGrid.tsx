@@ -5,9 +5,9 @@ import { client } from 'sanity-conf/sanity.client'
 
 const builder = imageUrlBuilder(client)
 interface RandomImageGridProps {
-  images: {
+  images: Array<{
     _id: string
-  }[]
+  }>
 }
 
 export default function RandomImageGrid({ images }: RandomImageGridProps) {
