@@ -87,10 +87,10 @@ export default async function Home() {
 
   return (
     <main>
+      <Carousel content={CarouselProps} />
       <div className="max-w-7xl mx-auto pt-20">
-        <div className="flex flex-col sm:px-4 xl:px-0">
-          <Carousel content={CarouselProps} />
-          <div className="flex flex-col justify-center object-center items-center max-w-4xl mx-auto px-4 sm:px-0">
+        <div className="flex flex-col">
+          <div className="flex flex-col justify-center object-center items-center max-w-4xl mx-auto px-4 md:px-8 xl:px-0">
             <NavCard
               title={'Bli kjent med Sissel'}
               description={
@@ -131,10 +131,6 @@ export default async function Home() {
             <FeaturedArticles articles={articles} />
           </div>
         </div>
-
-        <div
-          className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}
-        ></div>
       </div>
     </main>
   )

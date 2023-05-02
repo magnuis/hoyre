@@ -31,7 +31,7 @@ export default function NavCard({
     <div
       className={`rounded-lg ${bg} flex flex-col ${
         imgFirst ? 'sm:flex-row' : 'sm:flex-row-reverse'
-      } my-8`}
+      } mb-16`}
     >
       <img
         src={urlFor(image).width(600).height(400).format('webp').url()}
@@ -43,10 +43,10 @@ export default function NavCard({
         alt=""
       />
       <div
-        className={`flex flex-col gap-y-3 p-3 pb-6 sm:p-6 ${textColor} justify-center tracking-wide mx-3`}
+        className={`flex flex-col p-3 pb-6 sm:p-6 ${textColor} justify-center tracking-wide mx-3`}
       >
         <p className={`${poppins.className} text-2xl md:text-3xl font-medium`}>{title}</p>
-        <p className={''}>{description}</p>
+        <p className={'my-3'}>{description}</p>
         <Button href={href} text={button} />
       </div>
     </div>
