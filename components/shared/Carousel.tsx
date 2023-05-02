@@ -41,7 +41,9 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
         <div
           key={index + 1}
           id={`slider-${index + 1}`}
-          className={`w-full absolute top-20 left-0 duration-1000 ease-in-out transition-opacity ${
+          className={`w-full ${
+            index === 0 ? '' : 'absolute'
+          } top-20 left-0 duration-1000 ease-in-out transition-opacity ${
             activeSlide === index ? 'opacity-100' : 'opacity-0'
           } md:px-8 xl:px-0 `}
         >
