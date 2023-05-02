@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className={`${roboto.className}`}>
         <Header />
-        <div className="min-h-[52vh] mt-20 sm:mt-18">{children}</div>
+        <div className="min-h-[52vh] mt-20">{children}</div>
         <Footer />
         <Analytics />
       </body>
