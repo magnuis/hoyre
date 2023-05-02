@@ -36,7 +36,7 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
   }, [cont])
 
   return (
-    <div className="relative w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh]">
+    <div className="w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh]">
       {content.map((item, index) => (
         <div
           key={index + 1}

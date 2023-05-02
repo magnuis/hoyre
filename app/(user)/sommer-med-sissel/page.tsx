@@ -16,7 +16,7 @@ title, slug, image, description, date, _id
   const summerPosts = await client.fetch(postQuery)
 
   return (
-    <div className="mt-24 sm:mt-36 md:mt-48">
+    <div className="pt-24 sm:pt-36 md:pt-48">
       <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
           <div className="mx-auto max-w-2xl lg:pb-8">

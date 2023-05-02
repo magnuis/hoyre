@@ -53,9 +53,9 @@ export default async function AboutSissel() {
   const secondaryImage = await client.fetch(secondaryImageQuery)
 
   return (
-    <div>
+    <div className="w-[100vw] mx-auto mt-[100vh] bg-white">
       <MainImageComponent _id={mainImage?._id} />
-      <div className="relative w-[100vw] mx-auto mt-[100vh] bg-white pt-28 sm:pt-60 -translate-y-20 sm:-translate-y-0">
+      <div className="mx-auto pt-28 sm:pt-60">
         <div className="sm:mb-60 mb-28 mx-auto max-w-lg text-center">
           <p className={`text-lg font-semibold ${poppins.className}`}>
             Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og

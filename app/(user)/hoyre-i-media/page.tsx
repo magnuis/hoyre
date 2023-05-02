@@ -4,8 +4,8 @@ import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function ExternalArticles() {
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col max-w-xl mx-auto mt-24 md:mt-48 mb-10 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
+    <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
+      <div className="flex flex-col max-w-xl mx-auto mb-10 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
         <h1 className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className}`}>
           Høyre i media
         </h1>

@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
     )
   }
   return (
-    <div className="max-w-7xl mx-auto mt-24 md:mt-48">
+    <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
       <div className="max-w-3xl mx-auto flex flex-col gap-y-8 p-6">
         <h1
           className={`mx-auto font-medium tracking-wide text-3xl sm:text-5xl ${poppins.className}`}
