@@ -88,9 +88,9 @@ export default async function Home() {
   return (
     <main>
       <div className="max-w-7xl mx-auto pt-20">
-        <div className="flex flex-col gap-y-16 sm:px-4 xl:px-0">
+        <div className="flex flex-col sm:px-4 xl:px-0">
           <Carousel content={CarouselProps} />
-          <div className="flex flex-col gap-y-16 justify-center object-center items-center max-w-4xl mx-auto px-4 sm:px-0">
+          <div className="flex flex-col justify-center object-center items-center max-w-4xl mx-auto px-4 sm:px-0">
             <NavCard
               title={'Bli kjent med Sissel'}
               description={

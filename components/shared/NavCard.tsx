@@ -31,7 +31,7 @@ export default function NavCard({
     <div
       className={`rounded-lg ${bg} flex flex-col ${
         imgFirst ? 'sm:flex-row' : 'sm:flex-row-reverse'
-      }`}
+      } my-8`}
     >
       <img
         src={urlFor(image).width(600).height(400).format('webp').url()}

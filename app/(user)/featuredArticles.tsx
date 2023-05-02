@@ -10,7 +10,7 @@ interface featuredArticlesProps {
 export default function FeaturedArticles({ articles }: featuredArticlesProps) {
   if (articles.length === 0) return <div></div>
   return (
-    <div className="rounded-lg w-fit ">
+    <div className="rounded-lg w-fit my-8">
       <Link href={'/hoyre-i-media'} className="flex gap-x-2 items-center mb-6">
         <h1 className={`${poppins.className} text-2xl sm:text-3xl font-medium`}>
           Nyheter om Høyre
