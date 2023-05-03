@@ -64,7 +64,7 @@ export default function ExternalArticlesList() {
     externalLink
     } | order(date ${sort})
     `
-    console.log('LOGGER ', articlesQuery)
+
     const fetchArticles = async () => {
       const result = await client.fetch(articlesQuery)
       setArticles(result)
