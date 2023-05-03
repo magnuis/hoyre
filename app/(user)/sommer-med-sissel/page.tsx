@@ -21,19 +21,23 @@ const SummerWSissel: React.FC = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        const selectedYear = selectedOption === 'sommer22' ? 2022 : 2023
         const postQuery = groq`
         *[_type=='summerPost'] {
-          title, slug, image, description, date, _id
+          title,
+          slug,
+          image,
+          description, 
+          date, 
+          _id
         }`
 
-        const fetchedPosts = await client.fetch<SummerPostCardProps[]>(postQuery, { selectedYear })
-        const selectedYear = selectedOption === 'sommer22' ? 2022 : 2023
+        const fetchedPosts = await client.fetch<SummerPostCardProps[]>(postQuery)
+        console.log('Fetched posts:', fetchedPosts) // Log the fetched data
 
         const filteredPosts = fetchedPosts.filter(
           (post) => new Date(post.date).getFullYear() === selectedYear
         )
-
-        console.log('Fetched posts:', fetchedPosts) // Log the fetched data
 
         setSummerPosts(filteredPosts)
       } catch (error) {
