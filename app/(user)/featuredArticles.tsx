@@ -10,9 +10,9 @@ interface featuredArticlesProps {
 export default function FeaturedArticles({ articles }: featuredArticlesProps) {
   if (articles.length === 0) return <div></div>
   return (
-    <div className="rounded-lg w-fit ">
-      <Link href={'/hoyre-i-media'} className="flex gap-x-2 items-center mb-6">
-        <h1 className={`${poppins.className} text-2xl sm:text-3xl font-medium`}>
+    <div className="rounded-lg w-fit mb-16">
+      <Link href={'/hoyre-i-media'} className="flex  items-center mb-6">
+        <h1 className={`${poppins.className} text-2xl sm:text-3xl font-medium mx-2`}>
           Nyheter om Høyre
         </h1>
         <ArrowTopRightOnSquareIcon className="h-6" />
@@ -33,18 +33,18 @@ export default function FeaturedArticles({ articles }: featuredArticlesProps) {
                       : ''
                   } flex flex-col items-start justify-between mb-1 py-4 bg-white px-4`}
                 >
-                  <div className="flex items-center gap-x-1 sm:gap-x-4 text-xs flex-wrap">
-                    <time dateTime={article.date} className="text-light_gray">
+                  <div className="flex items-center text-xs flex-wrap">
+                    <time dateTime={article.date} className="text-light_gray mr-1 sm:mr-2 md:mr-4">
                       {article.date}
                     </time>
-                    <div className="h-4 w-0.5 bg-gray-300" />
-                    <p className=" text-light_gray">{article.publisher}</p>
+                    {/* <div className="h-4 w-0.5 bg-gray-300" /> */}
+                    <p className=" text-light_gray mr-1 sm:mr-2 md:mr-4">{article.publisher}</p>
                     {article.categories.map(
                       (category) =>
                         category && (
                           <div
                             key={category.title}
-                            className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-primary"
+                            className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-primary mr-1 sm:mr-2 md:mr-4"
                           >
                             {category.title}
                           </div>

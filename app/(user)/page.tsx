@@ -5,6 +5,7 @@ import { client } from 'sanity-conf/sanity.client'
 import { ExternalArticle } from 'type'
 import FeaturedArticles from './featuredArticles'
 import TasteOfStavangerCard from './TasteOfStavangerCard'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function Home() {
   const imgQuery = groq`*[_type == "sanity.imageAsset" && 
@@ -86,14 +87,14 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col gap-y-16 sm:px-4 xl:px-0">
-          <Carousel content={CarouselProps} />
-          <div className="flex flex-col gap-y-16 justify-center object-center items-center max-w-4xl mx-auto px-4 sm:px-0">
+      <Carousel content={CarouselProps} />
+      <div className="max-w-7xl mx-auto pt-20">
+        <div className="flex flex-col">
+          <div className="flex flex-col justify-center object-center items-center max-w-4xl mx-auto px-4 md:px-8 xl:px-0">
             <NavCard
               title={'Bli kjent med Sissel'}
               description={
-                'Sissel er Høyres ordførerkandidat i Stavanger. Hun har et brennende ønske om at nettop DU skal få det bedre, der du bor. Trykk under for å finne ut mer om henne.'
+                'Sissel er Høyres ordførerkandidat i Stavanger. Hun har et brennende ønske om at nettopp DU skal få det bedre, der du bor. Trykk under for å finne ut mer om henne.'
               }
               image={sisselNav ? sisselNav._id : ''}
               button={'MØT SISSEL'}
@@ -130,11 +131,27 @@ export default async function Home() {
             <FeaturedArticles articles={articles} />
           </div>
         </div>
-
-        <div
-          className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 pb-24 mx-8`}
-        ></div>
       </div>
     </main>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger',
+    description: 'Bli bedre kjent med de som sammen skal gjøre Stavanger til et bedre sted.',
+    url: 'https://hoyre.vercel.app/',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/644499521d32d5dccedc0547d908ce8cf095ba88-2048x1536.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

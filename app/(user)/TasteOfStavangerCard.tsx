@@ -11,18 +11,21 @@ interface tasteOfStavangerCardProps {
 }
 export default function TasteOfStavangerCard({ posts }: tasteOfStavangerCardProps) {
   return (
-    <div>
-      <span className="flex items-end gap-x-4">
-        <Link href={'/smaken-av-stavanger'} className="flex items-center gap-x-2">
-          <h2 className={`${poppins.className} font-medium tracking-wide text-2xl sm:text-3xl`}>
-            Smaken av Stavanger
-          </h2>
-          <ArrowTopRightOnSquareIcon className="h-6" />
-        </Link>
-      </span>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-4 lg:gap-6 mt-6">
+    <div className="mb-16">
+      <Link href={'/smaken-av-stavanger'} className="flex items-center">
+        <h2 className={`${poppins.className} font-medium tracking-wide text-2xl sm:text-3xl mx-2`}>
+          Smaken av Stavanger
+        </h2>
+        <ArrowTopRightOnSquareIcon className="h-6" />
+      </Link>
+
+      <div className="grid grid-cols-2 md:grid-cols-4  mt-6">
         {posts.map((post) => (
-          <Link href={`/smaken-av-stavanger/${post.slug.current}`} className="group" key={post._id}>
+          <Link
+            href={`/smaken-av-stavanger/${post.slug.current}`}
+            className="group m-2 md:m-3"
+            key={post._id}
+          >
             <img
               className="w-full aspect-square object-cover object-center rounded-lg opacity-90 group-hover:opacity-100 group-hover:shadow-lg transition-all duration-300 ease-in-out"
               src={builder.image(post.image).width(600).height(400).format('webp').url()}

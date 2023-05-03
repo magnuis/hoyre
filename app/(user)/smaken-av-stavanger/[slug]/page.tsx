@@ -5,6 +5,7 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { RichTextComponents } from 'components/shared/richtext/RichTextComponents'
 import { poppins } from 'styles/fonts'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 const builder = imageUrlBuilder(client)
 
@@ -41,7 +42,7 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
     )
   }
   return (
-    <div className="max-w-7xl mx-auto mt-24 md:mt-48">
+    <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
       <div className="max-w-3xl mx-auto flex flex-col gap-y-8 p-6">
         <h1
           className={`mx-auto font-medium tracking-wide text-3xl sm:text-5xl ${poppins.className}`}
@@ -58,4 +59,50 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
       </div>
     </div>
   )
+}
+
+export async function generateMetadata({ params: { slug } }: blogPostProps) {
+  const query = groq`
+    *[_type=='blogPost' && slug.current == $slug][0] {
+        ...,
+    }`
+  const blogPost: BlogPost = await client.fetch(query, { slug })
+  if (!blogPost) {
+    return {
+      openGraph: {
+        title: ` Sammen for Stavanger | Sommer med Sissel`,
+        description: '',
+        url: `https://hoyre.vercel.app/sommer-med-sissel/${slug}}`,
+        images: [
+          {
+            url: generateThumbnailUrl(
+              'https://cdn.sanity.io/images/p6r82l3b/production/dfd8859b7abf5b3d3e18f01727f8f5dcc1cc6018-2048x1536.jpg'
+            ),
+            width: 800,
+            height: 600,
+          },
+        ],
+      },
+      robots: {
+        index: true,
+      },
+    }
+  }
+  return {
+    openGraph: {
+      title: `Sammen for Stavanger | ${blogPost.title}`,
+      description: blogPost.description,
+      url: `https://hoyre.vercel.app/sommer-med-sissel/${blogPost.slug.current}`,
+      images: [
+        {
+          url: generateThumbnailUrl(builder.image(blogPost.image).url()),
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    robots: {
+      index: true,
+    },
+  }
 }

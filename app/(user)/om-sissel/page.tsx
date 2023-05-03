@@ -8,6 +8,7 @@ import { poppins } from 'styles/fonts'
 import { SisselTimeline } from 'type'
 import FollowSisselNavCard from './FollowSisselNavCard'
 import MainImageComponent from './MainImage'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 export default async function AboutSissel() {
   const storyQuery = groq`
@@ -52,9 +53,21 @@ export default async function AboutSissel() {
   const secondaryImage = await client.fetch(secondaryImageQuery)
 
   return (
-    <div>
+    <div className="w-[100vw] mx-auto">
       <MainImageComponent _id={mainImage?._id} />
-      <div className="relative w-[100vw] mx-auto mt-[100vh] bg-white pt-28 sm:pt-60">
+      <div
+        className="w-full h-[100vh] text-center"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(4, 20, 52, 0), rgba(4, 20, 52, 1))',
+        }}
+      >
+        <p
+          className={`relative top-[70vh] md:top-[80vh] text-white text-3xl sm:text-4xl md:text-6xl ${poppins.className} font-semibold tracking-wide`}
+        >
+          Bli kjent med Sissel
+        </p>
+      </div>
+      <div className="mx-auto pt-28 sm:pt-60 bg-white">
         <div className="sm:mb-60 mb-28 mx-auto max-w-lg text-center">
           <p className={`text-lg font-semibold ${poppins.className}`}>
             Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og
@@ -94,4 +107,25 @@ export default async function AboutSissel() {
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger | Sissel Knutsen Hegdal',
+    description:
+      'Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og Fredrik.',
+    url: 'https://hoyre.vercel.app/om-sissel',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/4d896210557a6255f789164124788f26096cfc20-1024x660.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }

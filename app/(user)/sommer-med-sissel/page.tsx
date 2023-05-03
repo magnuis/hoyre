@@ -3,6 +3,7 @@ import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
 import { poppins } from 'styles/fonts'
+import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 const builder = imageUrlBuilder(client)
 
@@ -15,7 +16,7 @@ title, slug, image, description, date, _id
   const summerPosts = await client.fetch(postQuery)
 
   return (
-    <div className="mt-24 sm:mt-36 md:mt-48">
+    <div className="pt-24 sm:pt-36 md:pt-48">
       <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
           <div className="mx-auto max-w-2xl lg:pb-8">
@@ -53,4 +54,25 @@ title, slug, image, description, date, _id
       </div>
     </div>
   )
+}
+
+export const metadata = {
+  openGraph: {
+    title: 'Sammen for Stavanger | Sommer med Sissel',
+    description:
+      'Sissel har bodd i Stavanger i over 30 år, og har en stor lidenskap for å vise frem byen. Bli med på en spennende sommertur i Stavanger og omegn, og opplev byen fra en helt ny vinkel.',
+    url: 'https://hoyre.vercel.app/sommer-med-sissel',
+    images: [
+      {
+        url: generateThumbnailUrl(
+          'https://cdn.sanity.io/images/p6r82l3b/production/dfd8859b7abf5b3d3e18f01727f8f5dcc1cc6018-2048x1536.jpg'
+        ),
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  robots: {
+    index: true,
+  },
 }
