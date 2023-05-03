@@ -1,3 +1,6 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import SummerPostCard, { summerPostCard } from 'components/sommerMedSissel/SummerPostCard'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
@@ -7,13 +10,43 @@ import generateThumbnailUrl from 'components/appearance/Thumbnail'
 
 const builder = imageUrlBuilder(client)
 
-export default async function SummerWSissel() {
-  const postQuery = groq`
-*[_type=='summerPost'] {
-title, slug, image, description, date, _id 
-} `
+const SummerWSissel: React.FC = () => {
+  const [summerPosts, setSummerPosts] = useState<SummerPostCardProps[]>([])
+  const [selectedOption, setSelectedOption] = useState<string>('')
 
-  const summerPosts = await client.fetch(postQuery)
+  useEffect(() => {
+    setSelectedOption('sommer23')
+  }, [])
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const postQuery = groq`
+        *[_type=='summerPost'] {
+          title, slug, image, description, date, _id
+        }`
+
+        const fetchedPosts = await client.fetch<SummerPostCardProps[]>(postQuery, { selectedYear })
+        const selectedYear = selectedOption === 'sommer22' ? 2022 : 2023
+
+        const filteredPosts = fetchedPosts.filter(
+          (post) => new Date(post.date).getFullYear() === selectedYear
+        )
+
+        console.log('Fetched posts:', fetchedPosts) // Log the fetched data
+
+        setSummerPosts(filteredPosts)
+      } catch (error) {
+        console.error('Error fetching posts:', error)
+      }
+    }
+
+    fetchPosts()
+  }, [selectedOption])
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(event.target.value)
+  }
 
   return (
     <div className="pt-24 sm:pt-36 md:pt-48">
@@ -42,6 +75,12 @@ title, slug, image, description, date, _id
       <div className="bg-white pb-24 sm:pb-32 pt-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-4xl">
+            <div className="dropdown-container flex justify-center py-4">
+              <select value={selectedOption} onChange={handleChange} suppressHydrationWarning>
+                <option value="sommer23">Sommer 23</option>
+                <option value="sommer22">Sommer 22</option>
+              </select>
+            </div>
             <div className="space-y-16 lg:space-y-16">
               {summerPosts.map((post: summerPostCard, index: number) => (
                 <div key={post._id}>
@@ -56,23 +95,4 @@ title, slug, image, description, date, _id
   )
 }
 
-export const metadata = {
-  openGraph: {
-    title: 'Sammen for Stavanger | Sommer med Sissel',
-    description:
-      'Sissel har bodd i Stavanger i over 30 år, og har en stor lidenskap for å vise frem byen. Bli med på en spennende sommertur i Stavanger og omegn, og opplev byen fra en helt ny vinkel.',
-    url: 'https://hoyre.vercel.app/sommer-med-sissel',
-    images: [
-      {
-        url: generateThumbnailUrl(
-          'https://cdn.sanity.io/images/p6r82l3b/production/dfd8859b7abf5b3d3e18f01727f8f5dcc1cc6018-2048x1536.jpg'
-        ),
-        width: 800,
-        height: 600,
-      },
-    ],
-  },
-  robots: {
-    index: true,
-  },
-}
+export default SummerWSissel
