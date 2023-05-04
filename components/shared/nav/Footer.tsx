@@ -11,8 +11,8 @@ export default function Footer() {
       </h2>
 
       <div className="mx-auto p-8 pt-24 max-w-4xl text-sm tracking-wider font-thin">
-        <div className="grid grid-cols-1 sm:grid-cols-3 justify-between gap-6">
-          <div className="flex flex-col bg-secondary sm:items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 justify-between">
+          <div className="flex flex-col bg-secondary sm:items-center mb-6">
             <div className="flex flex-col justify-start">
               <img
                 width="90"
@@ -22,10 +22,10 @@ export default function Footer() {
                 alt="Høyre"
               />
               <h2 className="text-blue_200 min-h-12 mb-4">KONTAKT OSS</h2>
-              <dl className="flex flex-col gap-y-3">
-                <div className="flex gap-x-6">
-                  <dt className="email">
-                    <div className="w-6">
+              <dl className="flex flex-col">
+                <div className="flex mb-3">
+                  <dt className="">
+                    <div className="mr-4 w-6">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 30 30"
@@ -44,9 +44,9 @@ export default function Footer() {
                     </a>
                   </dd>
                 </div>
-                <div className="flex gap-x-6 items-center">
-                  <dt className="address">
-                    <div className="w-6">
+                <div className="flex items-center">
+                  <dt className="">
+                    <div className="mr-4 w-6">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         height="24"
@@ -60,8 +60,8 @@ export default function Footer() {
                     </div>
                   </dt>
                   <dd className="text-white">
-                    <span className="flex flex-col gap-y-1">
-                      <p>Skagenkaien 1 </p>
+                    <span className="flex flex-col">
+                      <p className="mb-1">Skagenkaien 1 </p>
                       <p>4006 Stavanger</p>
                     </span>
                   </dd>
@@ -70,11 +70,11 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col bg-secondary sm:items-center">
+          <div className="flex flex-col bg-secondary sm:items-center mb-6">
             <h2 className="text-blue_200 min-h-12 mb-4">FÅR DU IKKE NOK AV OSS?</h2>
 
-            <ul className="flex gap-x-2">
-              <li>
+            <ul className="flex">
+              <li className="mr-2">
                 <Link
                   href="https://facebook.com/hoyre"
                   className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
@@ -82,7 +82,7 @@ export default function Footer() {
                   <FaFacebookF className="h-4 sm:h-5 text-white" />
                 </Link>
               </li>
-              <li>
+              <li className="mr-2">
                 <Link
                   href="https://instagram.com/hoyre"
                   className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
@@ -90,7 +90,7 @@ export default function Footer() {
                   <FaInstagram className="sm:h-8 h-7 sm:w-5 w-4 text-white" />
                 </Link>
               </li>
-              <li>
+              <li className="mr-2">
                 <Link
                   href="https://linkedin.com/company/hoyre"
                   className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
@@ -98,7 +98,7 @@ export default function Footer() {
                   <FaLinkedin className="sm:w-5 w-4 sm:h-5 h-4 text-white" />
                 </Link>
               </li>
-              <li>
+              <li className="mr-2">
                 <Link
                   href="https://twitter.com/stavangerhoyre?lang=en"
                   className="flex rounded-full bg-primary sm:h-9 sm:w-9 h-8 w-8 items-center justify-center hover:bg-blue-800 transition-colors duration-300 ease-in-out"
@@ -112,15 +112,15 @@ export default function Footer() {
           <div className="flex flex-col bg-secondary sm:items-center">
             <div className="text-white">
               <h2 className="text-blue_200 min-h-12 mb-4">BLI MED</h2>
-              <ul className="flex flex-col gap-y-2">
-                <span className="flex items-center gap-x-2">
-                  <AiOutlineHeart className="h-4 w-4 font-thin" />
+              <ul className="flex flex-col ">
+                <span className="flex items-center mb-2">
+                  <AiOutlineHeart className="h-4 w-4 font-thin mr-2" />
                   <Link href="https://hoyre.no/bli-med/bli-medlem/">
                     <p>Bli medlem</p>
                   </Link>
                 </span>
-                <span className="flex items-center gap-x-2">
-                  <AiOutlineGift className="h-4 w-4 font-thin" />
+                <span className="flex items-center ">
+                  <AiOutlineGift className="h-4 w-4 font-thin mr-2" />
                   <Link href="https://hoyre.no/bli-med/gi-gave/">
                     <p>Gi gave</p>
                   </Link>

@@ -20,7 +20,7 @@ export default function SommerMedSisselList({ posts }: SommerMedSisselListProps)
 
   return (
     <div className="mx-auto max-w-2xl lg:max-w-4xl">
-      <div className="dropdown-container flex pb-8">
+      <div className="dropdown-container flex pb-8 mt-6">
         <SelectYearDropdown selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
       </div>
       <div className="space-y-16 lg:space-y-16">

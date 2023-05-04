@@ -88,8 +88,8 @@ export default async function AboutSissel() {
           width={1900}
         />
 
-        <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-24 md:mt-36 pb-48">
-          <div className="relative mx-auto">
+        <div className="mx-auto flex max-w-xl flex-col p-4 mt-24 md:mt-36 pb-48">
+          <div className="relative mx-auto mb-24">
             {storyContent.map((story, index) => (
               <span key={index}>
                 <TimelineItem
@@ -101,7 +101,9 @@ export default async function AboutSissel() {
               </span>
             ))}
           </div>
-          <ImageGallery images={galleryImages} />
+          <div className="mb-24">
+            <ImageGallery images={galleryImages} />
+          </div>
           <FollowSisselNavCard image={followsisselImg} />
         </div>
       </div>

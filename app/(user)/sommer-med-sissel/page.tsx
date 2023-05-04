@@ -25,7 +25,7 @@ const SummerWSissel = async () => {
   return (
     <div className="pt-24 sm:pt-36 md:pt-48">
       <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none">
           <div className="mx-auto max-w-2xl lg:pb-8">
             <span className="text-center">
               <h1 className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className}`}>
@@ -43,7 +43,6 @@ const SummerWSissel = async () => {
               finne ut mer!
             </p>
           </div>
-          <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents"></div>
         </div>
       </div>
       <div className="bg-white pb-24 sm:pb-32">

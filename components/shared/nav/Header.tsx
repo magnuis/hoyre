@@ -44,18 +44,18 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <Link className="-m-1.5 p-1.5" href={'/'}>
-            <span className="flex flex-row gap-x-3 items-center text-lg font-light">
+            <span className="flex flex-row items-center text-lg font-light">
               <img
                 src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
                 alt="logo"
-                className="h-7 sm:h-9"
+                className="h-7 sm:h-9 mr-3"
               />
               Stavanger Høyre
             </span>
           </Link>
         </div>
         <MobileMenu />
-        <div className="hidden lg:flex lg:gap-x-1">
+        <div className="hidden lg:flex ">
           {navigation.map((item) => (
             <Link
               key={item.name}

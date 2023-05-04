@@ -27,8 +27,10 @@ export default async function LagetPage() {
 
   return (
     <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
-      <div className="flex flex-col max-w-lg mx-auto mb-12 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
-        <h1 className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className}`}>
+      <div className="flex flex-col max-w-lg mx-auto mb-12 px-8 sm:px-0 text-center">
+        <h1
+          className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className} mb-6 md:mb-10`}
+        >
           Veien til valget
         </h1>
         <p className="text-lg text-gray">
@@ -37,8 +39,8 @@ export default async function LagetPage() {
         </p>
       </div>
       <hr className="mb-2 mx-auto max-w-xl md:mx-auto border-light_gray" />
-      <div className="mx-auto flex max-w-xl flex-col p-4 gap-y-24 mt-6 mb-48">
-        <div>
+      <div className="mx-auto flex max-w-xl flex-col p-4 mt-6 mb-48">
+        <div className="mb-24">
           {storyContent.map((story, index) => (
             <span key={index}>
               <TimelineItem

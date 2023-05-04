@@ -32,7 +32,7 @@ export default function SubjectsMenu({ subjects, onAddSubject }: SubjectsMenuPro
   }
 
   return (
-    <div className="relative z-20 w-36 h-16 items-center">
+    <div className="relative z-20 w-36 h-16 items-center mr-3">
       <Combobox value={selected} onChange={selectSubject}>
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200 sm:text-sm">

@@ -43,17 +43,17 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
   }
   return (
     <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
-      <div className="max-w-3xl mx-auto flex flex-col gap-y-8 p-6">
+      <div className="max-w-3xl mx-auto flex flex-col p-6">
         <h1
-          className={`mx-auto font-medium tracking-wide text-3xl sm:text-5xl ${poppins.className}`}
+          className={`mx-auto font-medium tracking-wide text-3xl sm:text-5xl ${poppins.className} mb-8`}
         >
           {blogPost.title}
         </h1>
-        <time className="flex items-center text-base text-zinc-400 ">
+        <time className="flex items-center text-base text-zinc-400 mb-5">
           <span className="h-4 w-0.5 rounded-full bg-zinc-200 " />
           <span className="ml-3">{blogPost.date}</span>
         </time>
-        <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col mb-24">
           <PortableText value={blogPost.body} components={RichTextComponents} />
         </div>
       </div>

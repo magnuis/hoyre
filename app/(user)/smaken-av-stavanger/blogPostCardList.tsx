@@ -64,10 +64,10 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
 
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 ">
-      <div className="flex flex-row gap-x-4 items-center flex-wrap">
+      <div className="flex flex-row items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
         <SubjectsMenu subjects={subjects} onAddSubject={onAddSubject} />
-        <div className="w-fit h-16 items-center">
+        <div className="w-fit h-16 items-center mr-3">
           <button
             disabled={selectedSubjects.length === 0}
             onClick={() => onRemoveAll()}
@@ -82,7 +82,7 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
         </div>
         {selectedSubjects.length > 0 &&
           selectedSubjects.map((sub) => (
-            <div key={sub.title} className="w-fit max-w-lg h-16">
+            <div key={sub.title} className="w-fit max-w-lg h-16 mr-2 md:mr-3">
               <SelectedFilter subject={sub} onRemove={onRemove} />
             </div>
           ))}
@@ -94,9 +94,9 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
         </div>
       )}
       <hr className="sm:hidden block mb-16 border-light_gray border-t" />
-      <span className="flex flex-col gap-y-16">
+      <span className="flex flex-col">
         {filteredPosts.map((post: BlogPost) => (
-          <div className="group" key={post._id}>
+          <div className="group mb-12 md:mb-16" key={post._id}>
             <BlogPostCard post={post} />
           </div>
         ))}

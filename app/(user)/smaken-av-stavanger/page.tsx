@@ -29,9 +29,11 @@ export default async function Blogg() {
 
   return (
     <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
-      <div className="flex flex-col max-w-xl mx-auto md:mb-12 px-6 sm:px-0 gap-y-6 md:gap-y-10 text-center">
+      <div className="flex flex-col max-w-xl mx-auto md:mb-12 px-6 sm:px-0 text-center">
         <div className="text-center">
-          <h1 className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className}`}>
+          <h1
+            className={`font-medium tracking-wide text-2xl sm:text-5xl ${poppins.className} mb-6 md:mb-10`}
+          >
             Smaken av Stavanger
           </h1>
         </div>
@@ -41,7 +43,7 @@ export default async function Blogg() {
           eldrebølgen? Her kan du lese om det og mye mer.
         </p>
       </div>
-      <div className="mx-auto flex flex-col p-4 gap-y-24 mb-48">
+      <div className="mx-auto flex flex-col p-4 mb-48">
         <BlogPostsList blogPosts={blogPosts} subjects={subjects} />
       </div>
     </div>

@@ -19,11 +19,13 @@ export default function FollowSisselNavCard({ image }: followSisselNavCardProps)
         alt=""
         className="rounded-t-lg object-cover object-top h-[30vh] w-full"
       />
-      <div className="relative flex flex-col gap-y-7 text-white p-5 text-center items-center">
+      <div className="relative flex flex-col text-white p-5 text-center items-center">
         <p className={`${poppins.className} text-2xl font-semibold`}>Følg Sissel i hverdagen:</p>
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="flex flex-wrap justify-center my-7">
           <Button text="FACEBOOK" href="https://www.facebook.com/sissel.k.hegdal" />
-          <Button text="INSTAGRAM" href="https://www.instagram.com/sisselhegdal/" />
+          <div className="w-fit flex mx-3">
+            <Button text="INSTAGRAM" href="https://www.instagram.com/sisselhegdal/" />
+          </div>
           <Button text="LINKEDIN" href="https://www.linkedin.com/in/sissel-knutsen-hegdal/" />
         </div>
         <Button

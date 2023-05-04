@@ -7,9 +7,9 @@ export const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
-        <div className="relative w-full mb-8">
+        <div className="relative w-full mt-8">
           <Image
-            className="mx-auto aspect-[8/5]  md:w-full flex-none rounded-lg md:rounded-2xl bg-gray-50 object-cover"
+            className="mx-auto aspect-[8/5] md:w-full flex-none rounded-lg md:rounded-2xl bg-gray-50 object-cover"
             width={720}
             height={720}
             src={urlFor(value).format('webp').url()}

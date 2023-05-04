@@ -52,9 +52,9 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
         onClick={() => handleModalopen(0)}
       />
       <span>
-        <span className="flex flex-row gap-x-3 mt-3">
+        <span className="flex flex-row mt-3">
           {displaySmallImages.map((image, index) => (
-            <div key={index} className="w-1/3 aspect-[8/5]">
+            <div key={index} className={`w-1/3 aspect-[8/5] ${index === 2 ? '' : 'mr-3'}`}>
               <img
                 src={image ? urlFor(image._id).format('webp').width(200).url() : ''}
                 alt={''}

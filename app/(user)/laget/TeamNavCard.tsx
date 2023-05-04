@@ -12,11 +12,11 @@ export default function TeamNavCard({ imgUrls }: TeamNavCardProps) {
     <div className="rounded-xl bg-secondary_dark flex flex-col md:flex-row">
       <RandomImageGrid images={imgUrls} />
 
-      <div className="flex flex-col gap-y-3 p-6 text-white text-center justify-center">
+      <div className="flex flex-col p-6 text-white text-center justify-center">
         <div className="">
           <p className={`${poppins.className} text-2xl`}>Stavangerlaget 2023</p>
         </div>
-        <p className="text-light">Finn ut hvem som stiller til valg fra din kommunedel!</p>
+        <p className="text-light my-3">Finn ut hvem som stiller til valg fra din kommunedel!</p>
         <Link
           href="https://hoyre.no/stavanger/stavangerlaget2023/"
           className="rounded bg-primary hover:bg-primary_dark text-center p-2"

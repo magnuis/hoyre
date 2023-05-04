@@ -70,8 +70,8 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
   }
 
   return (
-    <div className="max-w-3xl mx-auto space-y-10 border-gray-200 sm:pt-16">
-      <div className="flex flex-row gap-x-4 items-center flex-wrap">
+    <div className="max-w-xl mx-auto space-y-10 border-gray-200 sm:pt-16">
+      <div className="flex flex-row items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
         <SubjectsMenu subjects={subjects} onAddSubject={onAddSubject} />
         <div className="w-fit h-16 items-center">
@@ -82,14 +82,14 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
               selectedSubjects.length === 0
                 ? 'text-light_gray '
                 : 'hover:shadow-primary focus-visible:border-primary hover:text-primary'
-            }`}
+            } mr-3`}
           >
             Nullstill filtre
           </button>
         </div>
         {selectedSubjects.length > 0 &&
           selectedSubjects.map((sub) => (
-            <div key={sub.title} className="w-fit max-w-lg h-16">
+            <div key={sub.title} className="w-fit max-w-lg h-16 mr-2">
               <SelectedFilter subject={sub} onRemove={onRemove} />
             </div>
           ))}

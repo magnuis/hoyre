@@ -39,11 +39,11 @@ export default function MobileMenu() {
           <div className="flex items-center justify-between">
             <div className="flex lg:flex-1">
               <Link className="-m-1.5 p-1.5" href={'/'}>
-                <span className="flex flex-row text-primary gap-x-3 items-center text-lg">
+                <span className="flex flex-row text-primary  items-center text-lg">
                   <img
                     src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
                     alt="logo"
-                    className="h-9"
+                    className="h-9 mr-3"
                   />
                   <p>Stavanger Høyre</p>
                 </span>

@@ -17,13 +17,19 @@ export default function TimelineItem(props: timelineItemProps): JSX.Element {
     <div
       className={`group ${props.last ? '' : 'border-l'} border-primary pb-4 ml-2 md:m-0 relative`}
     >
-      <div className="pl-4 md:pl-10 flex flex-col gap-y-4">
-        <p className="text-light_gray text-xs font-bold">
+      <div className="pl-4 md:pl-10 flex flex-col">
+        <p className="text-light_gray text-xs font-bold mb-4">
           {props.title ? props.title.toUpperCase() : 'ingen tittel'.toUpperCase()}
         </p>
         <PortableText value={props.content} components={timeLineRichText} />
         {props.img && (
-          <img src={builder.image(props.img).url()} alt={''} height={500} width={500} />
+          <img
+            src={builder.image(props.img).url()}
+            alt={''}
+            height={500}
+            width={500}
+            className="my-4"
+          />
         )}
       </div>
       <div
