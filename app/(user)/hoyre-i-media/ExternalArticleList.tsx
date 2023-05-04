@@ -17,12 +17,10 @@ interface ExternalArticlesListProps {
 }
 export default function ExternalArticlesList({ articles, subjects }: ExternalArticlesListProps) {
   const [sort, setSort] = useState<string>('desc')
-  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([])
+  const [selectedSubjects, setSelectedSubjects] = useState<Array<Subject>>([])
   const [filteredArticles, setFilteredArticles] = useState<ExternalArticle[]>([])
 
-  // fetch articles, refetch when sort order or selected subjects changes
   useEffect(() => {
-    // sort client side
     const sortedArticles = articles.sort((a, b) => {
       if (sort === 'desc') {
         return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -38,10 +36,12 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
     if (selectedSubjects.length > 0) {
       const filtered = articles.filter((article) =>
         article.categories.some((category) =>
-          selectedSubjects.some((subject) => subject === category.title)
+          selectedSubjects.some((subject) => subject.title === category.title)
         )
       )
       setFilteredArticles(filtered)
+    } else {
+      setFilteredArticles(articles)
     }
   }, [selectedSubjects])
 
@@ -54,11 +54,11 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
     )
   }
 
-  const onRemove = (subject: string) => {
-    setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
+  const onRemove = (subject: Subject) => {
+    setSelectedSubjects(selectedSubjects.filter((sub) => sub.title !== subject.title))
   }
 
-  const onAddSubject = (value: string) => {
+  const onAddSubject = (value: Subject) => {
     if (!selectedSubjects.includes(value)) {
       setSelectedSubjects([...selectedSubjects, value])
     }
@@ -69,16 +69,12 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
     setSort('desc')
   }
 
-  const alteredSubjects = subjects.map((subject) => {
-    return subject.title
-  })
-
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
         <SubjectsMenu
-          subjects={alteredSubjects}
+          subjects={subjects}
           selectedSubjects={selectedSubjects}
           onAddSubject={onAddSubject}
         />
@@ -97,7 +93,7 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
         </div>
         {selectedSubjects.length > 0 &&
           selectedSubjects.map((sub) => (
-            <div key={sub} className="w-fit max-w-lg h-16">
+            <div key={sub.title} className="w-fit max-w-lg h-16">
               <SelectedFilter subject={sub} onRemove={onRemove} />
             </div>
           ))}

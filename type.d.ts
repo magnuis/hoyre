@@ -79,3 +79,7 @@ interface TeamTimeline extends Base {
   content: Block[]
   date: string
 }
+
+interface Subject {
+  title: string
+}
