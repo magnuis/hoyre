@@ -2,30 +2,38 @@
 import { Fragment, useState } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { Subject } from 'type'
 
 interface SubjectsMenuProps {
-  subjects: string[]
-  selectedSubjects: string[]
-  onAddSubject: (value: string) => void
+  subjects: Subject[]
+  onAddSubject: (value: Subject) => void
 }
 
-export default function Example({ subjects, onAddSubject }: SubjectsMenuProps) {
-  const [selected, setSelected] = useState('')
-  const [query, setQuery] = useState('')
+export default function SubjectsMenu({ subjects, onAddSubject }: SubjectsMenuProps) {
+  const [selected, setSelected] = useState<string>('')
+  const [query, setQuery] = useState<string>('')
 
   const filteredSubjects =
     query === ''
       ? subjects
       : subjects.filter((subject) =>
-          subject
+          subject.title
             .toLowerCase()
             .replace(/\s+/g, '')
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         )
 
+  const selectSubject = (title: string) => {
+    const subject = subjects.find((subject) => subject.title === title)
+    if (subject) {
+      onAddSubject(subject)
+      setSelected(subject.title)
+    }
+  }
+
   return (
     <div className="relative z-20 w-36 h-16 items-center">
-      <Combobox value={selected} onChange={onAddSubject}>
+      <Combobox value={selected} onChange={selectSubject}>
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-200 sm:text-sm">
             <Combobox.Input
@@ -52,20 +60,20 @@ export default function Example({ subjects, onAddSubject }: SubjectsMenuProps) {
               ) : (
                 filteredSubjects.map((subject) => (
                   <Combobox.Option
-                    key={subject}
+                    key={subject.title}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 px-4 ${
                         active ? 'bg-primary text-white' : 'text-dark_gray'
                       }`
                     }
-                    value={subject}
+                    value={subject.title}
                   >
                     {({ selected, active }) => (
                       <>
                         <span
                           className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}
                         >
-                          {subject}
+                          {subject.title}
                         </span>
                       </>
                     )}

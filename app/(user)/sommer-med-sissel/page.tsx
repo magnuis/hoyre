@@ -1,19 +1,26 @@
-import SummerPostCard, { summerPostCard } from 'components/sommerMedSissel/SummerPostCard'
+import SummerPostCard from 'components/sommerMedSissel/SummerPostCard'
 import { groq } from 'next-sanity'
 import { client } from 'sanity-conf/sanity.client'
 import imageUrlBuilder from '@sanity/image-url'
 import { poppins } from 'styles/fonts'
 import generateThumbnailUrl from 'components/appearance/Thumbnail'
+import { SummerPost } from 'type'
+import SommerMedSisselList from './SommerMedSisselList'
 
 const builder = imageUrlBuilder(client)
 
-export default async function SummerWSissel() {
+const SummerWSissel = async () => {
   const postQuery = groq`
-*[_type=='summerPost'] {
-title, slug, image, description, date, _id 
-} `
+        *[_type=='summerPost'] {
+          title,
+          slug,
+          image,
+          description, 
+          date, 
+          _id
+        }`
 
-  const summerPosts = await client.fetch(postQuery)
+  const posts: SummerPost[] = await client.fetch(postQuery)
 
   return (
     <div className="pt-24 sm:pt-36 md:pt-48">
@@ -39,22 +46,16 @@ title, slug, image, description, date, _id
           <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents"></div>
         </div>
       </div>
-      <div className="bg-white pb-24 sm:pb-32 pt-10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:max-w-4xl">
-            <div className="space-y-16 lg:space-y-16">
-              {summerPosts.map((post: summerPostCard, index: number) => (
-                <div key={post._id}>
-                  <SummerPostCard post={post} first={index === 0} />
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className="bg-white pb-24 sm:pb-32">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+          <SommerMedSisselList posts={posts} />
         </div>
       </div>
     </div>
   )
 }
+
+export default SummerWSissel
 
 export const metadata = {
   openGraph: {

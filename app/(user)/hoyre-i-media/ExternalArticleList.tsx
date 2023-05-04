@@ -3,74 +3,47 @@
 import SelectedFilter from 'components/shared/filter/SelectedFilter'
 import SortMenu from 'components/shared/filter/SortMenu'
 import SubjectsMenu from 'components/shared/filter/SubjectsMenu'
-import { groq } from 'next-sanity'
 import { useEffect, useState } from 'react'
-import { client } from 'sanity-conf/sanity.client'
 import { ExternalArticle } from 'type'
 import ExternalArticleCard from './ExternalArticleCard'
 
 interface Subject {
   title: string
-  _id: string
 }
 
-export default function ExternalArticlesList() {
-  const [subjects, setSubjects] = useState<Subject[]>([{ title: '', _id: '' }])
-  const [articles, setArticles] = useState<ExternalArticle[]>([])
+interface ExternalArticlesListProps {
+  articles: ExternalArticle[]
+  subjects: Subject[]
+}
+export default function ExternalArticlesList({ articles, subjects }: ExternalArticlesListProps) {
   const [sort, setSort] = useState<string>('desc')
-  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([])
+  const [selectedSubjects, setSelectedSubjects] = useState<Subject[]>([])
+  const [filteredArticles, setFilteredArticles] = useState<ExternalArticle[]>([])
 
-  // fetch subjects
   useEffect(() => {
-    const subjectsQuery = groq`
-    *[_type == "subject"] {
-    title
-    }`
+    const sortedArticles = articles.sort((a, b) => {
+      if (sort === 'desc') {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      } else {
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
+      }
+    })
+    setFilteredArticles(sortedArticles)
+  }, [sort])
 
-    const fetchSubjects = async () => {
-      const result = await client.fetch(subjectsQuery)
-      setSubjects(result)
-    }
-    fetchSubjects()
-  }, [])
-
-  // TODO consider fetch all, and do sorting in frontend
-  // fetch articles, refetch when sort order or selected subjects changes
+  // filter client side
   useEffect(() => {
-    let subjectFilter = ''
     if (selectedSubjects.length > 0) {
-      subjectFilter = '&& ('
-      selectedSubjects.forEach((subject, index) => {
-        if (index === 0) {
-          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)`
-        } else {
-          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id)`
-        }
-      })
-      subjectFilter += ')'
+      const filtered = articles.filter((article) =>
+        article.categories.some((category) =>
+          selectedSubjects.some((subject) => subject.title === category.title)
+        )
+      )
+      setFilteredArticles(filtered)
+    } else {
+      setFilteredArticles(articles)
     }
-
-    const articlesQuery = groq`
-*[_type == "externalArticle" ${subjectFilter}] {
-    _id,
-    title,
-    categories[] -> {
-        _id,
-        title,
-    },
-    publisher,
-    description,
-    date,
-    externalLink
-    } | order(date ${sort})
-    `
-    console.log('LOGGER ', articlesQuery)
-    const fetchArticles = async () => {
-      const result = await client.fetch(articlesQuery)
-      setArticles(result)
-    }
-    fetchArticles()
-  }, [sort, selectedSubjects])
+  }, [selectedSubjects])
 
   // only show if articles are loaded
   if (articles.length === 0) {
@@ -81,11 +54,11 @@ export default function ExternalArticlesList() {
     )
   }
 
-  const onRemove = (subject: string) => {
-    setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
+  const onRemove = (subject: Subject) => {
+    setSelectedSubjects(selectedSubjects.filter((sub) => sub.title !== subject.title))
   }
 
-  const onAddSubject = (value: string) => {
+  const onAddSubject = (value: Subject) => {
     if (!selectedSubjects.includes(value)) {
       setSelectedSubjects([...selectedSubjects, value])
     }
@@ -96,19 +69,11 @@ export default function ExternalArticlesList() {
     setSort('desc')
   }
 
-  const alteredSubjects = subjects.map((subject) => {
-    return subject.title
-  })
-
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
-        <SubjectsMenu
-          subjects={alteredSubjects}
-          selectedSubjects={selectedSubjects}
-          onAddSubject={onAddSubject}
-        />
+        <SubjectsMenu subjects={subjects} onAddSubject={onAddSubject} />
         <div className="w-fit h-16 items-center">
           <button
             disabled={selectedSubjects.length === 0}
@@ -124,7 +89,7 @@ export default function ExternalArticlesList() {
         </div>
         {selectedSubjects.length > 0 &&
           selectedSubjects.map((sub) => (
-            <div key={sub} className="w-fit max-w-lg h-16">
+            <div key={sub.title} className="w-fit max-w-lg h-16">
               <SelectedFilter subject={sub} onRemove={onRemove} />
             </div>
           ))}
@@ -135,7 +100,7 @@ export default function ExternalArticlesList() {
           <p className="text-gray">Prøv å endre filterne dine</p>
         </div>
       )}
-      {articles.map(
+      {filteredArticles.map(
         (article: ExternalArticle) =>
           article.externalLink && (
             <div key={article._id}>

@@ -1,86 +1,56 @@
 'use client'
-
 import SelectedFilter from 'components/shared/filter/SelectedFilter'
 import SortMenu from 'components/shared/filter/SortMenu'
-import Example from 'components/shared/filter/SubjectsMenu'
-import { groq } from 'next-sanity'
+import SubjectsMenu from 'components/shared/filter/SubjectsMenu'
 import { useEffect, useState } from 'react'
-import { client } from 'sanity-conf/sanity.client'
-import imageUrlBuilder from '@sanity/image-url'
-import { BlogPost } from 'type'
+import { BlogPost, Subject } from 'type'
 import BlogPostCard from './BlogPostCard'
 
-const builder = imageUrlBuilder(client)
-
-interface Subject {
-  title: string
-  _id: string
+interface BlogPostsListProps {
+  blogPosts: BlogPost[]
+  subjects: Subject[]
 }
 
-export default function BlogPostsList() {
-  const [subjects, setSubjects] = useState<Subject[]>([{ title: '', _id: '' }])
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProps) {
   const [sort, setSort] = useState<string>('desc')
-  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([])
+  const [selectedSubjects, setSelectedSubjects] = useState<Subject[]>([])
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
 
-  // fetch subjects
-  useEffect(() => {
-    const subjectsQuery = groq`
-    *[_type == "subject"] {
-    title,
-    }`
-
-    const fetchSubjects = async () => {
-      const result = await client.fetch(subjectsQuery)
-      setSubjects(result)
-    }
-    fetchSubjects()
-  }, [])
-
-  // TODO consider fetch all, and do sorting in frontend
   // fetch blogPosts, refetch when sort order or selected subjects changes
   useEffect(() => {
-    let subjectFilter = ''
+    const sortedArticles = blogPosts.sort((a, b) => {
+      if (sort === 'desc') {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      } else {
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
+      }
+    })
+    setFilteredPosts(sortedArticles)
+  }, [sort])
+
+  useEffect(() => {
     if (selectedSubjects.length > 0) {
-      subjectFilter = '&& ('
-      selectedSubjects.forEach((subject, index) => {
-        if (index === 0) {
-          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)`
-        } else {
-          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id)`
-        }
-      })
-      subjectFilter += ')'
+      const filtered = blogPosts.filter((article) =>
+        article.categories.some((category) =>
+          selectedSubjects.some((subject) => subject.title === category.title)
+        )
+      )
+      setFilteredPosts(filtered)
+    } else {
+      setFilteredPosts(blogPosts)
     }
+  }, [selectedSubjects])
 
-    const blogPostsQuery = groq`
-    *[_type == "blogPost" ${subjectFilter}] {
-      _id,
-      title, 
-      slug, 
-      image, 
-      description,
-      date, 
-      categories[]->{title}, 
-      body
-    } | order(date ${sort})
-    `
-
-    const fetchblogPosts = async () => {
-      const result = await client.fetch(blogPostsQuery)
-      setBlogPosts(result)
-    }
-    fetchblogPosts()
-  }, [sort, selectedSubjects])
-
-  const onAddSubject = (value: string) => {
-    if (!selectedSubjects.includes(value)) {
+  const onAddSubject = (value: Subject) => {
+    const present = selectedSubjects.some((sub) => sub.title === value.title)
+    if (!present) {
       setSelectedSubjects([...selectedSubjects, value])
     }
   }
 
-  const onRemove = (subject: string) => {
-    setSelectedSubjects(selectedSubjects.filter((sub) => sub !== subject))
+  const onRemove = (subject: Subject) => {
+    console.log('Fjerner: ', subject)
+    setSelectedSubjects(selectedSubjects.filter((sub) => sub.title !== subject.title))
   }
 
   const onRemoveAll = () => {
@@ -88,19 +58,15 @@ export default function BlogPostsList() {
     setSort('desc')
   }
 
-  const subjectTitles = subjects.map((subject) => {
-    return subject.title
-  })
+  // const subjectTitles = subjects.map((subject) => {
+  //   return subject.title
+  // })
 
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 ">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
-        <Example
-          subjects={subjectTitles}
-          selectedSubjects={selectedSubjects}
-          onAddSubject={onAddSubject}
-        />
+        <SubjectsMenu subjects={subjects} onAddSubject={onAddSubject} />
         <div className="w-fit h-16 items-center">
           <button
             disabled={selectedSubjects.length === 0}
@@ -116,7 +82,7 @@ export default function BlogPostsList() {
         </div>
         {selectedSubjects.length > 0 &&
           selectedSubjects.map((sub) => (
-            <div key={sub} className="w-fit max-w-lg h-16">
+            <div key={sub.title} className="w-fit max-w-lg h-16">
               <SelectedFilter subject={sub} onRemove={onRemove} />
             </div>
           ))}
@@ -129,9 +95,8 @@ export default function BlogPostsList() {
       )}
       <hr className="sm:hidden block mb-16 border-light_gray border-t" />
       <span className="flex flex-col gap-y-16">
-        {blogPosts.map((post: BlogPost) => (
+        {filteredPosts.map((post: BlogPost) => (
           <div className="group" key={post._id}>
-            {/* <hr className="sm:block hidden mb-16 border-t border-light_gray" /> */}
             <BlogPostCard post={post} />
           </div>
         ))}

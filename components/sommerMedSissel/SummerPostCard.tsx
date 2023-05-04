@@ -3,26 +3,16 @@ import Link from 'next/link'
 import { Image, Slug } from 'sanity'
 import { client } from 'sanity-conf/sanity.client'
 import { poppins } from 'styles/fonts'
+import { SummerPost } from 'type'
 
 export interface summerPostCardProps {
-  post: summerPostCard
+  post: SummerPost
   first: boolean
 }
 
-export interface summerPostCard {
-  title: string
-  slug: Slug
-  image: Image
-  description: string
-  date: string
-  _id: string
-}
 const builder = imageUrlBuilder(client)
 
 export default function SummerPostCard({ post, first }: summerPostCardProps) {
-  if (first) {
-    console.log(first)
-  }
   return (
     <div className="group">
       <hr className={`sm:block hidden mb-16 ${first ? 'max-w-3xl' : ''} mx-auto`} />

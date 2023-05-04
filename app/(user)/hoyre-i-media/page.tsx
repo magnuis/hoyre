@@ -1,8 +1,31 @@
 import { poppins } from 'styles/fonts'
 import ExternalArticlesList from './ExternalArticleList'
 import generateThumbnailUrl from 'components/appearance/Thumbnail'
+import { groq } from 'next-sanity'
+import { client } from 'sanity-conf/sanity.client'
 
 export default async function ExternalArticles() {
+  const subjectsQuery = groq`
+    *[_type == "subject"] {
+    title
+    }`
+
+  const articlesQuery = groq`
+*[_type == "externalArticle" ] {
+    _id,
+    title,
+    categories[] -> {
+        _id,
+        title,
+    },
+    publisher,
+    description,
+    date,
+    externalLink
+    } | order(date desc)
+    `
+  const subjects = await client.fetch(subjectsQuery)
+  const articles = await client.fetch(articlesQuery)
   return (
     <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
       <div className="flex flex-col max-w-xl mx-auto mb-10 px-8 sm:px-0 gap-y-6 md:gap-y-10 text-center">
@@ -15,7 +38,7 @@ export default async function ExternalArticles() {
         </p>
       </div>
       <div className="mx-auto flex flex-col p-4 gap-y-24 mb-48">
-        <ExternalArticlesList />
+        <ExternalArticlesList articles={articles} subjects={subjects} />
       </div>
     </div>
   )

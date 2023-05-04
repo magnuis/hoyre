@@ -1,9 +1,32 @@
 import { poppins } from 'styles/fonts'
 import BlogPostsList from './blogPostCardList'
 import generateThumbnailUrl from 'components/appearance/Thumbnail'
+import { groq } from 'next-sanity'
+import { client } from 'sanity-conf/sanity.client'
+import { BlogPost, Subject } from 'type'
 
 export default async function Blogg() {
-  // TODO fix responsive rendering of images
+  const subjectsQuery = groq`
+    *[_type == "subject"] {
+    title,
+    }`
+
+  const blogPostsQuery = groq`
+    *[_type == "blogPost" ] {
+      _id,
+      title, 
+      slug, 
+      image, 
+      description,
+      date, 
+      categories[]->{title}, 
+      body
+    } | order(date desc)
+    `
+
+  const blogPosts: BlogPost[] = await client.fetch(blogPostsQuery)
+  const subjects: Subject[] = await client.fetch(subjectsQuery)
+
   return (
     <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">
       <div className="flex flex-col max-w-xl mx-auto md:mb-12 px-6 sm:px-0 gap-y-6 md:gap-y-10 text-center">
@@ -19,7 +42,7 @@ export default async function Blogg() {
         </p>
       </div>
       <div className="mx-auto flex flex-col p-4 gap-y-24 mb-48">
-        <BlogPostsList />
+        <BlogPostsList blogPosts={blogPosts} subjects={subjects} />
       </div>
     </div>
   )
