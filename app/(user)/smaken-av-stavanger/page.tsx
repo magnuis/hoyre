@@ -24,8 +24,8 @@ export default async function Blogg() {
     } | order(date desc)
     `
 
-  const blogPosts: Array<BlogPost> = await client.fetch(blogPostsQuery)
-  const subjects: Array<Subject> = await client.fetch(subjectsQuery)
+  const blogPosts: BlogPost[] = await client.fetch(blogPostsQuery)
+  const subjects: Subject[] = await client.fetch(subjectsQuery)
 
   return (
     <div className="max-w-7xl mx-auto pt-24 sm:pt-36 md:pt-48">

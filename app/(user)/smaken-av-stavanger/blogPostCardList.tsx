@@ -7,14 +7,14 @@ import { BlogPost, Subject } from 'type'
 import BlogPostCard from './BlogPostCard'
 
 interface BlogPostsListProps {
-  blogPosts: Array<BlogPost>
-  subjects: Array<Subject>
+  blogPosts: BlogPost[]
+  subjects: Subject[]
 }
 
 export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProps) {
   const [sort, setSort] = useState<string>('desc')
-  const [selectedSubjects, setSelectedSubjects] = useState<Array<Subject>>([])
-  const [filteredPosts, setFilteredPosts] = useState<Array<BlogPost>>([])
+  const [selectedSubjects, setSelectedSubjects] = useState<Subject[]>([])
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
 
   // fetch blogPosts, refetch when sort order or selected subjects changes
   useEffect(() => {
@@ -66,11 +66,7 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 ">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
-        <SubjectsMenu
-          subjects={subjects}
-          selectedSubjects={selectedSubjects}
-          onAddSubject={onAddSubject}
-        />
+        <SubjectsMenu subjects={subjects} onAddSubject={onAddSubject} />
         <div className="w-fit h-16 items-center">
           <button
             disabled={selectedSubjects.length === 0}

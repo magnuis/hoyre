@@ -5,14 +5,13 @@ import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { Subject } from 'type'
 
 interface SubjectsMenuProps {
-  subjects: Array<Subject>
-  selectedSubjects: Array<Subject>
+  subjects: Subject[]
   onAddSubject: (value: Subject) => void
 }
 
 export default function SubjectsMenu({ subjects, onAddSubject }: SubjectsMenuProps) {
-  const [selected, setSelected] = useState('')
-  const [query, setQuery] = useState('')
+  const [selected, setSelected] = useState<string>('')
+  const [query, setQuery] = useState<string>('')
 
   const filteredSubjects =
     query === ''
@@ -28,6 +27,7 @@ export default function SubjectsMenu({ subjects, onAddSubject }: SubjectsMenuPro
     const subject = subjects.find((subject) => subject.title === title)
     if (subject) {
       onAddSubject(subject)
+      setSelected(subject.title)
     }
   }
 

@@ -13,11 +13,11 @@ interface Subject {
 
 interface ExternalArticlesListProps {
   articles: ExternalArticle[]
-  subjects: Array<Subject>
+  subjects: Subject[]
 }
 export default function ExternalArticlesList({ articles, subjects }: ExternalArticlesListProps) {
   const [sort, setSort] = useState<string>('desc')
-  const [selectedSubjects, setSelectedSubjects] = useState<Array<Subject>>([])
+  const [selectedSubjects, setSelectedSubjects] = useState<Subject[]>([])
   const [filteredArticles, setFilteredArticles] = useState<ExternalArticle[]>([])
 
   useEffect(() => {
@@ -73,11 +73,7 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 sm:pt-16">
       <div className="flex flex-row gap-x-4 items-center flex-wrap">
         <SortMenu sort={sort} setSort={setSort} />
-        <SubjectsMenu
-          subjects={subjects}
-          selectedSubjects={selectedSubjects}
-          onAddSubject={onAddSubject}
-        />
+        <SubjectsMenu subjects={subjects} onAddSubject={onAddSubject} />
         <div className="w-fit h-16 items-center">
           <button
             disabled={selectedSubjects.length === 0}
