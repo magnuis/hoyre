@@ -3,74 +3,47 @@
 import SelectedFilter from 'components/shared/filter/SelectedFilter'
 import SortMenu from 'components/shared/filter/SortMenu'
 import SubjectsMenu from 'components/shared/filter/SubjectsMenu'
-import { groq } from 'next-sanity'
 import { useEffect, useState } from 'react'
-import { client } from 'sanity-conf/sanity.client'
 import { ExternalArticle } from 'type'
 import ExternalArticleCard from './ExternalArticleCard'
 
 interface Subject {
   title: string
-  _id: string
 }
 
-export default function ExternalArticlesList() {
-  const [subjects, setSubjects] = useState<Subject[]>([{ title: '', _id: '' }])
-  const [articles, setArticles] = useState<ExternalArticle[]>([])
+interface ExternalArticlesListProps {
+  articles: ExternalArticle[]
+  subjects: Array<Subject>
+}
+export default function ExternalArticlesList({ articles, subjects }: ExternalArticlesListProps) {
   const [sort, setSort] = useState<string>('desc')
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([])
+  const [filteredArticles, setFilteredArticles] = useState<ExternalArticle[]>([])
 
-  // fetch subjects
-  useEffect(() => {
-    const subjectsQuery = groq`
-    *[_type == "subject"] {
-    title
-    }`
-
-    const fetchSubjects = async () => {
-      const result = await client.fetch(subjectsQuery)
-      setSubjects(result)
-    }
-    fetchSubjects()
-  }, [])
-
-  // TODO consider fetch all, and do sorting in frontend
   // fetch articles, refetch when sort order or selected subjects changes
   useEffect(() => {
-    let subjectFilter = ''
+    // sort client side
+    const sortedArticles = articles.sort((a, b) => {
+      if (sort === 'desc') {
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
+      } else {
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
+      }
+    })
+    setFilteredArticles(sortedArticles)
+  }, [sort])
+
+  // filter client side
+  useEffect(() => {
     if (selectedSubjects.length > 0) {
-      subjectFilter = '&& ('
-      selectedSubjects.forEach((subject, index) => {
-        if (index === 0) {
-          subjectFilter += `references(*[_type == "subject" && title == "${subject}"]._id)`
-        } else {
-          subjectFilter += ` || references(*[_type == "subject" && title == "${subject}"]._id)`
-        }
-      })
-      subjectFilter += ')'
+      const filtered = articles.filter((article) =>
+        article.categories.some((category) =>
+          selectedSubjects.some((subject) => subject === category.title)
+        )
+      )
+      setFilteredArticles(filtered)
     }
-
-    const articlesQuery = groq`
-*[_type == "externalArticle" ${subjectFilter}] {
-    _id,
-    title,
-    categories[] -> {
-        _id,
-        title,
-    },
-    publisher,
-    description,
-    date,
-    externalLink
-    } | order(date ${sort})
-    `
-
-    const fetchArticles = async () => {
-      const result = await client.fetch(articlesQuery)
-      setArticles(result)
-    }
-    fetchArticles()
-  }, [sort, selectedSubjects])
+  }, [selectedSubjects])
 
   // only show if articles are loaded
   if (articles.length === 0) {
@@ -135,7 +108,7 @@ export default function ExternalArticlesList() {
           <p className="text-gray">Prøv å endre filterne dine</p>
         </div>
       )}
-      {articles.map(
+      {filteredArticles.map(
         (article: ExternalArticle) =>
           article.externalLink && (
             <div key={article._id}>
