@@ -11,8 +11,8 @@ const navigation = [
   { name: 'Smaken av Stavanger', href: '/smaken-av-stavanger' },
   { name: 'Sommer med Sissel', href: '/sommer-med-sissel' },
   { name: 'Høyre i media', href: '/hoyre-i-media' },
-  { name: 'Om Sissel', href: '/om-sissel' },
-  { name: 'Laget', href: '/laget' },
+  { name: 'Bli kjent med Sissel', href: '/bli-kjent-med-sissel' },
+  { name: 'Veien til valget', href: '/veien-til-valget' },
 ]
 
 export default function MobileMenu() {
