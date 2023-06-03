@@ -36,7 +36,7 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
   }, [cont])
 
   return (
-    <div className="w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh] mt-20">
+    <div className="w-full h-[100vw] sm:h-[60vw] max-h-[77vh] mt-20">
       {content.map((item, index) => (
         <div
           key={index + 1}
@@ -48,7 +48,7 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
           } md:px-8 xl:px-0 `}
         >
           <div
-            className="mx-auto max-w-7xl bg-cover bg-center w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh] text-white flex items-end pb-10 justify-center"
+            className="mx-auto max-w-7xl bg-cover bg-center w-full h-[100vw] sm:h-[60vw] max-h-[77vh] text-white flex items-end pb-10 sm:pb-20 md:pb-32 justify-center"
             style={{
               backgroundImage: `url(${urlFor(item.content.image)
                 .width(1280)
@@ -66,8 +66,6 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
                 </span>
                 <p>STAVANGER</p>
               </span>
-              <p className={`text-lg font-bold mb-3`}>Vil du være med å gjøre en forskjell?</p>
-              <Button href="https://hoyre.no/bli-med/bli-medlem/" text="BLI MEDLEM"></Button>
             </div>
           </div>
         </div>
