@@ -115,7 +115,9 @@ export default async function Home() {
               textColor={'text-secondary_dark'}
               imgFirst={true}
             />
-            <TasteOfStavangerCard posts={posts} />
+            <div id="taste-of-stavanger">
+              <TasteOfStavangerCard posts={posts} />
+            </div>
             <NavCard
               title={'Sommer med Sissel'}
               description={
