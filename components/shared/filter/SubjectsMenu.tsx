@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { Subject } from 'type'
+import capitalize from 'components/utils/capitalize'
 
 interface SubjectsMenuProps {
   subjects: Subject[]
@@ -73,7 +74,7 @@ export default function SubjectsMenu({ subjects, onAddSubject }: SubjectsMenuPro
                         <span
                           className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}
                         >
-                          {subject.title}
+                          {capitalize(subject.title)}
                         </span>
                       </>
                     )}

@@ -1,5 +1,6 @@
 import imageUrlBuilder from '@sanity/image-url'
 import Button from 'components/shared/Button'
+import capitalize from 'components/utils/capitalize'
 import Link from 'next/link'
 import { client } from 'sanity-conf/sanity.client'
 import { poppins } from 'styles/fonts'
@@ -29,7 +30,7 @@ export default function ExternalArticleCard({ article }: blogPostCardProps) {
                   key={category.title}
                   className="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-primary"
                 >
-                  {category.title}
+                  {capitalize(category.title)}
                 </div>
               )
           )}

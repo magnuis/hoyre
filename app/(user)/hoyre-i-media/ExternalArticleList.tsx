@@ -31,7 +31,6 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
     setFilteredArticles(sortedArticles)
   }, [sort])
 
-  // filter client side
   useEffect(() => {
     if (selectedSubjects.length > 0) {
       const filtered = articles.filter((article) =>
@@ -45,7 +44,6 @@ export default function ExternalArticlesList({ articles, subjects }: ExternalArt
     }
   }, [selectedSubjects])
 
-  // only show if articles are loaded
   if (articles.length === 0) {
     return (
       <div className="max-w-3xl mx-auto mt-10 space-y-16 border-gray-200 pt-10 sm:mt-16 sm:pt-16">

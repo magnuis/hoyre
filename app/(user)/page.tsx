@@ -98,7 +98,7 @@ export default async function Home() {
               }
               image={sisselNav ? sisselNav._id : ''}
               button={'MØT SISSEL'}
-              href={'/om-sissel'}
+              href={'/bli-kjent-med-sissel'}
               bg={'bg-secondary_dark'}
               textColor={'text-light'}
               imgFirst={false}
@@ -110,12 +110,14 @@ export default async function Home() {
               }
               image={lagetNav ? lagetNav._id : ''}
               button={'FØLG LAGET'}
-              href={'/laget'}
+              href={'/veien-til-valget'}
               bg={'bg-lighter_gray'}
               textColor={'text-secondary_dark'}
               imgFirst={true}
             />
-            <TasteOfStavangerCard posts={posts} />
+            <div id="taste-of-stavanger">
+              <TasteOfStavangerCard posts={posts} />
+            </div>
             <NavCard
               title={'Sommer med Sissel'}
               description={

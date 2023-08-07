@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { urlFor } from 'sanity-conf/urlFor'
 import { poppins } from 'styles/fonts'
@@ -35,6 +36,17 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
     return () => clearInterval(xy)
   }, [cont])
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    const href = e.currentTarget.href
+    const targetId = href.replace(/.*\#/, '')
+    const elem = document.getElementById(targetId)
+
+    elem?.scrollIntoView({
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <div className="w-full aspect-[1] sm:aspect-[10/6] max-h-[77vh] mt-20">
       {content.map((item, index) => (
@@ -66,8 +78,15 @@ export default function Carousel({ content }: CarouselProps): JSX.Element {
                 </span>
                 <p>STAVANGER</p>
               </span>
-              <p className={`text-lg font-bold mb-3`}>Vil du være med å gjøre en forskjell?</p>
-              <Button href="https://hoyre.no/bli-med/bli-medlem/" text="BLI MEDLEM"></Button>
+              <p className={`text-lg font-bold mb-3`}>Vil du se mer av hva vi driver med?</p>
+
+              <Link
+                href="#taste-of-stavanger"
+                onClick={handleScroll}
+                className="rounded bg-primary text-center p-2 w-fit text-white hover:bg-primary_dark transition-colors duration-300 ease-in-out"
+              >
+                Se mer
+              </Link>
             </div>
           </div>
         </div>
