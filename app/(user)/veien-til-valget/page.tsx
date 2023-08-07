@@ -13,7 +13,7 @@ export default async function LagetPage() {
         content,
         date,
         "img": image.asset._ref
-    } | order(date asc) 
+    } | order(date desc) 
     `
   const imgQuery = groq`
   *[_type == "sanity.imageAsset" && 
@@ -62,7 +62,7 @@ export const metadata = {
     title: 'Sammen for Stavanger | Veien til valget',
     description:
       'Stavanger-laget har hendene fulle i opptakten til høstens kommunevalg. Her kan du følge oss på veien!',
-    url: 'https://hoyre.vercel.app/laget',
+    url: 'https://hoyre.vercel.app/veien-til-valget',
     images: [
       {
         url: generateThumbnailUrl(

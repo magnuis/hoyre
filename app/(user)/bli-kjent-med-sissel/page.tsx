@@ -114,7 +114,7 @@ export const metadata = {
     title: 'Sammen for Stavanger | Sissel Knutsen Hegdal',
     description:
       'Sissel er Høyres ordførerkandidat i Stavanger. Hun er mor til tre - Espen, Emilie og Fredrik.',
-    url: 'https://hoyre.vercel.app/om-sissel',
+    url: 'https://hoyre.vercel.app/bli-kjent-med-sissel',
     images: [
       {
         url: generateThumbnailUrl(
