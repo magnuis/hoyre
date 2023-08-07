@@ -7,9 +7,9 @@ import { BlogPost, Subject } from 'type'
 
 export default async function Blogg() {
   const subjectsQuery = groq`
-    *[_type == "subject"] {
-    title,
-    }`
+*[_type == "subject" && (_id in *[_type == "blogPost"].categories[]._ref)]{
+  title
+}`
 
   const blogPostsQuery = groq`
     *[_type == "blogPost" ] {

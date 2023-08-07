@@ -6,9 +6,9 @@ import { client } from 'sanity-conf/sanity.client'
 
 export default async function ExternalArticles() {
   const subjectsQuery = groq`
-    *[_type == "subject"] {
-    title
-    }`
+*[_type == "subject" && (_id in *[_type == "externalArticle"].categories[]._ref)]{
+  title
+}`
 
   const articlesQuery = groq`
 *[_type == "externalArticle" ] {

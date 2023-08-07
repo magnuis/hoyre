@@ -16,7 +16,6 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
   const [selectedSubjects, setSelectedSubjects] = useState<Subject[]>([])
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
 
-  // fetch blogPosts, refetch when sort order or selected subjects changes
   useEffect(() => {
     const sortedArticles = blogPosts.sort((a, b) => {
       if (sort === 'desc') {
@@ -49,7 +48,6 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
   }
 
   const onRemove = (subject: Subject) => {
-    console.log('Fjerner: ', subject)
     setSelectedSubjects(selectedSubjects.filter((sub) => sub.title !== subject.title))
   }
 
@@ -57,10 +55,6 @@ export default function BlogPostsList({ blogPosts, subjects }: BlogPostsListProp
     setSelectedSubjects([])
     setSort('desc')
   }
-
-  // const subjectTitles = subjects.map((subject) => {
-  //   return subject.title
-  // })
 
   return (
     <div className="max-w-3xl mx-auto space-y-10 border-gray-200 pt-10 ">
