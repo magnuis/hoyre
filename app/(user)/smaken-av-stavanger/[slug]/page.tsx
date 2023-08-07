@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params: { slug } }: blogPostProps) 
           <span className="h-4 w-0.5 rounded-full bg-zinc-200 " />
           <span className="ml-3">{blogPost.date}</span>
         </time>
-        <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-6 pb-20">
           <PortableText value={blogPost.body} components={RichTextComponents} />
         </div>
       </div>
