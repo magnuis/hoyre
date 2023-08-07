@@ -56,7 +56,7 @@ export default async function SummerWSisselPost({ params: { slug } }: SummerWSis
           <span className="h-4 w-0.5 rounded-full bg-zinc-200 " />
           <span className="ml-3">{summerPost.date}</span>
         </time>
-        <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-6 pb-20">
           <PortableText value={summerPost.body} components={RichTextComponents} />
         </div>
       </div>

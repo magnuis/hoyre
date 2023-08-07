@@ -1,10 +1,21 @@
+import getYouTubeID from 'get-youtube-id'
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlFor } from 'sanity-conf/urlFor'
 import { poppins } from 'styles/fonts'
+import { YouTubeComponent } from './YouTubeComponent'
 
 export const RichTextComponents = {
   types: {
+    youtube: ({ value }: any) => {
+      try {
+        const { url } = value
+        const id = getYouTubeID(url) ?? ''
+
+        return <YouTubeComponent id={id} />
+      } catch (error) {}
+      return <></>
+    },
     image: ({ value }: any) => {
       return (
         <div className="relative w-full mb-8">

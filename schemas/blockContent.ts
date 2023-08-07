@@ -63,5 +63,17 @@ export default defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    {
+      type: 'object',
+      title: 'YouTube',
+      name: 'youtube',
+      fields: [
+        {
+          title: 'YouTube link',
+          name: 'url',
+          type: 'string',
+        },
+      ],
+    },
   ],
 })
