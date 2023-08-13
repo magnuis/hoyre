@@ -19,7 +19,7 @@ module.exports = {
         light_gray: '#6B7280',
         lighter_gray: '#f5f5f5',
         dark_gray: '#111827',
-        blue_200: '#8ac6fd'
+        blue_200: '#8ac6fd',
       },
     },
   },
