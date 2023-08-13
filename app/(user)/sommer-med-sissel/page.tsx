@@ -18,7 +18,7 @@ const SummerWSissel = async () => {
           description, 
           date, 
           _id
-        }`
+        } | order(date desc)`
 
   const posts: SummerPost[] = await client.fetch(postQuery)
 
