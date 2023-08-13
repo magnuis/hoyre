@@ -83,3 +83,12 @@ interface TeamTimeline extends Base {
 interface Subject {
   title: string
 }
+
+interface VideoCategory extends Base {
+  title: string
+  description: string
+  referencedBy: {
+    title: string
+    url: string
+  }[]
+}

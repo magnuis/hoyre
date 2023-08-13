@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'subject',
-  title: 'Emne',
+  name: 'videoCategory',
+  title: 'Video-kategori',
   type: 'document',
   fields: [
     defineField({
@@ -10,6 +10,11 @@ export default defineType({
       title: 'Tittel',
       type: 'string',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      title: 'Beskrivelse',
+      type: 'string',
     }),
   ],
 })

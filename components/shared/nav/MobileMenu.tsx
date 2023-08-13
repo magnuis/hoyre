@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Høyre i media', href: '/hoyre-i-media' },
   { name: 'Bli kjent med Sissel', href: '/bli-kjent-med-sissel' },
   { name: 'Veien til valget', href: '/veien-til-valget' },
+  { name: 'Videoer', href: '/videoer' },
 ]
 
 export default function MobileMenu() {
