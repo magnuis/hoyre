@@ -19,10 +19,10 @@ const navigation = [
 export default function MobileMenu() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
-    <div className="flex lg:hidden text-primary">
+    <div className="flex xl:hidden text-primary">
       <button
         type="button"
-        className=" inline-flex items-center justify-center rounded-md p-2.5"
+        className=" inline-flex items-center justify-center rounded-md "
         onClick={() => setMobileMenuOpen(true)}
       >
         <span className="sr-only">Open main menu</span>
@@ -31,25 +31,13 @@ export default function MobileMenu() {
       </button>
       <Dialog
         as="div"
-        className="lg:hidden transition-all duration-300 ease-in-out"
+        className="xl:hidden transition-all duration-300 ease-in-out"
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto sm:bg-white bg-lighter_gray px-4 py-4 sm:max-w-sm sm:ring-1 sm:ring-dark_gray/10">
-          <div className="flex items-center justify-between">
-            <div className="flex lg:flex-1">
-              <Link className="-m-1.5 p-1.5" href={'/'}>
-                <span className="flex flex-row text-primary gap-x-3 items-center text-lg">
-                  <img
-                    src="https://hoyre.no/content/uploads/2020/08/hoyre-logo-blue_1839da23.svg"
-                    alt="logo"
-                    className="h-9"
-                  />
-                  <p>Stavanger Høyre</p>
-                </span>
-              </Link>
-            </div>
+          <div className="flex justify-end">
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 "

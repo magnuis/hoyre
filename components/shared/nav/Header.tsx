@@ -42,7 +42,7 @@ export default function Header() {
         className="flex mx-auto max-w-7xl items-center justify-between p-4 md:px-8 md:py-5 xl:px-0 "
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        <div className="flex xl:flex-1">
           <Link className="-m-1.5 p-1.5" href={'/'}>
             <span className="flex flex-row gap-x-3 items-center text-lg font-light">
               <img
@@ -55,7 +55,7 @@ export default function Header() {
           </Link>
         </div>
         <MobileMenu />
-        <div className="hidden lg:flex lg:gap-x-1">
+        <div className="hidden xl:flex xl:gap-x-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
